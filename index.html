@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ioseb Tsikaridze Studio · Wedding &amp; Portrait Photography, Tbilisi</title>
+<meta name="description" content="Wedding, family and fine art portrait photography in Tbilisi, Georgia, travelling to Kakheti, Batumi, Kazbegi and beyond.">
+<meta name="theme-color" content="#0C0B0A">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Photos are Unsplash demo images; swap each <img> src/srcset for the studio's own work. */
+:root{
+ --onyx:#0C0B0A;--onyx-2:#171512;
+ --alabaster:#F7F4EE;--mute:rgba(247,244,238,.64);--faint:rgba(247,244,238,.46);
+ --line:rgba(247,244,238,.1);
+ --gold:#CDB07A;--gold-soft:rgba(205,176,122,.3);
+ --paper:linear-gradient(160deg,#fcfbf7,#eeeae0);
+ --serif:'Bodoni Moda','Didot',Georgia,serif;
+ --sans:'Hanken Grotesk',system-ui,sans-serif;
+ --ease:cubic-bezier(.16,1,.3,1);
+ --gut:clamp(1rem,4.5vw,3rem);--max:1200px;
+ --sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);
+ color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--onyx);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media(prefers-reduced-motion:no-preference){html:not(.lenis){scroll-behavior:smooth}}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+body{background:var(--onyx);color:var(--alabaster);font:300 1rem/1.7 var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}
+::selection{background:var(--gold);color:var(--onyx)}
+a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+ul,ol{list-style:none}
+img{display:block;max-width:100%}
+.js img.fi{opacity:0;transition:opacity .7s var(--ease)}
+.js img.fi.ld{opacity:1}
+.js:not(.ready) img.fi{animation:fs-o 0s 3s forwards}
+@keyframes fs-o{to{opacity:1}}
+/* a soft warm shimmer holds each frame until its photograph arrives */
+.js :is(.photo,.g-hit,.band figure,.peek):not(:has(img.ld)){background:linear-gradient(100deg,#171512 30%,#241f19 50%,#171512 70%) 0 0/300% 100%;animation:shim 1.6s linear infinite}
+@keyframes shim{to{background-position:-150% 0}}
+em{font-style:italic}
+:focus-visible{outline:1px solid var(--gold);outline-offset:4px}
+[tabindex="-1"]:focus{outline:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:fixed;left:1rem;top:calc(1rem + var(--sat));z-index:100;padding:.75rem 1rem;background:var(--alabaster);color:var(--onyx);font-size:.875rem;transform:translateY(-200%)}
+.skip:focus{transform:none}
+.wrap{width:100%;max-width:calc(var(--max) + 2 * var(--gut));margin-inline:auto;padding-inline:max(var(--gut),env(safe-area-inset-left,0px)) max(var(--gut),env(safe-area-inset-right,0px))}
+.label{display:block;font:500 .6875rem/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+
+.cta{display:inline-flex;align-items:center;gap:.85rem;min-height:3.25rem;padding:0 1.75rem;border-radius:999px;background:var(--gold);color:var(--onyx);font:500 .6875rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;transition:background-color .35s,transform .35s var(--ease)}
+.cta svg{width:.85rem;height:.85rem;transition:transform .35s var(--ease)}
+@media(hover:hover){.cta:hover{background:var(--alabaster)}.cta:hover svg{transform:translateX(3px)}}
+.cta:active{transform:scale(.97)}
+.tl{display:inline-flex;align-items:center;min-height:2.75rem;font-size:.875rem;
+ background:linear-gradient(var(--gold),var(--gold)) 0 calc(100% - .55rem)/0 1px no-repeat,linear-gradient(var(--gold-soft),var(--gold-soft)) 0 calc(100% - .55rem)/100% 1px no-repeat;transition:background-size .6s var(--ease)}
+.tl:hover{background-size:100% 1px,100% 1px}
+.circle{flex:none;width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid rgba(247,244,238,.22);display:grid;place-items:center;transition:border-color .3s,color .3s,transform .3s var(--ease)}
+.circle svg{width:.85rem;height:.85rem}
+@media(hover:hover){.circle:hover{border-color:var(--gold);color:var(--gold)}}
+.circle:active{transform:scale(.92)}
+
+/* ── NAV: floating glass bar ─────────────────────────── */
+.bar{position:fixed;z-index:60;top:calc(.9rem + var(--sat));left:50%;translate:-50% 0;width:min(1180px,calc(100% - 1.5rem));
+ display:flex;align-items:center;gap:1.5rem;padding:.5rem .5rem .5rem 1.6rem;border-radius:999px;
+ background:rgba(247,244,238,.055);border:1px solid rgba(247,244,238,.14);-webkit-backdrop-filter:blur(22px) saturate(1.5);backdrop-filter:blur(22px) saturate(1.5);
+ box-shadow:0 18px 50px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .6s var(--ease),background-color .5s}
+.bar.solid{background:rgba(12,11,10,.74)}
+.bar.hid{transform:translateY(calc(-100% - 1.5rem - var(--sat)))}
+.brand{display:flex;align-items:baseline;gap:.9rem;margin-right:auto;white-space:nowrap}
+.brand b{font:500 .98rem/1 var(--serif);letter-spacing:.34em}
+.brand i{font:400 .58rem/1 var(--sans);letter-spacing:.5em;font-style:normal;color:var(--gold);padding-left:.9rem;border-left:1px solid var(--gold-soft)}
+.links{display:flex;gap:2.2rem;margin-right:.75rem}
+.links a{position:relative;padding:.6rem 0;font-size:.78rem;letter-spacing:.06em;color:var(--mute);transition:color .3s}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:.35rem;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.links a:hover,.links a[aria-current]{color:var(--alabaster)}
+.links a:hover::after,.links a[aria-current]::after{transform:scaleX(1);transform-origin:left}
+.enq{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 1.35rem;border-radius:999px;border:1px solid var(--gold-soft);font:500 .625rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;transition:background-color .3s,color .3s,border-color .3s}
+@media(hover:hover){.enq:hover{background:var(--gold);border-color:var(--gold);color:var(--onyx)}}
+.menu-btn{display:none;min-height:2.75rem;padding:0 1.2rem;border-radius:999px;border:1px solid var(--gold-soft);font:500 .625rem/1 var(--sans);letter-spacing:.24em;text-transform:uppercase}
+@media(max-width:959px){.links,.bar>.enq{display:none}.menu-btn{display:block}.bar{padding-left:1.25rem}}
+@media(max-width:560px){.brand i{display:none}.brand b{font-size:.88rem;letter-spacing:.28em}}
+
+.menu{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;border:0;padding:var(--sat) 0 var(--sab);background:var(--onyx);color:var(--alabaster)}
+.menu::backdrop{background:transparent}
+.menu[open]{display:flex;flex-direction:column}
+.menu .menu-btn{display:block}
+.menu-top{display:flex;align-items:center;justify-content:space-between;padding-block:1.4rem}
+.menu-links{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.3rem}
+.menu-links a{font:400 clamp(2.4rem,11vw,3.75rem)/1.2 var(--serif);letter-spacing:-.02em}
+.menu-links a em{color:var(--gold)}
+.menu-foot{padding-block:1.75rem;border-top:1px solid var(--line);font-size:.875rem;color:var(--mute)}
+.menu-foot a{color:var(--alabaster);border-bottom:1px solid var(--gold-soft);padding-bottom:.2rem}
+
+/* ── HERO ────────────────────────────────────────────── */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:2rem;
+ padding:calc(7.5rem + var(--sat)) clamp(1.5rem,6vw,6rem) 4.5rem;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+ radial-gradient(ellipse 45% 55% at 74% 46%,rgba(205,176,122,.17),transparent 70%),
+ radial-gradient(ellipse 30% 40% at 12% 90%,rgba(120,84,60,.16),transparent 70%)}
+.coord{position:absolute;top:50%;writing-mode:vertical-rl;font-size:.6rem;letter-spacing:.42em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.coord.l{left:1.3rem;transform:translateY(-50%) rotate(180deg)}.coord.r{right:1.3rem;transform:translateY(-50%)}
+.h1{font:400 clamp(2.1rem,9.3vw,5rem)/.98 var(--serif);letter-spacing:-.025em}
+@media(min-width:960px){.h1{font-size:clamp(3.2rem,4.8vw,5.2rem)}}
+.h1 .ln{display:block;overflow:hidden;padding:.04em .1em .12em 0;margin-bottom:-.1em}
+.h1 .ln>span{display:block;white-space:nowrap}
+.h1 .ln:nth-child(2){padding-left:clamp(1.5rem,6vw,5.5rem)}
+.h1 em{color:var(--gold)}
+.indent{margin-left:clamp(1.5rem,6vw,5.5rem)}
+.lede{max-width:25rem;margin-top:2.4rem;color:var(--mute);font-size:1.0625rem}
+.acts{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2.25rem;margin-top:2.4rem}
+.scroll{position:absolute;left:clamp(1.5rem,6vw,6rem);bottom:1.8rem;display:flex;align-items:center;gap:1rem;font-size:.6rem;letter-spacing:.36em;text-transform:uppercase;color:var(--faint)}
+.scroll::after{content:"";width:64px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);transform-origin:left;animation:scrollline 2.4s var(--ease) infinite}
+@keyframes scrollline{0%{transform:scaleX(0)}60%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+
+/* the 3D stack of instant photographs */
+.show{position:relative}
+.stage{position:relative;height:min(36rem,70svh);perspective:1300px;perspective-origin:50% 42%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.rig{position:absolute;inset:0;display:grid;place-items:center;transform-style:preserve-3d;pointer-events:none}
+.card{--p:0;grid-area:1/1;width:min(19.5rem,66%);transform-style:preserve-3d;pointer-events:auto;cursor:grab;
+ transform:translate3d(calc(var(--p)*78px - 50px),calc(var(--p)*-30px + 14px),calc(var(--p)*-170px)) rotateY(calc(var(--p)*-13deg)) rotateZ(calc(var(--p)*2deg + var(--t)*1deg));
+ transition:transform .9s var(--ease)}
+.card:active{cursor:grabbing}
+.gs .card{transition:none}
+.card-in{position:relative;overflow:hidden;padding:.85rem .85rem 0;background:var(--paper);border-radius:3px;box-shadow:0 50px 100px rgba(0,0,0,.62),0 14px 30px rgba(0,0,0,.35)}
+.photo{position:relative;aspect-ratio:1;overflow:hidden;background:#2a241d}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.14)}
+.photo::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.16),inset 0 0 40px rgba(0,0,0,.28)}
+.card figcaption{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;padding:1rem .3rem 1.15rem;color:#2a2620}
+.card small{display:block;margin-bottom:.4rem;font:500 .6rem/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:#8a6d3b}
+.card b{font:italic 400 1.3rem/1.1 var(--serif)}
+.card .no{flex:none;font:italic .8rem/1 var(--serif);color:rgba(42,38,32,.5)}
+.sheen{position:absolute;top:-20%;bottom:-20%;left:-30%;width:60%;pointer-events:none;background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.2) 50%,transparent 80%);opacity:.8}
+.shade{position:absolute;inset:0;background:#0c0b0a;opacity:calc(var(--p)*.24);pointer-events:none;transition:opacity .9s}
+.gs .shade{transition:none}
+
+.glass{position:absolute;z-index:20;pointer-events:none;background:rgba(247,244,238,.06);border:1px solid rgba(247,244,238,.16);-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);box-shadow:0 20px 50px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.07);border-radius:16px}
+.g1{left:-1.5rem;top:9%;padding:1.1rem 1.4rem 1.15rem;max-width:12.5rem}
+.g1 strong{display:block;font:400 2.3rem/1 var(--serif);letter-spacing:-.02em;color:var(--gold)}
+.g1>span{display:block;margin-top:.45rem;font-size:.72rem;line-height:1.45;color:var(--mute)}
+.g2{right:0;bottom:20%;padding:.7rem 1.1rem;border-radius:999px;font-size:.66rem;letter-spacing:.22em;color:var(--mute)}
+.g2 b{color:var(--gold);font-weight:400}
+.ctl{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-top:.5rem;font:italic 1rem/1 var(--serif);color:var(--mute)}
+.ctl output{min-width:4.6rem;text-align:center}
+
+@media(max-width:959px){
+ .hero{grid-template-columns:1fr;min-height:0;padding-top:calc(7rem + var(--sat));padding-bottom:3rem;gap:1.5rem}
+ .coord,.scroll{display:none}
+ .stage{height:clamp(26rem,110vw,33rem)}
+ .g1{left:0;top:0;display:flex;align-items:center;gap:.75rem;max-width:none;padding:.6rem 1.1rem .6rem .95rem;border-radius:999px}
+ .g1 strong{font-size:1.4rem}.g1>span{margin:0;max-width:8.5rem;font-size:.7rem;line-height:1.25}
+ .g2{right:0;bottom:4.5rem}
+}
+@media(max-width:560px){.indent{margin-left:0}.h1 .ln:nth-child(2){padding-left:1.25rem}.acts{gap:1rem 1.5rem}}
+
+/* ── STRIP ───────────────────────────────────────────── */
+.strip{overflow:hidden;border-block:1px solid var(--line);-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.strip-track{display:flex;width:max-content;animation:marquee 42s linear infinite}
+.strip:hover .strip-track{animation-play-state:paused}
+.strip-seq{display:flex;align-items:center;flex:none}
+.strip-seq li{display:flex;align-items:center;gap:clamp(1.5rem,3.5vw,2.75rem);padding:clamp(1.1rem,2.2vw,1.5rem) 0 clamp(1.1rem,2.2vw,1.5rem) clamp(1.5rem,3.5vw,2.75rem);white-space:nowrap;font:italic 400 clamp(1.25rem,2.3vw,1.8rem)/1 var(--serif)}
+.strip-seq li.k{font:500 .6875rem/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.strip-seq li::after{content:"";width:.45rem;height:.45rem;flex:none;background:var(--gold);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ── SECTIONS ────────────────────────────────────────── */
+.sec{padding-block:clamp(6rem,12vw,10rem)}
+.h2{font:400 clamp(2rem,4.4vw,3.8rem)/1.1 var(--serif);letter-spacing:-.015em;text-wrap:balance}
+.h2 em{color:var(--gold)}
+
+/* approach */
+.approach{display:grid;grid-template-columns:1.5fr 1fr;gap:clamp(2rem,8vw,7rem);align-items:end}
+.approach .label{margin-bottom:1.75rem}
+.approach p{color:var(--mute);max-width:23rem}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(4rem,8vw,6rem);border-top:1px solid var(--line)}
+.stats div{padding:2rem 1.5rem 0 0}
+.stats div+div{padding-left:1.5rem;border-left:1px solid var(--line)}
+.stats strong{display:block;font:400 clamp(2.5rem,4.6vw,4rem)/1 var(--serif);letter-spacing:-.02em}
+.stats strong i{font-style:normal;color:var(--gold)}
+.stats div>span{display:block;margin-top:.8rem;font-size:.8125rem;color:var(--mute)}
+@media(max-width:900px){.approach{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats div:nth-child(3){padding-left:0;border-left:0}.stats div:nth-child(n+3){margin-top:1rem}}
+
+/* portfolio */
+.gal-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:3.5rem}
+.gal-top .label{margin-bottom:1.5rem}
+.gal-top .h2{max-width:26rem}
+.tabs{display:flex;gap:1.9rem;flex-wrap:wrap}
+.tabs button{min-height:2.75rem;border-bottom:1px solid transparent;color:var(--mute);font-size:.8rem;letter-spacing:.06em;transition:color .3s,border-color .3s}
+.tabs button:hover{color:var(--alabaster)}
+.tabs button[aria-pressed="true"]{color:var(--alabaster);border-color:var(--gold)}
+.mason{position:relative;columns:3 280px;column-gap:1.3rem}
+.g{break-inside:avoid;margin-bottom:1.3rem}
+.g.hide{display:none}
+.g-hit{position:relative;display:block;width:100%;overflow:hidden;border-radius:4px;background:var(--onyx-2);text-align:left;isolation:isolate;box-shadow:0 0 0 1px rgba(247,244,238,.07)}
+.g.t .g-hit{aspect-ratio:3/4}.g.s .g-hit{aspect-ratio:1}
+.g-hit img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.g-hit::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,11,10,.85),transparent 55%);opacity:.8;transition:opacity .5s}
+.g-cap{position:absolute;z-index:2;left:1.3rem;right:1.3rem;bottom:1.2rem}
+.g-cap small{display:block;margin-bottom:.35rem;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.g-cap b{font:italic 400 1.4rem/1.15 var(--serif)}
+.g-view{position:absolute;z-index:2;top:1rem;right:1rem;width:2.75rem;height:2.75rem;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--onyx);transform:scale(.5);opacity:0;transition:transform .45s var(--ease),opacity .3s}
+.g-view svg{width:.85rem;height:.85rem}
+@media(hover:hover){
+ .g-hit:hover img{transform:scale(1.06)}
+ .g-hit:is(:hover,:focus-visible)::after{opacity:1}
+ .g-hit:is(:hover,:focus-visible) .g-view{transform:none;opacity:1}
+}
+@media(max-width:600px){.mason{columns:1}.g.t .g-hit,.g.s .g-hit{aspect-ratio:4/5}}
+
+/* a band of moments, edge to edge */
+.band-head{text-align:center;margin-bottom:clamp(2.25rem,5vw,3.5rem)}
+.band-head .label{margin-bottom:1.25rem}
+.band-head p{font:italic 400 clamp(1.5rem,3vw,2.4rem)/1.2 var(--serif)}
+.band{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+.band figure{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--onyx-2)}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.8) brightness(.9);transition:transform 1.2s var(--ease),filter .6s}
+@media(hover:hover){.band figure:hover img{transform:scale(1.06);filter:none}}
+@media(max-width:760px){.band{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* selected stories */
+.work .h2{margin-top:1.5rem;margin-bottom:3rem}
+.row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 14rem 4rem;gap:2rem;align-items:baseline;padding:1.7rem 0;border-bottom:1px solid var(--line)}
+.row:first-of-type{border-top:1px solid var(--line)}
+.row::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
+.row h3{font:400 clamp(1.5rem,3vw,2.4rem)/1.1 var(--serif);transition:transform .6s var(--ease),color .3s}
+.row span{color:var(--mute);font-size:.85rem}
+.row .y{text-align:right;font-variant-numeric:tabular-nums}
+.peek{position:absolute;left:60%;top:50%;width:5.5rem;aspect-ratio:4/5;translate:-50% -50%;overflow:hidden;border-radius:3px;pointer-events:none;clip-path:inset(50% 50% 50% 50%);transition:clip-path .6s var(--ease)}
+.peek img{width:100%;height:100%;object-fit:cover}
+@media(hover:hover){
+ .row:hover::after{transform:scaleX(1)}
+ .row:hover h3{transform:translateX(1rem);font-style:italic;color:var(--gold)}
+ .row:hover .peek{clip-path:inset(0 0 0 0)}
+}
+@media(max-width:900px){.row{grid-template-columns:minmax(0,1fr) auto;gap:1rem}.row .pl{display:none}.peek{display:none}}
+
+/* contact: a rounded panel with a photograph behind */
+.contact{padding:0 var(--gut) clamp(1rem,3vw,2rem)}
+.panel{position:relative;max-width:1400px;margin:0 auto;min-height:min(80svh,46rem);display:grid;place-items:center;text-align:center;padding:5rem 1.5rem;border-radius:clamp(1.1rem,2.5vw,1.75rem);overflow:hidden;isolation:isolate}
+.panel>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
+.panel::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(12,11,10,.45),rgba(12,11,10,.82)),linear-gradient(0deg,rgba(12,11,10,.5),transparent 40%)}
+.panel .label{margin-bottom:1.75rem}
+.display{max-width:34rem;margin:0 auto;font:italic 400 clamp(2.2rem,5.4vw,4.4rem)/1.1 var(--serif);letter-spacing:-.015em;text-wrap:balance}
+.panel .acts{justify-content:center;margin-top:2.75rem}
+.note{margin-top:1.5rem;font-size:.8125rem;color:var(--mute)}
+
+.foot{padding:2.5rem 0 calc(2rem + var(--sab))}
+.foot-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.25rem 2rem;font-size:.75rem;color:var(--faint)}
+.foot-in nav{display:flex;gap:1.75rem}
+.foot-in a{transition:color .3s}.foot-in a:hover{color:var(--alabaster)}
+
+/* lightbox */
+.lb{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;border:0;padding:0;background:rgba(12,11,10,.97);color:var(--alabaster);overflow:hidden}
+.lb::backdrop{background:transparent}
+.lb[open]{display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.lb-top,.lb-bot{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.lb-top{padding-top:calc(var(--sat) + 1rem);font:italic .95rem/1 var(--serif);color:var(--mute)}
+.lb-stage{display:grid;place-items:center;min-height:0;padding-block:1rem;touch-action:pan-y}
+.lb-stage img{max-width:100%;max-height:calc(100svh - 11rem);width:auto;height:auto;border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb-bot{padding-bottom:calc(var(--sab) + 1.25rem)}
+.lb-bot small{display:block;margin-bottom:.4rem;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.lb-bot b{font:italic 400 clamp(1.2rem,2.2vw,1.6rem)/1.2 var(--serif)}
+.lb-nav{display:flex;gap:.6rem}
+
+/* intro: hero waits for the timeline (only when JS and motion are on) */
+@media(prefers-reduced-motion:no-preference){
+ .js:not(.go) :is(.bar,.h1 .ln>span,[data-hero],.card,.glass){visibility:hidden}
+ .js:not(.ready) :is(.bar,.h1 .ln>span,[data-hero],.card,.glass){animation:failsafe 0s 3s forwards}
+}
+@keyframes failsafe{to{visibility:visible}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar" id="bar">
+  <a href="#top" class="brand" aria-label="Ioseb Tsikaridze Studio, back to top"><b>IOSEB TSIKARIDZE</b><i>STUDIO</i></a>
+  <nav class="links" aria-label="Primary"><a href="#gallery">Portfolio</a><a href="#approach">Approach</a><a href="#stories">Stories</a><a href="#contact">Contact</a></nav>
+  <a href="#contact" class="enq">Enquire</a>
+  <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+</header>
+
+<dialog class="menu" id="menu" aria-label="Menu">
+  <div class="menu-top wrap"><span class="brand"><b>IOSEB TSIKARIDZE</b></span><button class="menu-btn" id="menu-x">Close</button></div>
+  <nav class="menu-links wrap" aria-label="Menu">
+    <a href="#gallery">Portfolio</a><a href="#approach">Approach</a><a href="#stories">Stories</a><a href="#contact"><em>Contact</em></a>
+  </nav>
+  <div class="menu-foot wrap">Tbilisi, Georgia · <a href="#" data-wa>WhatsApp</a></div>
+</dialog>
+
+<main id="main" tabindex="-1">
+<span id="top"></span>
+
+<!-- HERO -->
+<section class="hero" id="hero" aria-labelledby="h1">
+  <div class="coord l" aria-hidden="true">41°42′N &nbsp; 44°49′E &nbsp; Tbilisi, Georgia</div>
+  <div class="coord r" aria-hidden="true">Weddings, family &amp; fine art portraits</div>
+
+  <div>
+    <h1 class="h1" id="h1">
+      <span class="ln"><span>Capturing <em>Unspoken</em></span></span>
+      <span class="ln"><span>Emotion &amp;</span></span>
+      <span class="ln"><span><em>Timeless</em> Romance.</span></span>
+    </h1>
+    <p class="lede indent" data-hero>Wedding and portrait photography for people who feel things deeply and would rather not pose through them.</p>
+    <div class="acts indent" data-hero>
+      <a href="#contact" class="cta">Reserve your date<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
+      <a href="#gallery" class="tl">See the work</a>
+    </div>
+  </div>
+
+  <div class="show" data-stack role="region" aria-roledescription="carousel" aria-label="Featured photographs">
+    <div class="stage" id="stage">
+      <div class="rig" id="rig">
+        <figure class="card" data-t="-2" style="--p:0;--t:-2"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="Bride and groom on a windswept beach, her veil lifting" fetchpriority="high" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small>Wedding</small><b>The first look</b></span><span class="no">No. 1</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
+        <figure class="card" data-t="1.5" style="--p:1;--t:1.5" aria-hidden="true"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="A newborn's feet wrapped in a white blanket" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small>Newborn</small><b>Ten tiny toes</b></span><span class="no">No. 2</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
+        <figure class="card" data-t="-1" style="--p:2;--t:-1" aria-hidden="true"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1546032996-6dfacbacbf3f?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1546032996-6dfacbacbf3f?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1546032996-6dfacbacbf3f?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="A couple embracing under a veil in a golden field" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small>Couples</small><b>Quiet vows</b></span><span class="no">No. 3</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
+        <figure class="card" data-t="2.5" style="--p:3;--t:2.5" aria-hidden="true"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="Newlyweds on a hillside at sunset" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small>Wedding</small><b>Golden hour, Kakheti</b></span><span class="no">No. 4</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
+      </div>
+    </div>
+    <div class="glass g1"><strong><span data-count="8300">8,300</span>+</strong><span>couples and families photographed</span></div>
+    <div class="glass g2">85 mm <b>/</b> f 1.4</div>
+    <div class="ctl" data-hero>
+      <button class="circle" id="prev" aria-label="Previous photograph"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H2M7 3L2 8l5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+      <output id="ct" aria-live="polite">1 of 4</output>
+      <button class="circle" id="next" aria-label="Next photograph"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+    </div>
+  </div>
+  <div class="scroll" aria-hidden="true">Scroll</div>
+</section>
+
+<!-- STRIP -->
+<div class="strip" aria-label="Weddings, family and fine art portraits across Tbilisi, Kakheti, Batumi and Kazbegi. Hand-graded galleries, delivered in 14 days.">
+  <div class="strip-track" aria-hidden="true">
+    <ul class="strip-seq"><li>Weddings</li><li class="k">Tbilisi</li><li>Family</li><li class="k">Kakheti</li><li>Fine art portraits</li><li class="k">Batumi</li><li>Elopements</li><li class="k">Kazbegi</li><li>Hand-graded colour</li><li class="k">Delivered in 14 days</li></ul>
+    <ul class="strip-seq"><li>Weddings</li><li class="k">Tbilisi</li><li>Family</li><li class="k">Kakheti</li><li>Fine art portraits</li><li class="k">Batumi</li><li>Elopements</li><li class="k">Kazbegi</li><li>Hand-graded colour</li><li class="k">Delivered in 14 days</li></ul>
+  </div>
+</div>
+
+<!-- APPROACH -->
+<section class="sec" id="approach" aria-labelledby="approach-h">
+  <div class="wrap">
+    <div class="approach">
+      <div><span class="label" data-reveal>Approach</span><h2 class="h2" id="approach-h" data-reveal>I photograph the seconds between the poses: <em>a breath before the vow,</em> a hand finding a hand.</h2></div>
+      <p data-reveal>Based in Tbilisi and travelling to Kakheti, Batumi, Kazbegi and beyond. Every gallery is graded by hand in warm, low light and delivered within 14 days.</p>
+    </div>
+    <div class="stats" data-reveal>
+      <div><strong><span data-count="12">12</span><i>+</i></strong><span>Years behind the camera</span></div>
+      <div><strong><span data-count="40">40</span><i>+</i></strong><span>Venues across Georgia</span></div>
+      <div><strong><span data-count="14">14</span></strong><span>Days to your finished gallery</span></div>
+      <div><strong><span data-count="4.9" data-dec="1">4.9</span><i>★</i></strong><span>Average client rating</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="sec" id="gallery" aria-labelledby="gallery-h" style="padding-top:0">
+  <div class="wrap">
+    <div class="gal-top">
+      <div data-reveal><span class="label">Portfolio</span><h2 class="h2" id="gallery-h">Stories told in light and shadow.</h2></div>
+      <div class="tabs" id="tabs" role="group" aria-label="Filter photographs" data-reveal>
+        <button data-f="all" aria-pressed="true">All</button><button data-f="wed" aria-pressed="false">Weddings</button><button data-f="fam" aria-pressed="false">Family</button><button data-f="cou" aria-pressed="false">Couples</button>
+      </div>
+    </div>
+    <div class="mason" id="mason">
+      <figure class="g t" data-c="wed"><button class="g-hit" data-full="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" aria-label="Open photograph: Botanical romance"><img class="fi" src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 380px" alt="Bride and groom by the water holding a bouquet" loading="lazy" decoding="async" draggable="false" width="800" height="1067"><span class="g-view" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span><figcaption class="g-cap"><small>Wedding</small><b>Botanical romance</b></figcaption></button></figure>
+      <figure class="g s" data-c="fam"><button class="g-hit" data-full="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" aria-label="Open photograph: Salt and sunlight"><img class="fi" src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1531983412531-1f49a365ffed?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1531983412531-1f49a365ffed?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 380px" alt="A mother and her little boy laughing by the sea" loading="lazy" decoding="async" draggable="false" width="800" height="800"><span class="g-view" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span><figcaption class="g-cap"><small>Family</small><b>Salt and sunlight</b></figcaption></button></figure>
+      <figure class="g s" data-c="cou"><button class="g-hit" data-full="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" aria-label="Open photograph: Golden hour in Kakheti"><img class="fi" src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 380px" alt="A couple silhouetted against a sunset sky" loading="lazy" decoding="async" draggable="false" width="800" height="800"><span class="g-view" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span><figcaption class="g-cap"><small>Couple</small><b>Golden hour in Kakheti</b></figcaption></button></figure>
+      <figure class="g t" data-c="wed"><button class="g-hit" data-full="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" aria-label="Open photograph: Vows at dusk"><img class="fi" src="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1460978812857-470ed1c77af0?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1460978812857-470ed1c77af0?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 380px" alt="Black and white portrait of a bride and groom about to kiss beneath her veil" loading="lazy" decoding="async" draggable="false" width="800" height="1067"><span class="g-view" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span><figcaption class="g-cap"><small>Wedding</small><b>Vows at dusk</b></figcaption></button></figure>
+      <figure class="g t" data-c="fam"><button class="g-hit" data-full="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" aria-label="Open photograph: Family in bloom"><img class="fi" src="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 380px" alt="A father carrying his two young sons, all smiling" loading="lazy" decoding="async" draggable="false" width="800" height="1067"><span class="g-view" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span><figcaption class="g-cap"><small>Family</small><b>Family in bloom</b></figcaption></button></figure>
+      <figure class="g s" data-c="cou"><button class="g-hit" data-full="https://images.unsplash.com/photo-1501901609772-df0848060b33?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" aria-label="Open photograph: Laughing in Sololaki"><img class="fi" src="https://images.unsplash.com/photo-1501901609772-df0848060b33?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1501901609772-df0848060b33?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1501901609772-df0848060b33?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1501901609772-df0848060b33?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w" sizes="(max-width: 600px) 92vw, (max-width: 960px) 46vw, 380px" alt="A laughing bride riding piggyback on her groom" loading="lazy" decoding="async" draggable="false" width="800" height="800"><span class="g-view" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span><figcaption class="g-cap"><small>Couple</small><b>Laughing in Sololaki</b></figcaption></button></figure>
+    </div>
+    <p class="sr" id="grid-live" aria-live="polite"></p>
+  </div>
+</section>
+
+<!-- MOMENTS -->
+<section class="moments" aria-labelledby="moments-h">
+  <div class="wrap band-head" data-reveal><span class="label">In the details</span><p id="moments-h">Small moments, kept for a lifetime.</p></div>
+  <div class="band">
+    <figure><img class="fi" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&amp;fit=crop&amp;q=80&amp;w=400" srcset="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 760px) 33vw, 17vw" alt="Guests throwing petals as the newlyweds kiss" loading="lazy" decoding="async" draggable="false" width="400" height="533"></figure>
+    <figure><img class="fi" src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&amp;fit=crop&amp;q=80&amp;w=400" srcset="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 760px) 33vw, 17vw" alt="A garden pavilion dressed with flowers for a ceremony" loading="lazy" decoding="async" draggable="false" width="400" height="533"></figure>
+    <figure><img class="fi" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&amp;fit=crop&amp;q=80&amp;w=400" srcset="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 760px) 33vw, 17vw" alt="Two hands reaching for each other on the grass" loading="lazy" decoding="async" draggable="false" width="400" height="533"></figure>
+    <figure><img class="fi" src="https://images.unsplash.com/photo-1544078751-58fee2d8a03b?auto=format&amp;fit=crop&amp;q=80&amp;w=400" srcset="https://images.unsplash.com/photo-1544078751-58fee2d8a03b?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1544078751-58fee2d8a03b?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 760px) 33vw, 17vw" alt="A couple on a black sand beach beneath sea stacks" loading="lazy" decoding="async" draggable="false" width="400" height="533"></figure>
+    <figure><img class="fi" src="https://images.unsplash.com/photo-1550005809-91ad75fb315f?auto=format&amp;fit=crop&amp;q=80&amp;w=400" srcset="https://images.unsplash.com/photo-1550005809-91ad75fb315f?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1550005809-91ad75fb315f?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 760px) 33vw, 17vw" alt="A bride holding a bouquet of blush roses beside her groom" loading="lazy" decoding="async" draggable="false" width="400" height="533"></figure>
+    <figure><img class="fi" src="https://images.unsplash.com/photo-1522413452208-996ff3f3e740?auto=format&amp;fit=crop&amp;q=80&amp;w=400" srcset="https://images.unsplash.com/photo-1522413452208-996ff3f3e740?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1522413452208-996ff3f3e740?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 760px) 33vw, 17vw" alt="A wedding table set with greenery, candles and a ring" loading="lazy" decoding="async" draggable="false" width="400" height="533"></figure>
+  </div>
+</section>
+
+<!-- SELECTED STORIES -->
+<section class="sec work" id="stories" aria-labelledby="stories-h">
+  <div class="wrap">
+    <div data-reveal><span class="label">Selected stories</span><h2 class="h2" id="stories-h">Recent weddings &amp; portraits</h2></div>
+    <div class="rows">
+      <div class="row"><h3>Botanical romance</h3><span class="pl">Wedding, Tbilisi</span><span class="y">2026</span><span class="peek" aria-hidden="true"><img class="fi" src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&amp;fit=crop&amp;q=80&amp;w=200" srcset="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&amp;fit=crop&amp;q=80&amp;w=200 200w" sizes="90px" alt="" loading="lazy" decoding="async" draggable="false" width="200" height="250"></span></div>
+      <div class="row"><h3>Golden hour in Kakheti</h3><span class="pl">Couple, Kakheti</span><span class="y">2026</span><span class="peek" aria-hidden="true"><img class="fi" src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&amp;fit=crop&amp;q=80&amp;w=200" srcset="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&amp;fit=crop&amp;q=80&amp;w=200 200w" sizes="90px" alt="" loading="lazy" decoding="async" draggable="false" width="200" height="250"></span></div>
+      <div class="row"><h3>Ten tiny toes</h3><span class="pl">Newborn, studio</span><span class="y">2026</span><span class="peek" aria-hidden="true"><img class="fi" src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&amp;fit=crop&amp;q=80&amp;w=200" srcset="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&amp;fit=crop&amp;q=80&amp;w=200 200w" sizes="90px" alt="" loading="lazy" decoding="async" draggable="false" width="200" height="250"></span></div>
+      <div class="row"><h3>Vows at dusk</h3><span class="pl">Wedding, Sameba</span><span class="y">2025</span><span class="peek" aria-hidden="true"><img class="fi" src="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?auto=format&amp;fit=crop&amp;q=80&amp;w=200" srcset="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?auto=format&amp;fit=crop&amp;q=80&amp;w=200 200w" sizes="90px" alt="" loading="lazy" decoding="async" draggable="false" width="200" height="250"></span></div>
+      <div class="row"><h3>Laughing in Sololaki</h3><span class="pl">Couple, Sololaki</span><span class="y">2025</span><span class="peek" aria-hidden="true"><img class="fi" src="https://images.unsplash.com/photo-1501901609772-df0848060b33?auto=format&amp;fit=crop&amp;q=80&amp;w=200" srcset="https://images.unsplash.com/photo-1501901609772-df0848060b33?auto=format&amp;fit=crop&amp;q=80&amp;w=200 200w" sizes="90px" alt="" loading="lazy" decoding="async" draggable="false" width="200" height="250"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact" aria-labelledby="contact-h">
+  <div class="panel" data-panel>
+    <img class="fi" src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" srcset="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w, https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;q=80&amp;w=1600 1600w" sizes="100vw" alt="A couple walking hand in hand across open hills" loading="lazy" decoding="async" draggable="false" width="1600" height="1000">
+    <div>
+      <span class="label" data-reveal>Contact</span>
+      <h2 class="display" id="contact-h" data-reveal>A few dates remain for 2026 and 2027.</h2>
+      <div class="acts" data-reveal><a href="#" class="cta" data-wa>Message Ioseb on WhatsApp<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a></div>
+      <p class="note" data-reveal>Based in Tbilisi · travelling across Georgia and beyond</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a href="#top" class="brand"><b>IOSEB TSIKARIDZE</b></a>
+    <nav aria-label="Footer"><a href="#gallery">Portfolio</a><a href="#approach">Approach</a><a href="#stories">Stories</a><a href="#" data-wa>WhatsApp</a></nav>
+    <span>© 2026 Ioseb Tsikaridze Studio, Tbilisi</span>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Photograph viewer">
+  <div class="lb-top wrap"><span id="lb-n">1 of 6</span><button class="circle" id="lb-x" aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button></div>
+  <div class="lb-stage wrap" id="lb-stage"><img id="lb-img" alt=""></div>
+  <div class="lb-bot wrap">
+    <div><small id="lb-c"></small><b id="lb-t"></b></div>
+    <div class="lb-nav">
+      <button class="circle" id="lb-prev" aria-label="Previous photograph"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H2M7 3L2 8l5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+      <button class="circle" id="lb-next" aria-label="Next photograph"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+    </div>
+  </div>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+<script>
+(() => {
+'use strict';
+const root = document.documentElement;
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+const G = window.gsap && window.ScrollTrigger ? window.gsap : null;
+const motion = !!G && !reduce;
+root.classList.add('ready');
+
+// photos fade in as they arrive instead of popping
+$$('img.fi').forEach(im => { const done = () => im.classList.add('ld'); im.complete && im.naturalWidth ? done() : (im.addEventListener('load', done, { once: true }), im.addEventListener('error', done, { once: true })); });
+
+// Replace with Ioseb's real number, international format, no plus sign
+const WA = '995000000000';
+const waHref = 'https://wa.me/' + WA + '?text=' + encodeURIComponent("Hello Ioseb, I'd like to ask about your availability.");
+$$('[data-wa]').forEach(a => { a.href = waHref; a.target = '_blank'; a.rel = 'noopener'; });
+
+let lenis = null;
+try { init(); } catch (err) { console.error(err); root.classList.remove('js'); }
+
+function init() {
+  if (!motion) root.classList.remove('js');
+  if (G) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.defaults({ ease: 'expo.out' });
+    ScrollTrigger.config({ ignoreMobileResize: true });
+  }
+  if (motion && window.Lenis) {
+    lenis = new Lenis({ lerp: 0.12 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+  setupAnchors();
+  setupNav();
+  setupMenu();
+  const stack = setupStack();
+  setupGallery();
+  if (motion) {
+    const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+    Promise.race([fonts, new Promise(r => setTimeout(r, 700))]).then(() => {
+      intro(stack);
+      reveals();
+      ScrollTrigger.refresh();
+    });
+    addEventListener('load', () => ScrollTrigger.refresh());
+  }
+}
+
+/* ── anchors: smooth scroll, then move focus to the section ── */
+function scrollToHash(hash) {
+  const el = hash === '#top' ? $('#main') : $(hash);
+  if (!el) return false;
+  const y = hash === '#top' ? 0 : el;
+  if (lenis) lenis.scrollTo(y, { offset: hash === '#contact' ? -24 : 0, duration: 1.2, easing: t => 1 - Math.pow(1 - t, 4) });
+  else if (y === 0) scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  if (el !== $('#main')) el.setAttribute('tabindex', '-1');
+  el.focus({ preventScroll: true });
+  return true;
+}
+function setupAnchors() {
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || a.closest('#menu')) return;
+    const h = a.getAttribute('href');
+    if (h.length > 1 && scrollToHash(h)) {
+      e.preventDefault();
+      history.replaceState(null, '', h === '#top' ? location.pathname + location.search : h);
+    }
+  });
+}
+
+/* ── floating bar: glass at the top, darker once scrolled, tucks away going down ── */
+function setupNav() {
+  const bar = $('#bar');
+  let last = scrollY;
+  const update = () => {
+    const y = scrollY;
+    bar.classList.toggle('solid', y > 60);
+    if (Math.abs(y - last) > 6) { bar.classList.toggle('hid', y > last && y > innerHeight * 0.5); last = y; }
+  };
+  addEventListener('scroll', update, { passive: true });
+  bar.addEventListener('focusin', () => bar.classList.remove('hid'));
+  update();
+  if (G) $$('.links a').forEach(a => {
+    const sec = $(a.getAttribute('href'));
+    if (sec) ScrollTrigger.create({ trigger: sec, start: 'top 50%', end: 'bottom 50%',
+      onToggle: s => s.isActive ? a.setAttribute('aria-current', 'location') : a.removeAttribute('aria-current') });
+  });
+}
+
+function setupMenu() {
+  const dlg = $('#menu'), btn = $('#menu-btn'), links = $$('.menu-links a, .menu-foot');
+  const open = () => {
+    dlg.showModal();
+    btn.setAttribute('aria-expanded', 'true');
+    lenis && lenis.stop();
+    if (!motion) return;
+    gsap.fromTo(dlg, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' });
+    gsap.fromTo(links, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.05, delay: 0.05 });
+  };
+  const shut = then => {
+    if (!dlg.open) return;
+    const done = () => { dlg.close(); btn.setAttribute('aria-expanded', 'false'); lenis && lenis.start(); then && then(); };
+    motion ? gsap.to(dlg, { opacity: 0, duration: 0.25, ease: 'power2.in', onComplete: done }) : done();
+  };
+  btn.addEventListener('click', open);
+  $('#menu-x').addEventListener('click', () => shut());
+  dlg.addEventListener('cancel', e => { e.preventDefault(); shut(); });
+  $$('.menu-links a').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const h = a.getAttribute('href');
+    shut(() => scrollToHash(h));
+  }));
+  matchMedia('(min-width: 960px)').addEventListener('change', e => { if (e.matches) shut(); });
+}
+
+/* ── the 3D stack: tilt, parallax, drag-to-throw ── */
+function setupStack() {
+  const hero = $('#hero'), stage = $('#stage'), rig = $('#rig'), cards = $$('.card', rig), N = cards.length;
+  const tilt = cards.map(c => parseFloat(c.dataset.t) || 0);
+  const shades = cards.map(c => $('.shade', c)), ins = cards.map(c => $('.card-in', c));
+  const pics = cards.map(c => $('.photo img', c)), sheens = cards.map(c => $('.sheen', c));
+  let a = 0, s = 1;
+  const depth = i => (i - a + N) % N;
+  const label = () => {
+    $('#ct').textContent = (a + 1) + ' of ' + N;
+    cards.forEach((c, i) => c.setAttribute('aria-hidden', depth(i) !== 0));
+  };
+
+  if (!G) {
+    const go = n => { a = (n + N) % N; cards.forEach((c, i) => c.style.setProperty('--p', depth(i))); label(); };
+    $('#next').addEventListener('click', () => go(a + 1));
+    $('#prev').addEventListener('click', () => go(a - 1));
+    cards.forEach((c, i) => c.addEventListener('click', () => go(i === a ? a + 1 : i)));
+    return { cards, start() {} };
+  }
+
+  const measure = () => { s = G.utils.clamp(0.6, 1, stage.clientWidth / 540); };
+  const place = (i, p) => ({ x: (p * 78 - 50) * s, y: (14 - p * 30) * s, z: -p * 170 * s, rotationX: 0, rotationY: -p * 13, rotationZ: p * 2 + tilt[i], scale: 1 - p * 0.03 });
+  rig.classList.add('gs');
+  measure();
+  gsap.set(pics, { scale: 1.14 });
+  cards.forEach((c, i) => { gsap.set(c, place(i, depth(i))); gsap.set(shades[i], { opacity: depth(i) * 0.24 }); });
+
+  // dir 1: the front photograph leaves (thrown toward `side`), dir -1: the back one returns to the front
+  function go(next, dir, side = -1) {
+    next = (next + N) % N;
+    if (next === a) return;
+    const from = cards.map((c, i) => depth(i));
+    a = next;
+    const W = cards[0].offsetWidth * 0.9;
+    cards.forEach((c, i) => {
+      const p0 = from[i], p1 = depth(i), T = place(i, p1);
+      gsap.killTweensOf(c);
+      gsap.to(shades[i], { opacity: p1 * 0.24, duration: 0.6, ease: 'power2.out', overwrite: true });
+      gsap.to(ins[i], { z: 0, duration: 0.4, overwrite: 'auto' });
+      if (!motion) { gsap.set(c, { ...T, autoAlpha: 1 }); return; }
+      if (dir > 0 && p1 > p0) {
+        const P = place(i, p0);
+        gsap.timeline({ delay: p0 * 0.06 })
+          .to(c, { x: P.x + side * W, y: P.y + 50 * s, z: 40 * s, rotationZ: P.rotationZ + side * 18, rotationY: side * -12, autoAlpha: 0, duration: 0.42, ease: 'power2.in' })
+          .set(c, { ...T, x: T.x + 70 * s, y: T.y - 40 * s })
+          .to(c, { ...T, autoAlpha: 1, duration: 0.8 });
+      } else if (dir < 0 && p1 === 0) {
+        gsap.timeline()
+          .to(c, { x: '+=' + 70 * s, y: '-=' + 30 * s, autoAlpha: 0, duration: 0.26, ease: 'power2.in' })
+          .set(c, { ...T, x: T.x - W * 0.6, y: T.y + 30 * s, rotationZ: T.rotationZ - 12 })
+          .to(c, { ...T, autoAlpha: 1, duration: 0.85, ease: 'back.out(1.25)' });
+      } else {
+        gsap.to(c, { ...T, autoAlpha: 1, duration: 0.85, delay: dir > 0 ? 0.08 : 0.14, ease: p1 === 0 ? 'back.out(1.2)' : 'expo.out' });
+      }
+    });
+    label();
+  }
+
+  $('#next').addEventListener('click', () => go(a + 1, 1));
+  $('#prev').addEventListener('click', () => go(a - 1, -1));
+  $('[data-stack]').addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') go(a + 1, 1);
+    if (e.key === 'ArrowLeft') go(a - 1, -1);
+  });
+
+  // drag the front photograph: it follows the pointer, throw it to send it to the back
+  let drag = null;
+  stage.addEventListener('pointerdown', e => {
+    const c = e.target.closest('.card');
+    if (!c || e.button > 0) return;
+    const i = cards.indexOf(c);
+    drag = { i, front: depth(i) === 0, x0: e.clientX, y0: e.clientY, dx: 0, moved: false, id: e.pointerId, hist: [[e.clientX, performance.now()]] };
+  });
+  addEventListener('pointermove', e => {
+    if (!drag || e.pointerId !== drag.id) return;
+    const dx = e.clientX - drag.x0, dy = e.clientY - drag.y0;
+    if (!drag.moved) {
+      if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+      if (Math.abs(dy) > Math.abs(dx)) { drag = null; return; }
+      drag.moved = true;
+      if (drag.front) gsap.killTweensOf(cards[drag.i]);
+    }
+    drag.dx = dx;
+    drag.hist.push([e.clientX, performance.now()]);
+    if (drag.hist.length > 5) drag.hist.shift();
+    if (drag.front && motion) {
+      const P = place(drag.i, 0);
+      gsap.to(cards[drag.i], { x: P.x + dx, y: P.y - Math.abs(dx) * 0.06, rotationZ: P.rotationZ + dx * 0.045, rotationY: dx * 0.05, duration: 0.25, ease: 'power3.out', overwrite: 'auto' });
+    }
+  }, { passive: true });
+  const release = e => {
+    if (!drag || (e && e.pointerId !== drag.id)) return;
+    const d = drag; drag = null;
+    if (!d.moved) { if (e && e.type === 'pointerup') go(d.front ? a + 1 : d.i, 1); return; }
+    const [x0, t0] = d.hist[0], [x1, t1] = d.hist[d.hist.length - 1];
+    const v = (x1 - x0) / Math.max(1, t1 - t0);
+    if (!d.front) { if (Math.abs(d.dx) > 40) d.dx < 0 ? go(a + 1, 1) : go(a - 1, -1); return; }
+    if (Math.abs(d.dx) > 90 || Math.abs(v) > 0.55) go(a + 1, 1, Math.sign(d.dx || v));
+    else gsap.to(cards[d.i], { ...place(d.i, 0), duration: 0.9, ease: 'elastic.out(1,0.6)' });
+  };
+  addEventListener('pointerup', release);
+  addEventListener('pointercancel', release);
+
+  let rw = stage.clientWidth;
+  addEventListener('resize', () => {
+    if (stage.clientWidth === rw) return;
+    rw = stage.clientWidth;
+    measure();
+    cards.forEach((c, i) => { gsap.killTweensOf(c); gsap.set(c, { ...place(i, depth(i)), autoAlpha: 1 }); });
+  });
+
+  label();
+  return {
+    cards,
+    start() {
+      if (!motion) return;
+      ins.forEach((el, i) => gsap.to(el, { y: -7, duration: 2.8 + i * 0.4, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: i * 0.2 }));
+      if (!fine) {
+        // touch screens: the stack sways gently so the depth still reads
+        gsap.to(rig, { rotationY: 6, rotationX: -2, duration: 5, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+        return;
+      }
+      const q = (el, p, d = 1) => gsap.quickTo(el, p, { duration: d, ease: 'power3' });
+      const ry = q(rig, 'rotationY', 1.1), rx = q(rig, 'rotationX', 1.1);
+      const px = pics.map(el => [q(el, 'x', 0.9), q(el, 'y', 0.9)]);
+      const sx = sheens.map(el => q(el, 'xPercent', 1.2));
+      const glass = $$('.glass').map(el => [q(el, 'x', 1.1), q(el, 'y', 1.1)]);
+      const move = (nx, ny) => {
+        ry(nx * 16); rx(ny * -10);
+        px.forEach(([x, y], i) => { const k = 1 - depth(i) * 0.25; x(-nx * 16 * k); y(-ny * 12 * k); });
+        sx.forEach(x => x(nx * 120));
+        glass.forEach(([x, y], k) => { const f = k ? -1 : 1.4; x(nx * 22 * f); y(ny * 16 * f); });
+      };
+      hero.addEventListener('pointermove', e => move(e.clientX / innerWidth - 0.5, e.clientY / innerHeight - 0.5));
+      hero.addEventListener('pointerleave', () => move(0, 0));
+      // hovering the front photograph lifts it toward you
+      cards.forEach((c, i) => {
+        c.addEventListener('pointerenter', () => { if (depth(i) === 0 && !drag) gsap.to(ins[i], { z: 46, duration: 0.6, overwrite: 'auto' }); });
+        c.addEventListener('pointerleave', () => gsap.to(ins[i], { z: 0, duration: 0.6, overwrite: 'auto' }));
+      });
+    }
+  };
+}
+
+/* ── portfolio: filters and lightbox ── */
+function setupGallery() {
+  const mason = $('#mason'), items = $$('.g'), btns = $$('#tabs button');
+  let tl = null;
+  btns.forEach(b => b.addEventListener('click', () => {
+    if (b.getAttribute('aria-pressed') === 'true') return;
+    btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+    const f = b.dataset.f;
+    const apply = () => items.forEach(it => it.classList.toggle('hide', f !== 'all' && it.dataset.c !== f));
+    const visible = () => items.filter(it => !it.classList.contains('hide'));
+    const announce = () => { $('#grid-live').textContent = 'Showing ' + visible().length + ' photographs'; };
+    if (!motion) { apply(); G && ScrollTrigger.refresh(); announce(); return; }
+    // cards fade out, the columns reflow while nothing is visible, then the new set rises in
+    if (tl) { tl.kill(); gsap.set(items, { autoAlpha: 1, y: 0, scale: 1 }); gsap.set(mason, { clearProps: 'height' }); }
+    const out = visible();
+    tl = gsap.timeline({ onComplete: () => { gsap.set(mason, { clearProps: 'height' }); ScrollTrigger.refresh(); } })
+      .to(out, { autoAlpha: 0, y: 14, scale: 0.97, duration: 0.2, stagger: 0.02, ease: 'power2.in' })
+      .add(() => {
+        const h0 = mason.offsetHeight;
+        apply();
+        const inn = visible(), h1 = mason.offsetHeight;
+        gsap.set(inn, { autoAlpha: 0, y: 28, scale: 0.97 });
+        tl.fromTo(mason, { height: h0 }, { height: h1, duration: 0.45, ease: 'power3.inOut', immediateRender: true }, '>')
+          .to(inn, { autoAlpha: 1, y: 0, scale: 1, duration: 0.6, stagger: 0.06 }, '<0.05');
+        announce();
+      });
+  }));
+
+  const lb = $('#lb'), big = $('#lb-img');
+  let list = [], k = 0, opener = null;
+  const render = dir => {
+    const it = list[k], hit = $('.g-hit', it), src = $('img', it);
+    big.style.opacity = 0;
+    big.onload = () => motion ? gsap.fromTo(big, { autoAlpha: 0, x: (dir || 0) * 40, scale: dir ? 1 : 0.96 }, { autoAlpha: 1, x: 0, scale: 1, duration: 0.6 }) : (big.style.opacity = 1);
+    big.src = hit.dataset.full;
+    big.alt = src.alt;
+    $('#lb-n').textContent = (k + 1) + ' of ' + list.length;
+    $('#lb-c').textContent = $('.g-cap small', it).textContent;
+    $('#lb-t').textContent = $('.g-cap b', it).textContent;
+  };
+  const open = it => {
+    opener = document.activeElement;
+    list = items.filter(x => !x.classList.contains('hide'));
+    k = list.indexOf(it);
+    render();
+    lb.showModal();
+    lenis && lenis.stop();
+    if (motion) gsap.fromTo(lb, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' });
+  };
+  const shut = () => {
+    const done = () => { lb.close(); lenis && lenis.start(); };
+    motion ? gsap.to(lb, { opacity: 0, duration: 0.25, ease: 'power2.in', onComplete: done }) : done();
+  };
+  const step = d => { k = (k + d + list.length) % list.length; render(d); };
+  items.forEach(it => $('.g-hit', it).addEventListener('click', () => open(it)));
+  $('#lb-x').addEventListener('click', shut);
+  $('#lb-prev').addEventListener('click', () => step(-1));
+  $('#lb-next').addEventListener('click', () => step(1));
+  lb.addEventListener('cancel', e => { e.preventDefault(); shut(); });
+  lb.addEventListener('close', () => opener && opener.focus({ preventScroll: true }));
+  lb.addEventListener('keydown', e => { if (e.key === 'ArrowRight') step(1); if (e.key === 'ArrowLeft') step(-1); });
+  lb.addEventListener('click', e => { if (e.target === lb || e.target.id === 'lb-stage') shut(); });
+  let sx = null;
+  $('#lb-stage').addEventListener('pointerdown', e => { sx = e.clientX; });
+  $('#lb-stage').addEventListener('pointerup', e => {
+    if (sx === null) return;
+    const dx = e.clientX - sx; sx = null;
+    if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+  });
+}
+
+function countUp(el, delay = 0) {
+  const end = parseFloat(el.dataset.count), dec = +el.dataset.dec || 0, o = { v: 0 };
+  const fmt = new Intl.NumberFormat('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+  el.textContent = fmt.format(0);
+  gsap.to(o, { v: end, duration: 1.5, delay, ease: 'power3.out', onUpdate: () => { el.textContent = fmt.format(o.v); } });
+}
+
+/* ── opening: words rise, photographs fly in from depth ── */
+function intro(stack) {
+  const tl = gsap.timeline({ onComplete: stack.start });
+  tl.fromTo('.bar', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.8, ease: 'power2.out' }, 0.2)
+    .fromTo('.h1 .ln>span', { yPercent: 112 }, { yPercent: 0, duration: 1.1, stagger: 0.09 }, 0)
+    .from(stack.cards.slice().reverse(), { autoAlpha: 0, z: '-=520', y: '+=110', rotationX: 26, duration: 1.3, stagger: 0.09 }, 0.1)
+    .fromTo('[data-hero]', { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.07 }, 0.45)
+    .fromTo('.glass', { autoAlpha: 0, scale: 0.8 }, { autoAlpha: 1, scale: 1, duration: 0.8, stagger: 0.1, ease: 'back.out(1.7)' }, 0.75)
+    .add(() => countUp($('.g1 [data-count]')), 0.75);
+  root.classList.add('go');
+}
+
+/* ── scroll reveals ── */
+function reveals() {
+  const once = (trigger, start = 'top 90%') => ({ trigger, start, once: true });
+  $$('[data-reveal]').forEach(el => gsap.from(el, { autoAlpha: 0, y: 28, duration: 0.9, scrollTrigger: once(el) }));
+
+  const items = $$('.g');
+  gsap.set(items, { autoAlpha: 0, y: 40 });
+  ScrollTrigger.batch(items, { start: 'top 92%', once: true,
+    onEnter: b => gsap.to(b, { autoAlpha: 1, y: 0, duration: 0.9, stagger: 0.08 }) });
+
+  const band = $$('.band figure');
+  gsap.fromTo(band, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, stagger: 0.07, ease: 'expo.inOut', scrollTrigger: once('.band', 'top 85%') });
+
+  gsap.from('.row', { autoAlpha: 0, y: 24, duration: 0.8, stagger: 0.07, scrollTrigger: once('.rows', 'top 88%') });
+
+  $$('.stats [data-count]').forEach((el, i) => ScrollTrigger.create({ ...once(el, 'top 92%'), onEnter: () => countUp(el, i * 0.08) }));
+
+  const panel = $('[data-panel]');
+  gsap.fromTo($('img', panel), { scale: 1.18 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: panel, start: 'top bottom', end: 'bottom bottom', scrub: 0.6 } });
+}
+})();
+</script>
+</body>
+</html>
