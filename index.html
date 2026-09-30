@@ -158,8 +158,8 @@ html:lang(ka){font-synthesis:none}
 :lang(ka) .strip-seq li:not(.k){font-size:clamp(1.05rem,2vw,1.5rem)}
 /* DM Medea is a calligraphic hand whose flourishes reach far above and below the line: wherever it's used, lines get room
    (so they don't collide) and small sizes come up (so the script stays legible) */
-:lang(ka) .h1{letter-spacing:0;line-height:1.6;font-size:clamp(1.85rem,8.2vw,4.2rem)}
-@media(min-width:960px){:lang(ka) .h1{font-size:clamp(2.8rem,4vw,4.3rem)}}
+:lang(ka) .h1{letter-spacing:0;line-height:1.6;font-size:clamp(1.55rem,7vw,3rem)}
+@media(min-width:960px){:lang(ka) .h1{font-size:clamp(2.3rem,3.1vw,3.4rem)}}
 :lang(ka) :is(.h2,.display,.approach .h2,.band-head p){letter-spacing:0;line-height:1.6}
 :lang(ka) .menu-links{gap:.9rem}
 :lang(ka) .menu-links a{line-height:1.6;font-size:clamp(2rem,9vw,3.2rem)}
@@ -193,6 +193,7 @@ html:lang(ka){font-synthesis:none}
 /* lines stay unclipped so the soft text shadow can fade out fully instead of stopping at the line's edge */
 .h1 .ln{display:block;padding:.04em .1em .12em 0;margin-bottom:-.1em}
 .h1 .ln>span{display:block;white-space:nowrap}
+.h1 .ln:has(>span:empty){display:none}
 .h1 .ln:nth-child(2){padding-left:clamp(1.5rem,6vw,5.5rem)}
 .h1 em{color:var(--gold)}
 .indent{margin-left:clamp(1.5rem,6vw,5.5rem)}
@@ -314,6 +315,7 @@ html:lang(ka){font-synthesis:none}
 .gal-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.25rem 2rem;margin-bottom:clamp(2.25rem,5vw,3.5rem)}
 .gal-top .label{margin-bottom:1.5rem}
 .gal-top .h2{max-width:36rem}
+@media(min-width:960px){:lang(ka) .gal-top .h2{max-width:none;white-space:nowrap}:lang(ka) .gal-top{row-gap:2.5rem}}
 .gal-top p{max-width:20rem;color:var(--mute);font-size:.9375rem}
 .g-hit{position:relative;display:block;width:100%;overflow:hidden;border-radius:4px;background:var(--onyx-2);text-align:left;isolation:isolate;box-shadow:0 0 0 1px rgba(247,244,238,.07);transition:transform .45s var(--ease)}
 .g-hit img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
@@ -488,11 +490,11 @@ html:lang(ka){font-synthesis:none}
     <div class="hero-rail">
       <div class="hero-lead">
         <h1 class="h1" id="h1">
-          <span class="ln"><span data-i18n-html="hero.l1"><em>უთქმელი</em> ემოცია</span></span>
-          <span class="ln"><span data-i18n-html="hero.l2">და <em>მარადიული</em></span></span>
-          <span class="ln"><span data-i18n-html="hero.l3">რომანტიკა.</span></span>
+          <span class="ln"><span data-i18n-html="hero.l1"><em>ცოცხალი</em> კადრი,</span></span>
+          <span class="ln"><span data-i18n-html="hero.l2"><em>მარადიული</em> გრძნობა.</span></span>
+          <span class="ln"><span data-i18n-html="hero.l3"></span></span>
         </h1>
-        <p class="lede indent" data-hero data-i18n="hero.lede">საქორწილო და პორტრეტული ფოტოგრაფია მათთვის, ვინც ყველაფერს გულით განიცდის და პოზირება არ სურს.</p>
+        <p class="lede indent" data-hero data-i18n="hero.lede">საქორწინო და პორტრეტული ფოტოგრაფია. უპოზოდ, ბუნებრივად, თქვენი ისტორიისთვის.</p>
       </div>
     </div>
     <div class="acts indent" data-hero>
@@ -627,10 +629,10 @@ html:lang(ka){font-synthesis:none}
   "nav.menu": {"ka": "მენიუ", "en": "Menu", "ru": "Меню"},
   "nav.close": {"ka": "დახურვა", "en": "Close", "ru": "Закрыть"},
   "menu.place": {"ka": "თბილისი, საქართველო", "en": "Tbilisi, Georgia", "ru": "Тбилиси, Грузия"},
-  "hero.l1": {"ka": "<em>უთქმელი</em> ემოცია", "en": "Capturing <em>Unspoken</em>", "ru": "<em>Невысказанные</em>"},
-  "hero.l2": {"ka": "და <em>მარადიული</em>", "en": "Emotion &amp;", "ru": "чувства и"},
-  "hero.l3": {"ka": "რომანტიკა.", "en": "<em>Timeless</em> Romance.", "ru": "<em>вечная</em> романтика."},
-  "hero.lede": {"ka": "საქორწილო და პორტრეტული ფოტოგრაფია მათთვის, ვინც ყველაფერს გულით განიცდის და პოზირება არ სურს.", "en": "Wedding and portrait photography for people who feel things deeply and would rather not pose through them.", "ru": "Свадебная и портретная съёмка для тех, кто чувствует глубоко и не хочет позировать."},
+  "hero.l1": {"ka": "<em>ცოცხალი</em> კადრი,", "en": "Capturing <em>Unspoken</em>", "ru": "<em>Невысказанные</em>"},
+  "hero.l2": {"ka": "<em>მარადიული</em> გრძნობა.", "en": "Emotion &amp;", "ru": "чувства и"},
+  "hero.l3": {"ka": "", "en": "<em>Timeless</em> Romance.", "ru": "<em>вечная</em> романтика."},
+  "hero.lede": {"ka": "საქორწინო და პორტრეტული ფოტოგრაფია. უპოზოდ, ბუნებრივად, თქვენი ისტორიისთვის.", "en": "Wedding and portrait photography for people who feel things deeply and would rather not pose through them.", "ru": "Свадебная и портретная съёмка для тех, кто чувствует глубоко и не хочет позировать."},
   "hero.cta": {"ka": "დაჯავშნე თარიღი", "en": "Reserve your date", "ru": "Выбрать дату"},
   "hero.work": {"ka": "ნამუშევრები", "en": "See the work", "ru": "Смотреть работы"},
   "stack.region": {"ka": "რჩეული ფოტოები", "en": "Featured photographs", "ru": "Избранные фотографии"},
