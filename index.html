@@ -1,18 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ioseb Tsikaridze Studio · Wedding &amp; Portrait Photography, Tbilisi</title>
-<meta name="description" content="Wedding, family and fine art portrait photography in Tbilisi, Georgia, travelling to Kakheti, Batumi, Kazbegi and beyond.">
+<title>იოსებ ციქარიძის სტუდია · საქორწილო და პორტრეტული ფოტოგრაფია, თბილისი</title>
+<meta name="description" content="საქორწილო, საოჯახო და მხატვრული პორტრეტული ფოტოგრაფია თბილისში. გადაღებები კახეთში, ბათუმში, ყაზბეგსა და მთელ საქართველოში.">
 <meta name="theme-color" content="#0C0B0A">
-<script>document.documentElement.classList.add('js')</script>
+<script>
+document.documentElement.classList.add('js');
+// the language, before anything is drawn: ?lang= in the link, else the one chosen here last time, else Georgian (what the page ships in)
+(function (d) {
+  var l = (location.search.match(/[?&]lang=(ka|en|ru)\b/) || [])[1];
+  try { l = l || localStorage.getItem('lang'); } catch (e) {}
+  if (l === 'en' || l === 'ru') { d.lang = l; d.classList.add('i18n-wait'); }
+})(document.documentElement);
+</script>
+<!-- the hero film's first frame arrives before anything else, so the screen is never empty while the film loads -->
+<link rel="preload" href="media/hero-mobile.webp" as="image" type="image/webp" media="(orientation: portrait)" fetchpriority="high">
+<link rel="preload" href="media/hero-desktop.webp" as="image" type="image/webp" media="(orientation: landscape)" fetchpriority="high">
+<link rel="preload" href="fonts/DM-Medea.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Manrope:wght@300;400;500&family=Noto+Sans+Georgian:wght@300;400;500&family=Noto+Serif+Georgian:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* Georgian: DM Medea (David Maisuradze), self-hosted, is the display hand: headings, the navigation, the filter tabs and the
+   collection names (see --display). It covers only the Georgian alphabet, so Latin in those places still comes from Bodoni Moda
+   and Hanken Grotesk. Everything else in Georgian (paragraphs, labels, buttons, the band under the hero) is set in
+   Noto Sans Georgian and Noto Serif Georgian, which sit behind the Latin fonts in the stacks and fill in the Georgian letters.
+   Russian: Bodoni Moda and Hanken Grotesk have no Cyrillic, so Playfair Display and Manrope carry it (downloaded only when it's shown).
+   One weight serves every weight, so the browser never fakes a bold. */
+@font-face{font-family:'DMMedea';src:url('fonts/DM-Medea.woff2') format('woff2'),url('DM-Medea.ttf') format('truetype');
+ font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+10A0-10FF,U+1C90-1CBF,U+2D00-2D2F}
 /* Photos are Unsplash demo images; swap each <img> src/srcset for the studio's own work. */
 :root{
  --onyx:#0C0B0A;--onyx-2:#171512;
@@ -20,8 +40,8 @@
  --line:rgba(247,244,238,.1);
  --gold:#CDB07A;--gold-soft:rgba(205,176,122,.3);
  --paper:linear-gradient(160deg,#fcfbf7,#eeeae0);
- --serif:'Bodoni Moda','Didot',Georgia,serif;
- --sans:'Hanken Grotesk',system-ui,sans-serif;
+ --serif:'Bodoni Moda','Noto Serif Georgian','Playfair Display','Didot',Georgia,serif;
+ --sans:'Hanken Grotesk','Noto Sans Georgian','Manrope',system-ui,sans-serif;
  --ease:cubic-bezier(.16,1,.3,1);
  --gut:clamp(1rem,4.5vw,3rem);--max:1200px;
  --sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);
@@ -99,6 +119,55 @@ em{font-style:italic}
 .menu-links a em{color:var(--gold)}
 .menu-foot{padding-block:1.75rem;border-top:1px solid var(--line);font-size:.875rem;color:var(--mute)}
 .menu-foot a{color:var(--alabaster);border-bottom:1px solid var(--gold-soft);padding-bottom:.2rem}
+.menu-langs{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.menu-langs button{min-height:2.75rem;padding:0 1.15rem;border-radius:999px;border:1px solid var(--line);font-size:.875rem;color:var(--mute);transition:color .3s,border-color .3s}
+.menu-langs button[aria-pressed="true"]{border-color:var(--gold);color:var(--alabaster)}
+
+/* language picker in the bar: the current language's code, and a small list of the three */
+.lang{position:relative;flex:none}
+.lang-btn{display:inline-flex;align-items:center;gap:.45rem;min-height:2.75rem;padding:0 .95rem 0 1.05rem;border-radius:999px;border:1px solid rgba(247,244,238,.16);
+ font:500 .625rem/1 'Hanken Grotesk',system-ui,sans-serif;letter-spacing:.2em;color:var(--mute);transition:color .3s,border-color .3s}
+.lang-btn svg{width:.65rem;height:.65rem;transition:transform .35s var(--ease)}
+.lang-btn[aria-expanded="true"]{color:var(--alabaster);border-color:var(--gold-soft)}
+.lang-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+@media(hover:hover){.lang-btn:hover{color:var(--alabaster);border-color:var(--gold-soft)}}
+.lang-list{position:absolute;right:0;top:calc(100% + .7rem);min-width:10.5rem;padding:.35rem;border-radius:18px;background:rgba(23,21,18,.97);border:1px solid rgba(247,244,238,.12);box-shadow:0 22px 50px rgba(0,0,0,.5)}
+.lang-list button{display:flex;align-items:center;justify-content:space-between;gap:1rem;width:100%;min-height:2.75rem;padding:0 1rem;border-radius:13px;font-size:.875rem;color:var(--mute);transition:background-color .25s,color .25s}
+@media(hover:hover){.lang-list button:hover{background:rgba(247,244,238,.06);color:var(--alabaster)}}
+.lang-list button[aria-current]{color:var(--alabaster)}
+.lang-list button[aria-current]::after{content:"";flex:none;width:.4rem;height:.4rem;border-radius:50%;background:var(--gold)}
+/* phones: the bar floats over the playing film, and its blur is redrawn for every frame beneath it; a lighter blur keeps weaker phones smooth */
+@media(max-width:959px){.bar{gap:.6rem;-webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3)}}
+@media(max-width:400px){.brand b{letter-spacing:.2em}.lang-btn{padding:0 .8rem 0 .9rem}.bar .menu-btn{padding:0 1rem}}
+
+/* English or Russian chosen earlier: hold the page for the instant it takes to swap the words in, so Georgian never flashes first */
+.i18n-wait body{visibility:hidden;animation:failsafe 0s 1.5s forwards}
+
+/* DM Medea for the display parts only: headings, the navigation, the filter tabs, the collection names.
+   Its unicode-range limits it to Georgian letters, so these rules change nothing in English or Russian. */
+:is(.h1,.h2,.display,.band-head p,.menu-links a,.cat .g-cap b){font-family:'DMMedea',var(--serif)}
+:is(.links a,.enq,.menu-btn,.tabs button){font-family:'DMMedea',var(--sans)}
+
+/* Georgian has no capitals in these fonts and no italic, so nothing is uppercased or slanted (the browser would otherwise
+   borrow capitals from another font and fake a slant), and tracking made for capitals comes down */
+html:lang(ka){font-synthesis:none}
+:lang(ka) :is(em,i,.card b,.card .no,.g-cap b,.strip-seq li,.band-head p,.display,.lb-bot b){font-style:normal}
+:lang(ka) :is(.label,.cta,.enq,.menu-btn,.strip-seq li.k,.hint,.card small,.g-cap small,.pill,.lb-bot small){text-transform:none;letter-spacing:.04em}
+:lang(ka) :is(.label,.strip-seq li.k,.cta,.pill){font-size:.75rem}
+:lang(ka) :is(.card small,.g-cap small,.lb-bot small){font-size:.6875rem}
+:lang(ka) .strip-seq li:not(.k){font-size:clamp(1.05rem,2vw,1.5rem)}
+/* DM Medea is a calligraphic hand whose flourishes reach far above and below the line: wherever it's used, lines get room
+   (so they don't collide) and small sizes come up (so the script stays legible) */
+:lang(ka) .h1{letter-spacing:0;line-height:1.6;font-size:clamp(1.85rem,8.2vw,4.2rem)}
+@media(min-width:960px){:lang(ka) .h1{font-size:clamp(2.8rem,4vw,4.3rem)}}
+:lang(ka) :is(.h2,.display,.approach .h2,.band-head p){letter-spacing:0;line-height:1.6}
+:lang(ka) .menu-links{gap:.9rem}
+:lang(ka) .menu-links a{line-height:1.6;font-size:clamp(2rem,9vw,3.2rem)}
+:lang(ka) :is(.links a,.tabs button){font-size:.95rem}
+:lang(ka) :is(.enq,.menu-btn){font-size:.875rem}
+:lang(ka) .cat .g-cap b{line-height:1.45}
+/* phones: the collection names on the cards stay in the plain serif (Noto Serif Georgian), like every photograph's caption */
+@media(max-width:959px){.cat .g-cap b{font-family:var(--serif)}:lang(ka) .cat .g-cap b{line-height:1.15}}
 
 /* ── HERO ────────────────────────────────────────────── */
 .hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);align-items:center;gap:2rem;
@@ -106,15 +175,19 @@ em{font-style:italic}
  radial-gradient(ellipse 45% 55% at 74% 46%,rgba(205,176,122,.17),transparent 70%),
  radial-gradient(ellipse 30% 40% at 12% 90%,rgba(120,84,60,.16),transparent 70%)}
 /* the film behind the hero: it plays alone for a moment, then dims so the words and photographs lead.
-   It stays fully visible to the browser (iOS won't start a film it considers hidden); only a short fade softens its arrival. */
+   Its first frame (.hero-still) is on screen from the start, and the video only fades in over it once it is really playing.
+   So nothing half-loaded, frozen or refused ever shows, and no play button: iOS draws one on a video it won't autoplay,
+   but here that video is still invisible. At the end of each loop the film fades back to that first frame, where it restarts. */
 .hero-media{position:absolute;z-index:-1;inset:0;overflow:hidden;pointer-events:none;animation:film-in .7s ease both}
 @keyframes film-in{from{opacity:0}}
-.hero-media video{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%;transition:opacity .8s ease}
-/* iOS in Low Power Mode blocks autoplay and draws a play button over the film; hide it (the first tap starts the film) */
-.hero-media video::-webkit-media-controls,.hero-media video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
-.hero-media.dip video{opacity:.2}
+.hero-media :is(video,.hero-still,.hero-loop){position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
+.hero-media video{opacity:0;transition:opacity .6s ease}
+.hero-media.playing video{opacity:1}
+.hero-media.playing.dip video{opacity:0;transition-duration:.7s}
+.hero-media video::-webkit-media-controls,.hero-media video::-webkit-media-controls-start-playback-button,.hero-media video::-webkit-media-controls-overlay-play-button{display:none!important;-webkit-appearance:none}
+@media(max-width:959px){.hero-media :is(video,.hero-still,.hero-loop){object-position:50% 50%}}
 .hero-media::after{content:"";position:absolute;inset:auto 0 0;height:32%;background:linear-gradient(transparent,var(--onyx))}
-.hero-dim{position:absolute;inset:0;background:radial-gradient(ellipse 42% 55% at 74% 48%,rgba(205,176,122,.14),transparent 70%),linear-gradient(90deg,rgba(12,11,10,.84),rgba(12,11,10,.56) 48%,rgba(12,11,10,.46))}
+.hero-dim{position:absolute;inset:0;background:radial-gradient(ellipse 42% 55% at 74% 48%,rgba(205,176,122,.14),transparent 70%),linear-gradient(90deg,rgba(12,11,10,.72),rgba(12,11,10,.44) 48%,rgba(12,11,10,.34))}
 .h1{font:400 clamp(2.1rem,9.3vw,5rem)/.98 var(--serif);letter-spacing:-.025em;text-shadow:0 2px 28px rgba(12,11,10,.45)}
 @media(min-width:960px){.h1{font-size:clamp(3.2rem,4.8vw,5.2rem)}}
 /* lines stay unclipped so the soft text shadow can fade out fully instead of stopping at the line's edge */
@@ -125,9 +198,6 @@ em{font-style:italic}
 .indent{margin-left:clamp(1.5rem,6vw,5.5rem)}
 .lede{max-width:25rem;margin-top:2.4rem;color:rgba(247,244,238,.8);font-size:1.0625rem}
 .acts{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2.25rem;margin-top:2.4rem}
-.scroll{position:absolute;left:clamp(1.5rem,6vw,6rem);bottom:1.8rem;display:flex;align-items:center;gap:1rem;font-size:.6rem;letter-spacing:.36em;text-transform:uppercase;color:var(--faint)}
-.scroll::after{content:"";width:64px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);transform-origin:left;animation:scrollline 2.4s var(--ease) infinite}
-@keyframes scrollline{0%{transform:scaleX(0)}60%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
 
 /* the 3D stack of instant photographs */
 .show{position:relative}
@@ -178,7 +248,7 @@ em{font-style:italic}
 @media(max-width:959px){
  /* phones: the headline opens near the top of the screen, the CTA sits low and the stack only peeks in at the bottom edge.
     Scrolling, the headline holds its place while the rest rises to meet it, then eases to rest just above the CTA (dockHeadline()). */
- .hero{--peek:4.25rem;--lead:calc(7.25rem + var(--sat));grid-template-columns:1fr;min-height:0;padding-top:0;padding-bottom:1.5rem;gap:0}
+ .hero{--peek:4.25rem;--lead:calc(7.25rem - 3px + var(--sat));grid-template-columns:1fr;min-height:0;padding-top:0;padding-bottom:1.5rem;gap:0}
  .hero-copy{display:flex;flex-direction:column;min-height:calc(100svh - var(--peek));padding:var(--lead) 0 1.5rem}
  .hero-rail{flex:1 0 auto}
  .hero-lead{position:relative;isolation:isolate;will-change:transform;backface-visibility:hidden}
@@ -198,11 +268,10 @@ em{font-style:italic}
  .show{margin-top:-2.25rem;pointer-events:none}
  .g1{display:none!important}
  .hero-media{bottom:auto;height:calc(100svh + 5rem)}
- .hero-media video{object-position:50% 50%}
+
  .hero-media::after{height:22%}
  /* shaded behind the headline at the top and the CTA at the bottom; the film stays clear between them */
- .hero-dim{background:linear-gradient(180deg,rgba(12,11,10,.42) 0%,rgba(12,11,10,.3) 36%,rgba(12,11,10,.08) 48%,rgba(12,11,10,.1) 60%,rgba(12,11,10,.62) 74%,rgba(12,11,10,.88) 90%)}
- .scroll{display:none}
+ .hero-dim{background:linear-gradient(180deg,rgba(12,11,10,.32) 0%,rgba(12,11,10,.2) 36%,rgba(12,11,10,.04) 48%,rgba(12,11,10,.06) 60%,rgba(12,11,10,.5) 74%,rgba(12,11,10,.78) 90%)}
  .stage{height:clamp(22rem,96vw,30rem)}
  /* the trust badge rests on top of the CTA, overlapping its edge a little */
  .g1{position:relative;z-index:3;left:auto;top:auto;display:flex;align-items:center;gap:.75rem;width:max-content;max-width:100%;margin:1.5rem 0 -.7rem .9rem;padding:.55rem 1.1rem .55rem .95rem;border-radius:999px;background:rgba(23,21,18,.5)}
@@ -316,25 +385,9 @@ em{font-style:italic}
 @media(hover:hover){.band figure:hover img{transform:scale(1.06);filter:none}}
 @media(max-width:760px){.band{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
-/* selected stories */
-.work .h2{margin-top:1.5rem;margin-bottom:3rem}
-.row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 14rem 4rem;gap:2rem;align-items:baseline;padding:1.7rem 0;border-bottom:1px solid var(--line)}
-.row:first-of-type{border-top:1px solid var(--line)}
-.row::after{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
-.row h3{font:400 clamp(1.5rem,3vw,2.4rem)/1.1 var(--serif);transition:transform .6s var(--ease),color .3s}
-.row span{color:var(--mute);font-size:.85rem}
-.row .y{text-align:right;font-variant-numeric:tabular-nums}
-.peek{position:absolute;left:60%;top:50%;width:5.5rem;aspect-ratio:4/5;translate:-50% -50%;overflow:hidden;border-radius:3px;pointer-events:none;clip-path:inset(50% 50% 50% 50%);transition:clip-path .6s var(--ease)}
-.peek img{width:100%;height:100%;object-fit:cover}
-@media(hover:hover){
- .row:hover::after{transform:scaleX(1)}
- .row:hover h3{transform:translateX(1rem);font-style:italic;color:var(--gold)}
- .row:hover .peek{clip-path:inset(0 0 0 0)}
-}
-@media(max-width:900px){.row{grid-template-columns:minmax(0,1fr) auto;gap:1rem}.row .pl{display:none}.peek{display:none}}
-
 /* contact: a rounded panel with a photograph behind */
-.contact{padding:0 var(--gut) clamp(1rem,3vw,2rem)}
+/* room above the panel, so it doesn't butt against the band of photographs */
+.contact{padding:clamp(4rem,10vw,7.5rem) var(--gut) clamp(1rem,3vw,2rem)}
 .panel{position:relative;max-width:1400px;margin:0 auto;min-height:min(80svh,46rem);display:grid;place-items:center;text-align:center;padding:5rem 1.5rem;border-radius:clamp(1.1rem,2.5vw,1.75rem);overflow:hidden;isolation:isolate}
 .panel>img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover}
 .panel::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(12,11,10,.45),rgba(12,11,10,.82)),linear-gradient(0deg,rgba(12,11,10,.5),transparent 40%)}
@@ -372,21 +425,32 @@ em{font-style:italic}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="skip">გადასვლა შინაარსზე</a>
 
 <header class="bar" id="bar">
-  <a href="#top" class="brand" aria-label="Ioseb Tsikaridze Studio, back to top"><b>IOSEB TSIKARIDZE</b><i>STUDIO</i></a>
-  <nav class="links" aria-label="Primary"><a href="#portfolio">Portfolio</a><a href="#approach">Approach</a><a href="#stories">Stories</a><a href="#contact">Contact</a></nav>
-  <a href="#contact" class="enq">Enquire</a>
-  <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <a href="#top" class="brand" aria-label="იოსებ ციქარიძის სტუდია, თავში დაბრუნება" data-i18n-attr="aria-label:nav.home"><b>IOSEB TSIKARIDZE</b><i>STUDIO</i></a>
+  <nav class="links" aria-label="მთავარი მენიუ" data-i18n-attr="aria-label:nav.primary"><a href="#portfolio" data-i18n="nav.portfolio">პორტფოლიო</a><a href="#approach" data-i18n="nav.approach">მიდგომა</a><a href="#contact" data-i18n="nav.contact">კონტაქტი</a></nav>
+  <div class="lang" data-lang-picker>
+    <button type="button" class="lang-btn" aria-haspopup="true" aria-expanded="false" aria-controls="lang-list" aria-label="ენა: ქართული"><span data-lang-code>GE</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+    <ul class="lang-list" id="lang-list" hidden>
+      <li><button type="button" data-lang="ka" lang="ka">ქართული</button></li>
+      <li><button type="button" data-lang="en" lang="en">English</button></li>
+      <li><button type="button" data-lang="ru" lang="ru">Русский</button></li>
+    </ul>
+  </div>
+  <a href="#contact" class="enq" data-i18n="nav.enquire">დაკავშირება</a>
+  <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu" data-i18n="nav.menu">მენიუ</button>
 </header>
 
-<dialog class="menu" id="menu" aria-label="Menu">
-  <div class="menu-top wrap"><span class="brand"><b>IOSEB TSIKARIDZE</b></span><button class="menu-btn" id="menu-x">Close</button></div>
-  <nav class="menu-links wrap" aria-label="Menu">
-    <a href="#portfolio">Portfolio</a><a href="#approach">Approach</a><a href="#stories">Stories</a><a href="#contact"><em>Contact</em></a>
+<dialog class="menu" id="menu" aria-label="მენიუ" data-i18n-attr="aria-label:nav.menu">
+  <div class="menu-top wrap"><span class="brand"><b>IOSEB TSIKARIDZE</b></span><button class="menu-btn" id="menu-x" data-i18n="nav.close">დახურვა</button></div>
+  <nav class="menu-links wrap" aria-label="მენიუ" data-i18n-attr="aria-label:nav.menu">
+    <a href="#portfolio" data-i18n="nav.portfolio">პორტფოლიო</a><a href="#approach" data-i18n="nav.approach">მიდგომა</a><a href="#contact"><em data-i18n="nav.contact">კონტაქტი</em></a>
   </nav>
-  <div class="menu-foot wrap">Tbilisi, Georgia · <a href="#" data-wa>WhatsApp</a></div>
+  <div class="menu-foot wrap">
+    <div class="menu-langs" role="group" aria-label="ენა" data-i18n-attr="aria-label:lang.label"><button type="button" data-lang="ka" lang="ka">ქართული</button><button type="button" data-lang="en" lang="en">English</button><button type="button" data-lang="ru" lang="ru">Русский</button></div>
+    <p><span data-i18n="menu.place">თბილისი, საქართველო</span> · <a href="#" data-wa>WhatsApp</a></p>
+  </div>
 </dialog>
 
 <main id="main" tabindex="-1">
@@ -395,19 +459,25 @@ em{font-style:italic}
 <!-- HERO -->
 <section class="hero" id="hero" aria-labelledby="h1">
   <!-- The film plays alone for a second, then dims as the words and photographs arrive.
-       Self-hosted H.264 (plays on every iPhone): a portrait cut for phones, 1080p for wide screens, each with its first frame as the poster. -->
+       Self-hosted H.264 (plays on every iPhone): a portrait cut for phones (1.9 MB), 1080p for wide screens (4.1 MB),
+       each with its first frame as a still that shows until the film is really playing. -->
   <div class="hero-media" id="hero-media" aria-hidden="true">
+    <img class="hero-still" alt="" decoding="async" fetchpriority="high">
     <video autoplay muted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture disableremoteplayback tabindex="-1"
-      data-tall="media/hero-mobile.mp4" data-tall-poster="media/hero-mobile.jpg"
-      data-wide="media/hero-desktop.mp4" data-wide-poster="media/hero-desktop.jpg"></video>
+      data-tall="media/hero-mobile.mp4" data-tall-poster="media/hero-mobile.webp"
+      data-wide="media/hero-desktop.mp4" data-wide-poster="media/hero-desktop.webp"></video>
     <script>
-    // picks the cut while the page is still loading, so Safari can start it natively; reduced motion or data saver keep the still frame
+    // picks the cut while the page is still loading, so Safari can start it natively; reduced motion or data saver keep the still frame.
+    // The still gets the connection to itself first (on a slow line the film would otherwise starve it); the film follows the moment
+    // it's in, or after 1.5s at most.
     (function (v) {
-      var tall = matchMedia('(orientation: portrait)').matches, net = navigator.connection || {};
-      v.poster = tall ? v.dataset.tallPoster : v.dataset.widePoster;
+      var tall = matchMedia('(orientation: portrait)').matches, net = navigator.connection || {}, still = v.previousElementSibling;
+      still.src = tall ? v.dataset.tallPoster : v.dataset.widePoster;
       if (matchMedia('(prefers-reduced-motion: reduce)').matches || net.saveData || /2g/.test(net.effectiveType || '')) { v.removeAttribute('autoplay'); return; }
       v.muted = v.defaultMuted = true;
-      v.src = tall ? v.dataset.tall : v.dataset.wide;
+      v.dataset.film = 'on';
+      var go = function () { if (!v.getAttribute('src')) v.src = tall ? v.dataset.tall : v.dataset.wide; };
+      if (still.complete) go(); else { still.addEventListener('load', go); still.addEventListener('error', go); setTimeout(go, 1500); }
     })(document.currentScript.previousElementSibling);
     </script>
     <i class="hero-dim"></i>
@@ -418,77 +488,60 @@ em{font-style:italic}
     <div class="hero-rail">
       <div class="hero-lead">
         <h1 class="h1" id="h1">
-          <span class="ln"><span>Capturing <em>Unspoken</em></span></span>
-          <span class="ln"><span>Emotion &amp;</span></span>
-          <span class="ln"><span><em>Timeless</em> Romance.</span></span>
+          <span class="ln"><span data-i18n-html="hero.l1"><em>უთქმელი</em> ემოცია</span></span>
+          <span class="ln"><span data-i18n-html="hero.l2">და <em>მარადიული</em></span></span>
+          <span class="ln"><span data-i18n-html="hero.l3">რომანტიკა.</span></span>
         </h1>
-        <p class="lede indent" data-hero>Wedding and portrait photography for people who feel things deeply and would rather not pose through them.</p>
+        <p class="lede indent" data-hero data-i18n="hero.lede">საქორწილო და პორტრეტული ფოტოგრაფია მათთვის, ვინც ყველაფერს გულით განიცდის და პოზირება არ სურს.</p>
       </div>
     </div>
     <div class="acts indent" data-hero>
-      <a href="#contact" class="cta">Reserve your date<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
-      <a href="#portfolio" class="tl">See the work</a>
+      <a href="#contact" class="cta"><span data-i18n="hero.cta">დაჯავშნე თარიღი</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>
+      <a href="#portfolio" class="tl" data-i18n="hero.work">ნამუშევრები</a>
     </div>
   </div>
 
-  <div class="show" data-stack role="region" aria-roledescription="carousel" aria-label="Featured photographs">
-    <div class="stage" id="stage" tabindex="0" aria-label="Featured photographs. Press Enter or the arrow keys to shuffle.">
+  <div class="show" data-stack role="region" aria-roledescription="კარუსელი" aria-label="რჩეული ფოტოები" data-i18n-attr="aria-roledescription:stack.role;aria-label:stack.region">
+    <div class="stage" id="stage" tabindex="0" aria-label="რჩეული ფოტოები. ასარევად დააჭირეთ Enter-ს ან ისრებს." data-i18n-attr="aria-label:stack.stage">
       <div class="rig" id="rig">
-        <figure class="card" data-t="-2" style="--p:0;--t:-2"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="Bride and groom on a windswept beach, her veil lifting" fetchpriority="high" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small>Wedding</small><b>The first look</b></span><span class="no">No. 1</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
-        <figure class="card" data-t="1.5" style="--p:1;--t:1.5" aria-hidden="true"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="A newborn's feet wrapped in a white blanket" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small>Children</small><b>Ten tiny toes</b></span><span class="no">No. 2</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
-        <figure class="card" data-t="-1" style="--p:2;--t:-1" aria-hidden="true"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1546032996-6dfacbacbf3f?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1546032996-6dfacbacbf3f?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1546032996-6dfacbacbf3f?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="A couple embracing under a veil in a golden field" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small>Couples</small><b>Quiet vows</b></span><span class="no">No. 3</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
-        <figure class="card" data-t="2.5" style="--p:3;--t:2.5" aria-hidden="true"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="Newlyweds on a hillside at sunset" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small>Wedding</small><b>Golden hour</b></span><span class="no">No. 4</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
+        <figure class="card" data-t="-2" style="--p:0;--t:-2"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="Bride and groom on a windswept beach, her veil lifting" fetchpriority="high" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small data-i18n="stack.wedding">ქორწილი</small><b data-i18n="stack.t1">პირველი მზერა</b></span><span class="no"><span data-i18n="stack.no">№</span> 1</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
+        <figure class="card" data-t="1.5" style="--p:1;--t:1.5" aria-hidden="true"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1476234251651-f353703a034d?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1476234251651-f353703a034d?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1476234251651-f353703a034d?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="Two sisters reading a book together in a sunlit field" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small data-i18n="stack.children">ბავშვები</small><b data-i18n="stack.t2">ზღაპარი მინდორში</b></span><span class="no"><span data-i18n="stack.no">№</span> 2</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
+        <figure class="card" data-t="-1" style="--p:2;--t:-1" aria-hidden="true"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1546032996-6dfacbacbf3f?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1546032996-6dfacbacbf3f?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1546032996-6dfacbacbf3f?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="A couple embracing under a veil in a golden field" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small data-i18n="stack.couples">წყვილები</small><b data-i18n="stack.t3">ჩუმი ფიცი</b></span><span class="no"><span data-i18n="stack.no">№</span> 3</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
+        <figure class="card" data-t="2.5" style="--p:3;--t:2.5" aria-hidden="true"><div class="card-in"><div class="photo"><img class="fi" src="https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1604017011826-d3b4c23f8914?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 960px) 66vw, 320px" alt="Newlyweds on a hillside at sunset" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div><figcaption><span><small data-i18n="stack.wedding">ქორწილი</small><b data-i18n="stack.t4">ოქროს საათი</b></span><span class="no"><span data-i18n="stack.no">№</span> 4</span></figcaption><i class="sheen"></i><i class="shade"></i></div></figure>
       </div>
     </div>
-    <div class="glass g1"><strong><span data-count="8300">8,300</span>+</strong><span>couples and families photographed</span></div>
-    <div class="glass g2">85 mm <b>/</b> f 1.4</div>
+    <div class="glass g1"><strong><span data-count="8300">8 300</span>+</strong><span data-i18n="badge.text">გადაღებული წყვილი და ოჯახი</span></div>
+    <div class="glass g2" data-i18n-html="badge.lens">85 მმ <b>/</b> f 1.4</div>
     <span class="tap" id="tap" aria-hidden="true"><i></i><svg viewBox="0 0 24 24"><path d="M4 2v17l4.6-4.4 3.1 7 3-1.3-3.1-6.9 6.4-.3z" fill="#F7F4EE" stroke="#0C0B0A" stroke-width="1.2" stroke-linejoin="round"/></svg></span>
-    <p class="hint" id="hint" aria-hidden="true">Tap or swipe the photograph</p>
+    <p class="hint" id="hint" aria-hidden="true">შეეხეთ ან გადაფურცლეთ ფოტო</p>
     <p class="sr" id="stack-live" aria-live="polite"></p>
   </div>
-  <div class="scroll" aria-hidden="true" data-hero>Scroll</div>
 </section>
 
 <!-- STRIP -->
-<div class="strip" aria-label="Weddings, family and fine art portraits across Tbilisi, Kakheti, Batumi and Kazbegi. Hand-graded galleries, delivered in 14 days.">
+<div class="strip" aria-label="ქორწილები, ოჯახები და მხატვრული პორტრეტები თბილისში, კახეთში, ბათუმსა და ყაზბეგში. ხელით დამუშავებული გალერეები, მზად 14 დღეში." data-i18n-attr="aria-label:strip.label">
   <div class="strip-track" aria-hidden="true">
-    <ul class="strip-seq"><li>Weddings</li><li class="k">Tbilisi</li><li>Family</li><li class="k">Kakheti</li><li>Fine art portraits</li><li class="k">Batumi</li><li>Elopements</li><li class="k">Kazbegi</li><li>Hand-graded colour</li><li class="k">Delivered in 14 days</li></ul>
-    <ul class="strip-seq"><li>Weddings</li><li class="k">Tbilisi</li><li>Family</li><li class="k">Kakheti</li><li>Fine art portraits</li><li class="k">Batumi</li><li>Elopements</li><li class="k">Kazbegi</li><li>Hand-graded colour</li><li class="k">Delivered in 14 days</li></ul>
+    <ul class="strip-seq"><li data-i18n="strip.weddings">ქორწილები</li><li class="k" data-i18n="strip.tbilisi">თბილისი</li><li data-i18n="strip.family">ოჯახი</li><li class="k" data-i18n="strip.kakheti">კახეთი</li><li data-i18n="strip.portraits">მხატვრული პორტრეტები</li><li class="k" data-i18n="strip.batumi">ბათუმი</li><li data-i18n="strip.elopements">ქორწილები ორისთვის</li><li class="k" data-i18n="strip.kazbegi">ყაზბეგი</li><li data-i18n="strip.graded">ხელით დამუშავებული ფერი</li><li class="k" data-i18n="strip.days">მზად 14 დღეში</li></ul>
+    <ul class="strip-seq"><li data-i18n="strip.weddings">ქორწილები</li><li class="k" data-i18n="strip.tbilisi">თბილისი</li><li data-i18n="strip.family">ოჯახი</li><li class="k" data-i18n="strip.kakheti">კახეთი</li><li data-i18n="strip.portraits">მხატვრული პორტრეტები</li><li class="k" data-i18n="strip.batumi">ბათუმი</li><li data-i18n="strip.elopements">ქორწილები ორისთვის</li><li class="k" data-i18n="strip.kazbegi">ყაზბეგი</li><li data-i18n="strip.graded">ხელით დამუშავებული ფერი</li><li class="k" data-i18n="strip.days">მზად 14 დღეში</li></ul>
   </div>
 </div>
 
-<!-- APPROACH -->
-<section class="sec" id="approach" aria-labelledby="approach-h">
-  <div class="wrap">
-    <div class="approach">
-      <div><span class="label" data-reveal>Approach</span><h2 class="h2" id="approach-h" data-reveal>I photograph the seconds between the poses: <em>a breath before the vow,</em> a hand finding a hand.</h2></div>
-      <p data-reveal>Based in Tbilisi and travelling to Kakheti, Batumi, Kazbegi and beyond. Every gallery is graded by hand in warm, low light and delivered within 14 days.</p>
-    </div>
-    <div class="stats" data-reveal>
-      <div><strong><span data-count="12">12</span><i>+</i></strong><span>Years behind the camera</span></div>
-      <div><strong><span data-count="40">40</span><i>+</i></strong><span>Venues across Georgia</span></div>
-      <div><strong><span data-count="14">14</span></strong><span>Days to your finished gallery</span></div>
-      <div><strong><span data-count="4.9" data-dec="1">4.9</span><i>★</i></strong><span>Average client rating</span></div>
-    </div>
-  </div>
-</section>
-
 <!-- PORTFOLIO: six collection cards; choosing one (or "See all work") filters the photographs in place -->
-<section class="sec" id="portfolio" aria-labelledby="portfolio-h" style="padding-top:0">
+<section class="sec" id="portfolio" aria-labelledby="portfolio-h">
   <div class="wrap">
     <div class="gal-top" data-reveal>
-      <div><span class="label">Portfolio</span><h2 class="h2" id="portfolio-h">Stories told in light and shadow.</h2></div>
-      <p>Six collections, from first looks to first steps. Choose one, or see everything at once.</p>
+      <div><span class="label" data-i18n="pf.label">პორტფოლიო</span><h2 class="h2" id="portfolio-h" data-i18n="pf.h">ისტორიები სინათლესა და ჩრდილში.</h2></div>
+      <p data-i18n="pf.p">ექვსი კოლექცია — პირველი მზერიდან პირველ ნაბიჯებამდე. აირჩიეთ ერთი ან ნახეთ ყველაფერი ერთად.</p>
     </div>
-    <div class="tabs" id="tabs" role="group" aria-label="Filter by collection" data-reveal></div>
+    <div class="tabs" id="tabs" role="group" aria-label="კოლექციის არჩევა" data-i18n-attr="aria-label:pf.tabs" data-reveal></div>
     <div class="pf-stage" id="pf-stage">
       <div class="cats" id="cats"></div>
       <div class="arch" id="arch" hidden></div>
     </div>
     <div class="pf-acts" id="pf-acts">
-      <button type="button" class="pill" id="see-all">See all work <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
-      <button type="button" class="pill" id="more" hidden>See more</button>
-      <button type="button" class="tl" id="back" hidden>Back to the collections</button>
+      <button type="button" class="pill" id="see-all"><span data-i18n="pf.seeAll">ყველა ნამუშევარი</span> <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+      <button type="button" class="pill" id="more" hidden data-i18n="pf.more">მეტის ნახვა</button>
+      <button type="button" class="tl" id="back" hidden data-i18n="pf.back">კოლექციებზე დაბრუნება</button>
     </div>
     <p class="sr" id="grid-live" aria-live="polite"></p>
   </div>
@@ -496,7 +549,7 @@ em{font-style:italic}
 
 <!-- MOMENTS -->
 <section class="moments" aria-labelledby="moments-h">
-  <div class="wrap band-head" data-reveal><span class="label">In the details</span><p id="moments-h">Small moments, kept for a lifetime.</p></div>
+  <div class="wrap band-head" data-reveal><span class="label" data-i18n="moments.label">დეტალებში</span><p id="moments-h" data-i18n="moments.p">პატარა წამები, მთელი ცხოვრებისთვის.</p></div>
   <div class="band">
     <figure><img class="fi" src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&amp;fit=crop&amp;q=80&amp;w=400" srcset="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 760px) 33vw, 17vw" alt="Two wedding rings resting on pale pink roses" loading="lazy" decoding="async" draggable="false" width="400" height="533"></figure>
     <figure><img class="fi" src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&amp;fit=crop&amp;q=80&amp;w=400" srcset="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 760px) 33vw, 17vw" alt="A garden pavilion dressed with flowers for a ceremony" loading="lazy" decoding="async" draggable="false" width="400" height="533"></figure>
@@ -507,16 +560,18 @@ em{font-style:italic}
   </div>
 </section>
 
-<!-- SELECTED STORIES -->
-<section class="sec work" id="stories" aria-labelledby="stories-h">
+<!-- APPROACH -->
+<section class="sec" id="approach" aria-labelledby="approach-h">
   <div class="wrap">
-    <div data-reveal><span class="label">Selected stories</span><h2 class="h2" id="stories-h">Recent weddings &amp; portraits</h2></div>
-    <div class="rows">
-      <div class="row"><h3>Botanical romance</h3><span class="pl">Wedding, Tbilisi</span><span class="y">2026</span><span class="peek" aria-hidden="true"><img class="fi" src="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&amp;fit=crop&amp;q=80&amp;w=200" srcset="https://images.unsplash.com/photo-1591604466107-ec97de577aff?auto=format&amp;fit=crop&amp;q=80&amp;w=200 200w" sizes="90px" alt="" loading="lazy" decoding="async" draggable="false" width="200" height="250"></span></div>
-      <div class="row"><h3>Golden hour in Kakheti</h3><span class="pl">Couple, Kakheti</span><span class="y">2026</span><span class="peek" aria-hidden="true"><img class="fi" src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&amp;fit=crop&amp;q=80&amp;w=200" srcset="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?auto=format&amp;fit=crop&amp;q=80&amp;w=200 200w" sizes="90px" alt="" loading="lazy" decoding="async" draggable="false" width="200" height="250"></span></div>
-      <div class="row"><h3>Ten tiny toes</h3><span class="pl">Newborn, studio</span><span class="y">2026</span><span class="peek" aria-hidden="true"><img class="fi" src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&amp;fit=crop&amp;q=80&amp;w=200" srcset="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&amp;fit=crop&amp;q=80&amp;w=200 200w" sizes="90px" alt="" loading="lazy" decoding="async" draggable="false" width="200" height="250"></span></div>
-      <div class="row"><h3>Vows at dusk</h3><span class="pl">Wedding, Sameba</span><span class="y">2025</span><span class="peek" aria-hidden="true"><img class="fi" src="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?auto=format&amp;fit=crop&amp;q=80&amp;w=200" srcset="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?auto=format&amp;fit=crop&amp;q=80&amp;w=200 200w" sizes="90px" alt="" loading="lazy" decoding="async" draggable="false" width="200" height="250"></span></div>
-      <div class="row"><h3>Laughing in Sololaki</h3><span class="pl">Couple, Sololaki</span><span class="y">2025</span><span class="peek" aria-hidden="true"><img class="fi" src="https://images.unsplash.com/photo-1501901609772-df0848060b33?auto=format&amp;fit=crop&amp;q=80&amp;w=200" srcset="https://images.unsplash.com/photo-1501901609772-df0848060b33?auto=format&amp;fit=crop&amp;q=80&amp;w=200 200w" sizes="90px" alt="" loading="lazy" decoding="async" draggable="false" width="200" height="250"></span></div>
+    <div class="approach">
+      <div><span class="label" data-reveal data-i18n="approach.label">მიდგომა</span><h2 class="h2" id="approach-h" data-reveal data-i18n-html="approach.h">ცოცხალი <em>კადრები</em></h2></div>
+      <p data-reveal data-i18n="approach.p">თბილისში ვცხოვრობ და ვიღებ კახეთში, ბათუმში, ყაზბეგსა და სხვაგანაც. ყოველ გალერეას ხელით ვამუშავებ თბილ, რბილ შუქში და 14 დღეში გადმოგცემთ.</p>
+    </div>
+    <div class="stats" data-reveal>
+      <div><strong><span data-count="12">12</span><i>+</i></strong><span data-i18n="stat.years">წელი კამერასთან</span></div>
+      <div><strong><span data-count="40">40</span><i>+</i></strong><span data-i18n="stat.venues">ლოკაცია საქართველოში</span></div>
+      <div><strong><span data-count="14">14</span></strong><span data-i18n="stat.days">დღე მზა გალერეამდე</span></div>
+      <div><strong><span data-count="4.9" data-dec="1">4,9</span><i>★</i></strong><span data-i18n="stat.rating">კლიენტების საშუალო შეფასება</span></div>
     </div>
   </div>
 </section>
@@ -526,10 +581,10 @@ em{font-style:italic}
   <div class="panel" data-panel>
     <img class="fi" src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" srcset="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w, https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&amp;fit=crop&amp;q=80&amp;w=1600 1600w" sizes="100vw" alt="A couple walking hand in hand across open hills" loading="lazy" decoding="async" draggable="false" width="1600" height="1000">
     <div>
-      <span class="label" data-reveal>Contact</span>
-      <h2 class="display" id="contact-h" data-reveal>A few dates remain for 2026 and 2027.</h2>
-      <div class="acts" data-reveal><a href="#" class="cta" data-wa>Message Ioseb on WhatsApp<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a></div>
-      <p class="note" data-reveal>Based in Tbilisi · travelling across Georgia and beyond</p>
+      <span class="label" data-reveal data-i18n="contact.label">კონტაქტი</span>
+      <h2 class="display" id="contact-h" data-reveal data-i18n="contact.h">მზად ხართ შექმნათ რაღაც მარადიული?</h2>
+      <div class="acts" data-reveal><a href="#" class="cta" data-wa><span data-i18n="contact.cta">მოგვწერეთ WhatsApp-ზე</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a></div>
+      <p class="note" data-reveal data-i18n="contact.note">თბილისი · გადაღებები მთელ საქართველოში და მის ფარგლებს გარეთ</p>
     </div>
   </div>
 </section>
@@ -538,93 +593,253 @@ em{font-style:italic}
 <footer class="foot">
   <div class="wrap foot-in">
     <a href="#top" class="brand"><b>IOSEB TSIKARIDZE</b></a>
-    <nav aria-label="Footer"><a href="#portfolio">Portfolio</a><a href="#approach">Approach</a><a href="#stories">Stories</a><a href="#" data-wa>WhatsApp</a></nav>
-    <span>© 2026 Ioseb Tsikaridze Studio, Tbilisi</span>
+    <nav aria-label="ქვედა მენიუ" data-i18n-attr="aria-label:foot.label"><a href="#portfolio" data-i18n="nav.portfolio">პორტფოლიო</a><a href="#approach" data-i18n="nav.approach">მიდგომა</a><a href="#" data-wa>WhatsApp</a></nav>
+    <span data-i18n="foot.copy">© 2026 იოსებ ციქარიძის სტუდია, თბილისი</span>
   </div>
 </footer>
 
-<dialog class="lb" id="lb" aria-label="Photograph viewer">
-  <div class="lb-top wrap"><span class="sr" id="lb-n"></span><button class="circle" id="lb-x" aria-label="Close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button></div>
+<dialog class="lb" id="lb" aria-label="ფოტოს დათვალიერება" data-i18n-attr="aria-label:lb.label">
+  <div class="lb-top wrap"><span class="sr" id="lb-n"></span><button class="circle" id="lb-x" aria-label="დახურვა" data-i18n-attr="aria-label:lb.close"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button></div>
   <div class="lb-stage wrap" id="lb-stage"><img id="lb-img" alt=""></div>
   <div class="lb-bot wrap">
     <div><small id="lb-c"></small><b id="lb-t"></b></div>
     <div class="lb-nav">
-      <button class="circle" id="lb-prev" aria-label="Previous photograph"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H2M7 3L2 8l5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
-      <button class="circle" id="lb-next" aria-label="Next photograph"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+      <button class="circle" id="lb-prev" aria-label="წინა ფოტო" data-i18n-attr="aria-label:lb.prev"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M14 8H2M7 3L2 8l5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
+      <button class="circle" id="lb-next" aria-label="შემდეგი ფოტო" data-i18n-attr="aria-label:lb.next"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></button>
     </div>
   </div>
 </dialog>
 
+<!-- Every word on the page in Georgian (the language the page ships in), English and Russian. Edit a line here to change the text;
+     "{name}"-style placeholders are filled in by the script. -->
+<script type="application/json" id="i18n">
+{
+  "meta.title": {"ka": "იოსებ ციქარიძის სტუდია · საქორწილო და პორტრეტული ფოტოგრაფია, თბილისი", "en": "Ioseb Tsikaridze Studio · Wedding & Portrait Photography, Tbilisi", "ru": "Студия Иосеба Цикаридзе · Свадебная и портретная фотосъёмка, Тбилиси"},
+  "meta.desc": {"ka": "საქორწილო, საოჯახო და მხატვრული პორტრეტული ფოტოგრაფია თბილისში. გადაღებები კახეთში, ბათუმში, ყაზბეგსა და მთელ საქართველოში.", "en": "Wedding, family and fine art portrait photography in Tbilisi, Georgia, travelling to Kakheti, Batumi, Kazbegi and beyond.", "ru": "Свадебная, семейная и художественная портретная съёмка в Тбилиси. Съёмки в Кахетии, Батуми, Казбеги и за их пределами."},
+  "skip": {"ka": "გადასვლა შინაარსზე", "en": "Skip to content", "ru": "Перейти к содержанию"},
+  "lang.label": {"ka": "ენა", "en": "Language", "ru": "Язык"},
+  "nav.home": {"ka": "იოსებ ციქარიძის სტუდია, თავში დაბრუნება", "en": "Ioseb Tsikaridze Studio, back to top", "ru": "Студия Иосеба Цикаридзе, наверх"},
+  "nav.primary": {"ka": "მთავარი მენიუ", "en": "Primary", "ru": "Основное меню"},
+  "nav.portfolio": {"ka": "პორტფოლიო", "en": "Portfolio", "ru": "Портфолио"},
+  "nav.approach": {"ka": "მიდგომა", "en": "Approach", "ru": "Подход"},
+  "nav.contact": {"ka": "კონტაქტი", "en": "Contact", "ru": "Контакты"},
+  "nav.enquire": {"ka": "დაკავშირება", "en": "Enquire", "ru": "Связаться"},
+  "nav.menu": {"ka": "მენიუ", "en": "Menu", "ru": "Меню"},
+  "nav.close": {"ka": "დახურვა", "en": "Close", "ru": "Закрыть"},
+  "menu.place": {"ka": "თბილისი, საქართველო", "en": "Tbilisi, Georgia", "ru": "Тбилиси, Грузия"},
+  "hero.l1": {"ka": "<em>უთქმელი</em> ემოცია", "en": "Capturing <em>Unspoken</em>", "ru": "<em>Невысказанные</em>"},
+  "hero.l2": {"ka": "და <em>მარადიული</em>", "en": "Emotion &amp;", "ru": "чувства и"},
+  "hero.l3": {"ka": "რომანტიკა.", "en": "<em>Timeless</em> Romance.", "ru": "<em>вечная</em> романтика."},
+  "hero.lede": {"ka": "საქორწილო და პორტრეტული ფოტოგრაფია მათთვის, ვინც ყველაფერს გულით განიცდის და პოზირება არ სურს.", "en": "Wedding and portrait photography for people who feel things deeply and would rather not pose through them.", "ru": "Свадебная и портретная съёмка для тех, кто чувствует глубоко и не хочет позировать."},
+  "hero.cta": {"ka": "დაჯავშნე თარიღი", "en": "Reserve your date", "ru": "Выбрать дату"},
+  "hero.work": {"ka": "ნამუშევრები", "en": "See the work", "ru": "Смотреть работы"},
+  "stack.region": {"ka": "რჩეული ფოტოები", "en": "Featured photographs", "ru": "Избранные фотографии"},
+  "stack.role": {"ka": "კარუსელი", "en": "carousel", "ru": "карусель"},
+  "stack.stage": {"ka": "რჩეული ფოტოები. ასარევად დააჭირეთ Enter-ს ან ისრებს.", "en": "Featured photographs. Press Enter or the arrow keys to shuffle.", "ru": "Избранные фотографии. Нажмите Enter или стрелки, чтобы перелистнуть."},
+  "stack.wedding": {"ka": "ქორწილი", "en": "Wedding", "ru": "Свадьба"},
+  "stack.children": {"ka": "ბავშვები", "en": "Children", "ru": "Дети"},
+  "stack.couples": {"ka": "წყვილები", "en": "Couples", "ru": "Пары"},
+  "stack.t1": {"ka": "პირველი მზერა", "en": "The first look", "ru": "Первый взгляд"},
+  "stack.t2": {"ka": "ზღაპარი მინდორში", "en": "A story in the field", "ru": "Сказка в поле"},
+  "stack.t3": {"ka": "ჩუმი ფიცი", "en": "Quiet vows", "ru": "Тихие клятвы"},
+  "stack.t4": {"ka": "ოქროს საათი", "en": "Golden hour", "ru": "Золотой час"},
+  "stack.no": {"ka": "№", "en": "No.", "ru": "№"},
+  "stack.live": {"ka": "ფოტო {n} / {total}: {title}", "en": "Photograph {n} of {total}: {title}", "ru": "Фото {n} из {total}: {title}"},
+  "badge.text": {"ka": "გადაღებული წყვილი და ოჯახი", "en": "couples and families photographed", "ru": "пар и семей в объективе"},
+  "badge.lens": {"ka": "85 მმ <b>/</b> f 1.4", "en": "85 mm <b>/</b> f 1.4", "ru": "85 мм <b>/</b> f 1.4"},
+  "hint.touch": {"ka": "შეეხეთ ან გადაფურცლეთ ფოტო", "en": "Tap or swipe the photograph", "ru": "Коснитесь или смахните фото"},
+  "hint.fine": {"ka": "დააჭირეთ ან გადაათრიეთ ფოტო", "en": "Click or drag the photograph", "ru": "Нажмите или перетащите фото"},
+  "strip.label": {"ka": "ქორწილები, ოჯახები და მხატვრული პორტრეტები თბილისში, კახეთში, ბათუმსა და ყაზბეგში. ხელით დამუშავებული გალერეები, მზად 14 დღეში.", "en": "Weddings, family and fine art portraits across Tbilisi, Kakheti, Batumi and Kazbegi. Hand-graded galleries, delivered in 14 days.", "ru": "Свадьбы, семьи и художественные портреты в Тбилиси, Кахетии, Батуми и Казбеги. Галереи с ручной цветокоррекцией — за 14 дней."},
+  "strip.weddings": {"ka": "ქორწილები", "en": "Weddings", "ru": "Свадьбы"},
+  "strip.tbilisi": {"ka": "თბილისი", "en": "Tbilisi", "ru": "Тбилиси"},
+  "strip.family": {"ka": "ოჯახი", "en": "Family", "ru": "Семья"},
+  "strip.kakheti": {"ka": "კახეთი", "en": "Kakheti", "ru": "Кахетия"},
+  "strip.portraits": {"ka": "მხატვრული პორტრეტები", "en": "Fine art portraits", "ru": "Художественные портреты"},
+  "strip.batumi": {"ka": "ბათუმი", "en": "Batumi", "ru": "Батуми"},
+  "strip.elopements": {"ka": "ქორწილები ორისთვის", "en": "Elopements", "ru": "Свадьбы для двоих"},
+  "strip.kazbegi": {"ka": "ყაზბეგი", "en": "Kazbegi", "ru": "Казбеги"},
+  "strip.graded": {"ka": "ხელით დამუშავებული ფერი", "en": "Hand-graded colour", "ru": "Ручная цветокоррекция"},
+  "strip.days": {"ka": "მზად 14 დღეში", "en": "Delivered in 14 days", "ru": "Готово за 14 дней"},
+  "approach.label": {"ka": "მიდგომა", "en": "Approach", "ru": "Подход"},
+  "approach.h": {"ka": "ცოცხალი <em>კადრები</em>", "en": "I photograph the seconds between the poses: <em>a breath before the vow,</em> a hand finding a hand.", "ru": "Я снимаю секунды между позами: <em>вдох перед клятвой,</em> руку, находящую руку."},
+  "approach.p": {"ka": "თბილისში ვცხოვრობ და ვიღებ კახეთში, ბათუმში, ყაზბეგსა და სხვაგანაც. ყოველ გალერეას ხელით ვამუშავებ თბილ, რბილ შუქში და 14 დღეში გადმოგცემთ.", "en": "Based in Tbilisi and travelling to Kakheti, Batumi, Kazbegi and beyond. Every gallery is graded by hand in warm, low light and delivered within 14 days.", "ru": "Живу в Тбилиси и снимаю в Кахетии, Батуми, Казбеги и далеко за их пределами. Каждую галерею обрабатываю вручную в тёплых, мягких тонах и передаю в течение 14 дней."},
+  "stat.years": {"ka": "წელი კამერასთან", "en": "Years behind the camera", "ru": "Лет за камерой"},
+  "stat.venues": {"ka": "ლოკაცია საქართველოში", "en": "Venues across Georgia", "ru": "Площадок по всей Грузии"},
+  "stat.days": {"ka": "დღე მზა გალერეამდე", "en": "Days to your finished gallery", "ru": "Дней до готовой галереи"},
+  "stat.rating": {"ka": "კლიენტების საშუალო შეფასება", "en": "Average client rating", "ru": "Средняя оценка клиентов"},
+  "pf.label": {"ka": "პორტფოლიო", "en": "Portfolio", "ru": "Портфолио"},
+  "pf.h": {"ka": "ისტორიები სინათლესა და ჩრდილში.", "en": "Stories told in light and shadow.", "ru": "Истории, рассказанные светом и тенью."},
+  "pf.p": {"ka": "ექვსი კოლექცია — პირველი მზერიდან პირველ ნაბიჯებამდე. აირჩიეთ ერთი ან ნახეთ ყველაფერი ერთად.", "en": "Six collections, from first looks to first steps. Choose one, or see everything at once.", "ru": "Шесть коллекций — от первого взгляда до первых шагов. Выберите одну или смотрите всё сразу."},
+  "pf.tabs": {"ka": "კოლექციის არჩევა", "en": "Filter by collection", "ru": "Фильтр по коллекциям"},
+  "pf.all": {"ka": "ყველა", "en": "All", "ru": "Все"},
+  "pf.view": {"ka": "კოლექციის ნახვა", "en": "View collection", "ru": "Смотреть коллекцию"},
+  "pf.seeAll": {"ka": "ყველა ნამუშევარი", "en": "See all work", "ru": "Все работы"},
+  "pf.more": {"ka": "მეტის ნახვა", "en": "See more", "ru": "Показать ещё"},
+  "pf.back": {"ka": "კოლექციებზე დაბრუნება", "en": "Back to the collections", "ru": "Назад к коллекциям"},
+  "pf.liveCollections": {"ka": "ნაჩვენებია კოლექციები", "en": "Showing the collections", "ru": "Показаны коллекции"},
+  "pf.live": {"ka": "ნაჩვენებია: {name}", "en": "Showing {name}", "ru": "Показано: {name}"},
+  "pf.allWork": {"ka": "ყველა ნამუშევარი", "en": "all work", "ru": "все работы"},
+  "pf.liveMore": {"ka": ". დანარჩენი — „მეტის ნახვა“.", "en": ". See more for the rest.", "ru": ". Остальное — по кнопке «Показать ещё»."},
+  "pf.collection": {"ka": "კოლექცია: {name}", "en": "{name} collection", "ru": "Коллекция: {name}"},
+  "pf.open": {"ka": "ფოტოს გახსნა: {title}", "en": "Open photograph: {title}", "ru": "Открыть фото: {title}"},
+  "moments.label": {"ka": "დეტალებში", "en": "In the details", "ru": "В деталях"},
+  "moments.p": {"ka": "პატარა წამები, მთელი ცხოვრებისთვის.", "en": "Small moments, kept for a lifetime.", "ru": "Маленькие мгновения — на всю жизнь."},
+  "contact.label": {"ka": "კონტაქტი", "en": "Contact", "ru": "Контакты"},
+  "contact.h": {"ka": "მზად ხართ შექმნათ რაღაც მარადიული?", "en": "Ready to create something timeless?", "ru": "Готовы создать что-то вечное?"},
+  "contact.cta": {"ka": "მოგვწერეთ WhatsApp-ზე", "en": "Message Ioseb on WhatsApp", "ru": "Написать Иосебу в WhatsApp"},
+  "contact.note": {"ka": "თბილისი · გადაღებები მთელ საქართველოში და მის ფარგლებს გარეთ", "en": "Based in Tbilisi · travelling across Georgia and beyond", "ru": "Тбилиси · съёмки по всей Грузии и за её пределами"},
+  "contact.wa": {"ka": "გამარჯობა, იოსებ! მინდა გავიგო, თავისუფალი ხართ თუ არა ჩემს თარიღზე.", "en": "Hello Ioseb, I'd like to ask about your availability.", "ru": "Здравствуйте, Иосеб! Хочу узнать, свободны ли вы на мою дату."},
+  "foot.label": {"ka": "ქვედა მენიუ", "en": "Footer", "ru": "Нижнее меню"},
+  "foot.copy": {"ka": "© 2026 იოსებ ციქარიძის სტუდია, თბილისი", "en": "© 2026 Ioseb Tsikaridze Studio, Tbilisi", "ru": "© 2026 Студия Иосеба Цикаридзе, Тбилиси"},
+  "lb.label": {"ka": "ფოტოს დათვალიერება", "en": "Photograph viewer", "ru": "Просмотр фотографии"},
+  "lb.close": {"ka": "დახურვა", "en": "Close", "ru": "Закрыть"},
+  "lb.prev": {"ka": "წინა ფოტო", "en": "Previous photograph", "ru": "Предыдущее фото"},
+  "lb.next": {"ka": "შემდეგი ფოტო", "en": "Next photograph", "ru": "Следующее фото"},
+  "lb.count": {"ka": "{n} / {total}", "en": "{n} of {total}", "ru": "{n} из {total}"}
+}
+</script>
 <!-- Portfolio content: six collections, and every photograph belongs to one of them.
+     Collection labels and photo titles come in Georgian, English and Russian ({"ka", "en", "ru"}); a plain string also works.
      Add, remove or reorder photographs here (newest first); each collection's card uses the photo marked "cover".
      To run it from a backend, serve this same JSON from an API and swap loadPortfolio() in the script below. -->
 <script type="application/json" id="portfolio-data">
 {
   "categories": [
-    {"id": "couples", "label": "Couples"},
-    {"id": "weddings", "label": "Weddings"},
-    {"id": "family", "label": "Family"},
-    {"id": "children", "label": "Children"},
-    {"id": "graduation", "label": "Graduation"},
-    {"id": "portrait", "label": "Portrait"}
+    {"id": "couples", "label": {"ka": "წყვილები", "en": "Couples", "ru": "Пары"}},
+    {"id": "weddings", "label": {"ka": "ქორწილები", "en": "Weddings", "ru": "Свадьбы"}},
+    {"id": "family", "label": {"ka": "ოჯახი", "en": "Family", "ru": "Семья"}},
+    {"id": "children", "label": {"ka": "ბავშვები", "en": "Children", "ru": "Дети"}},
+    {"id": "graduation", "label": {"ka": "გამოსაშვები", "en": "Graduation", "ru": "Выпускной"}},
+    {"id": "portrait", "label": {"ka": "პორტრეტი", "en": "Portrait", "ru": "Портрет"}}
   ],
   "photos": [
-    {"id": "wed-botanical", "category": "weddings", "title": "Botanical romance", "src": "https://images.unsplash.com/photo-1591604466107-ec97de577aff", "alt": "Bride and groom by the water holding a bouquet", "cover": true},
-    {"id": "cou-forehead", "category": "couples", "title": "Forehead to forehead", "src": "https://images.unsplash.com/photo-1614929511547-974944a54c92", "alt": "A couple leaning forehead to forehead in low golden sun", "cover": true},
-    {"id": "chi-grass", "category": "children", "title": "Taller than the grass", "src": "https://images.unsplash.com/photo-1782225203956-fe5b37d83359", "alt": "A little girl exploring tall golden grass", "cover": true},
-    {"id": "gra-light", "category": "graduation", "title": "Into the light", "src": "https://images.unsplash.com/photo-1655141011386-1eaaa28aef6a", "alt": "A graduate in cap and gown lit from behind by the setting sun", "cover": true},
-    {"id": "fam-bloom", "category": "family", "title": "Family in bloom", "src": "https://images.unsplash.com/photo-1609220136736-443140cffec6", "alt": "A father carrying his two young sons, all smiling", "cover": true},
-    {"id": "por-late", "category": "portrait", "title": "Late light", "src": "https://images.unsplash.com/photo-1519744434498-a0de604df9db", "alt": "A woman with windswept hair turning toward warm late light", "cover": true},
-    {"id": "wed-dusk", "category": "weddings", "title": "Vows at dusk", "src": "https://images.unsplash.com/photo-1460978812857-470ed1c77af0", "alt": "Black and white portrait of a bride and groom about to kiss beneath her veil"},
-    {"id": "cou-golden", "category": "couples", "title": "Golden hour", "src": "https://images.unsplash.com/photo-1494774157365-9e04c6720e47", "alt": "A couple silhouetted against a sunset sky"},
-    {"id": "chi-pigtails", "category": "children", "title": "Pigtails and giggles", "src": "https://images.unsplash.com/photo-1774410252747-80eecdb3fe21", "alt": "A little girl with pigtails laughing"},
-    {"id": "gra-caps", "category": "graduation", "title": "Caps in the air", "src": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f", "alt": "Graduates throwing their caps against an evening sky"},
-    {"id": "fam-salt", "category": "family", "title": "Salt and sunlight", "src": "https://images.unsplash.com/photo-1531983412531-1f49a365ffed", "alt": "A mother and her little boy laughing by the sea"},
-    {"id": "por-shadow", "category": "portrait", "title": "In shadow", "src": "https://images.unsplash.com/photo-1614010966237-74489a16848b", "alt": "A man in a black shirt against a dark studio background"},
-    {"id": "wed-petals", "category": "weddings", "title": "Petals and applause", "src": "https://images.unsplash.com/photo-1583939003579-730e3918a45a", "alt": "Guests throwing petals as the newlyweds kiss"},
-    {"id": "cou-field", "category": "couples", "title": "Held close", "src": "https://images.unsplash.com/photo-1726766406089-0308c800b6b2", "alt": "A couple embracing in a field of dry grass"},
-    {"id": "chi-bubbles", "category": "children", "title": "Chasing bubbles", "src": "https://images.unsplash.com/photo-1680562152683-2327331f4763", "alt": "A toddler reaching for soap bubbles in a sunlit garden"},
-    {"id": "gra-class", "category": "graduation", "title": "Graduation day", "src": "https://images.unsplash.com/photo-1623945194105-cd36c4433390", "alt": "A smiling graduate with curly hair in her cap and gown"},
-    {"id": "fam-sunset", "category": "family", "title": "Everyone, at sunset", "src": "https://images.unsplash.com/photo-1511895426328-dc8714191300", "alt": "A large family standing together on the beach at sunset"},
-    {"id": "por-freckles", "category": "portrait", "title": "Freckles", "src": "https://images.unsplash.com/photo-1674932668403-33398b81c92f", "alt": "Close portrait of a young woman with freckles"},
-    {"id": "wed-sand", "category": "weddings", "title": "Black sand, white lace", "src": "https://images.unsplash.com/photo-1544078751-58fee2d8a03b", "alt": "A couple on a black sand beach beneath sea stacks"},
-    {"id": "cou-piggyback", "category": "couples", "title": "Piggyback laughter", "src": "https://images.unsplash.com/photo-1501901609772-df0848060b33", "alt": "A laughing woman riding piggyback on her partner"},
-    {"id": "chi-fence", "category": "children", "title": "Over the fence", "src": "https://images.unsplash.com/photo-1763681869795-4b60ae4dd374", "alt": "A happy girl leaning on a wooden fence at golden hour"},
-    {"id": "gra-park", "category": "graduation", "title": "Gown and green", "src": "https://images.unsplash.com/photo-1603764377193-75b991876878", "alt": "A graduate in his gown smiling in a green park"},
-    {"id": "fam-upside", "category": "family", "title": "Upside-down afternoon", "src": "https://images.unsplash.com/photo-1782225203933-1b591fd703d9", "alt": "A mother holding her laughing daughter upside down in golden light"},
-    {"id": "por-mono", "category": "portrait", "title": "Monochrome", "src": "https://images.unsplash.com/photo-1450133064473-71024230f91b", "alt": "Black and white portrait of a man in a dark shirt"},
-    {"id": "wed-light", "category": "weddings", "title": "Held in the light", "src": "https://images.unsplash.com/photo-1519741497674-611481863552", "alt": "A bride's bouquet catching warm window light"},
-    {"id": "cou-evening", "category": "couples", "title": "Evening light", "src": "https://images.unsplash.com/photo-1621621667797-e06afc217fb0", "alt": "A couple smiling at each other in warm evening light"},
-    {"id": "chi-toes", "category": "children", "title": "Ten tiny toes", "src": "https://images.unsplash.com/photo-1555252333-9f8e92e65df9", "alt": "A newborn's feet wrapped in a white blanket"},
-    {"id": "gra-columns", "category": "graduation", "title": "Between the columns", "src": "https://images.unsplash.com/photo-1623461487986-9400110de28e", "alt": "A graduate raising her cap between tall stone columns"},
-    {"id": "fam-three", "category": "family", "title": "The three of us", "src": "https://images.unsplash.com/photo-1685580388390-576100ae9ce3", "alt": "Laughing parents hugging their toddler"},
-    {"id": "por-black", "category": "portrait", "title": "Quiet, in black", "src": "https://images.unsplash.com/photo-1634510979979-4be6881d31bb", "alt": "A woman in a black top against a dark background"},
-    {"id": "wed-first", "category": "weddings", "title": "The first look", "src": "https://images.unsplash.com/photo-1537633552985-df8429e8048b", "alt": "Bride and groom on a windswept beach, her veil lifting"},
-    {"id": "cou-summer", "category": "couples", "title": "Summer dress", "src": "https://images.unsplash.com/photo-1601912710726-651d444f27f1", "alt": "A man kissing a woman in a floral dress in a sunlit field"},
-    {"id": "chi-siblings", "category": "children", "title": "Two in the tall grass", "src": "https://images.unsplash.com/photo-1665634468733-d2c6dd5f8668", "alt": "A boy and a girl walking through tall grass"},
-    {"id": "gra-smile", "category": "graduation", "title": "Well earned", "src": "https://images.unsplash.com/photo-1618355776464-8666794d2520", "alt": "A smiling graduate in a dark green gown"},
-    {"id": "fam-kiss", "category": "family", "title": "A kiss for her", "src": "https://images.unsplash.com/photo-1609843346269-bfea6fd426c7", "alt": "A mother kissing the baby girl in her arms"},
-    {"id": "por-short", "category": "portrait", "title": "Soft and short", "src": "https://images.unsplash.com/photo-1506863530036-1efeddceb993", "alt": "Black and white portrait of a woman with short hair"},
-    {"id": "wed-veil", "category": "weddings", "title": "Quiet vows", "src": "https://images.unsplash.com/photo-1546032996-6dfacbacbf3f", "alt": "A couple embracing under a veil in a golden field"},
-    {"id": "cou-shore", "category": "couples", "title": "Laughing by the shore", "src": "https://images.unsplash.com/photo-1627964464837-6328f5931576", "alt": "A couple laughing while embracing on a sandy beach"},
-    {"id": "chi-three", "category": "children", "title": "Three in a field", "src": "https://images.unsplash.com/photo-1647627611823-d08fa901678e", "alt": "Three children sitting together in a field of tall grass"},
-    {"id": "gra-pair", "category": "graduation", "title": "Side by side", "src": "https://images.unsplash.com/photo-1594750852563-5ed8e0421d40", "alt": "Two graduates in gowns standing together"},
-    {"id": "fam-air", "category": "family", "title": "Up in the air", "src": "https://images.unsplash.com/photo-1758962037061-65840f65774d", "alt": "A father throwing his child into the air as the mother watches"},
-    {"id": "por-coat", "category": "portrait", "title": "The wool coat", "src": "https://images.unsplash.com/photo-1517462964-21fdcec3f25b", "alt": "Portrait of a woman in a grey and brown coat"},
-    {"id": "wed-hill", "category": "weddings", "title": "On the hillside", "src": "https://images.unsplash.com/photo-1604017011826-d3b4c23f8914", "alt": "Newlyweds on a hillside at sunset"},
-    {"id": "cou-rock", "category": "couples", "title": "Weekend away", "src": "https://images.unsplash.com/photo-1672184702625-71ddc099768e", "alt": "A couple sitting close together on a rock in the forest"},
-    {"id": "chi-camera", "category": "children", "title": "Little photographer", "src": "https://images.unsplash.com/photo-1516627145497-ae6968895b74", "alt": "A toddler peering through a toy camera"},
-    {"id": "gra-throw", "category": "graduation", "title": "Four friends, four caps", "src": "https://images.unsplash.com/photo-1570897234456-a6d0a709574f", "alt": "Four graduates throwing their caps in the air"},
-    {"id": "fam-hug", "category": "family", "title": "Golden hug", "src": "https://images.unsplash.com/photo-1708592508668-3f8f67068479", "alt": "A mother holding her baby in a backlit field"},
-    {"id": "por-wind", "category": "portrait", "title": "In the wind", "src": "https://images.unsplash.com/photo-1710188091078-e1d92210b9fc", "alt": "A woman with her eyes closed and her hair blowing in the wind"},
-    {"id": "wed-bouquet", "category": "weddings", "title": "The bouquet", "src": "https://images.unsplash.com/photo-1529636798458-92182e662485", "alt": "A bride holding her bouquet out at arm's length"},
-    {"id": "cou-open", "category": "couples", "title": "Open country", "src": "https://images.unsplash.com/photo-1748628727234-90a141445150", "alt": "A couple embracing in an open field beneath the hills"},
-    {"id": "chi-umbrella", "category": "children", "title": "Umbrella at sunset", "src": "https://images.unsplash.com/photo-1762283134692-32326685d24a", "alt": "A child's silhouette holding a clear umbrella at sunset"},
-    {"id": "gra-tassel", "category": "graduation", "title": "The tassel", "src": "https://images.unsplash.com/photo-1616701318247-e87eb43e79e3", "alt": "A smiling graduate in her cap with a red tassel"},
-    {"id": "fam-sea", "category": "family", "title": "Silhouettes at sea", "src": "https://images.unsplash.com/photo-1576696058573-12b47c49559e", "alt": "A mother and her children silhouetted on the shore at sunset"},
-    {"id": "por-copper", "category": "portrait", "title": "Copper", "src": "https://images.unsplash.com/photo-1721956514577-f6c15d73e585", "alt": "A woman with short copper hair against a teal wall"}
+    {"id": "wed-botanical", "category": "weddings", "title": {"ka": "ბოტანიკური რომანტიკა", "en": "Botanical romance", "ru": "Ботаническая романтика"}, "src": "https://images.unsplash.com/photo-1591604466107-ec97de577aff", "alt": "Bride and groom by the water holding a bouquet", "cover": true},
+    {"id": "cou-forehead", "category": "couples", "title": {"ka": "შუბლით შუბლზე", "en": "Forehead to forehead", "ru": "Лоб ко лбу"}, "src": "https://images.unsplash.com/photo-1614929511547-974944a54c92", "alt": "A couple leaning forehead to forehead in low golden sun", "cover": true},
+    {"id": "chi-grass", "category": "children", "title": {"ka": "ბალახზე მაღალი", "en": "Taller than the grass", "ru": "Выше травы"}, "src": "https://images.unsplash.com/photo-1782225203956-fe5b37d83359", "alt": "A little girl exploring tall golden grass", "cover": true},
+    {"id": "gra-light", "category": "graduation", "title": {"ka": "სინათლისკენ", "en": "Into the light", "ru": "Навстречу свету"}, "src": "https://images.unsplash.com/photo-1655141011386-1eaaa28aef6a", "alt": "A graduate in cap and gown lit from behind by the setting sun", "cover": true},
+    {"id": "fam-bloom", "category": "family", "title": {"ka": "აყვავებული ოჯახი", "en": "Family in bloom", "ru": "Семья в цвету"}, "src": "https://images.unsplash.com/photo-1609220136736-443140cffec6", "alt": "A father carrying his two young sons, all smiling", "cover": true},
+    {"id": "por-late", "category": "portrait", "title": {"ka": "გვიანი შუქი", "en": "Late light", "ru": "Поздний свет"}, "src": "https://images.unsplash.com/photo-1519744434498-a0de604df9db", "alt": "A woman with windswept hair turning toward warm late light", "cover": true},
+    {"id": "wed-dusk", "category": "weddings", "title": {"ka": "ფიცი დაისზე", "en": "Vows at dusk", "ru": "Клятвы в сумерках"}, "src": "https://images.unsplash.com/photo-1460978812857-470ed1c77af0", "alt": "Black and white portrait of a bride and groom about to kiss beneath her veil"},
+    {"id": "cou-golden", "category": "couples", "title": {"ka": "ოქროს საათი", "en": "Golden hour", "ru": "Золотой час"}, "src": "https://images.unsplash.com/photo-1494774157365-9e04c6720e47", "alt": "A couple silhouetted against a sunset sky"},
+    {"id": "chi-pigtails", "category": "children", "title": {"ka": "ნაწნავები და სიცილი", "en": "Pigtails and giggles", "ru": "Косички и смех"}, "src": "https://images.unsplash.com/photo-1774410252747-80eecdb3fe21", "alt": "A little girl with pigtails laughing"},
+    {"id": "gra-caps", "category": "graduation", "title": {"ka": "ქუდები ჰაერში", "en": "Caps in the air", "ru": "Шапочки в небо"}, "src": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f", "alt": "Graduates throwing their caps against an evening sky"},
+    {"id": "fam-salt", "category": "family", "title": {"ka": "ზღვა და მზე", "en": "Salt and sunlight", "ru": "Соль и солнце"}, "src": "https://images.unsplash.com/photo-1531983412531-1f49a365ffed", "alt": "A mother and her little boy laughing by the sea"},
+    {"id": "por-shadow", "category": "portrait", "title": {"ka": "ჩრდილში", "en": "In shadow", "ru": "В тени"}, "src": "https://images.unsplash.com/photo-1614010966237-74489a16848b", "alt": "A man in a black shirt against a dark studio background"},
+    {"id": "wed-petals", "category": "weddings", "title": {"ka": "ფურცლები და ტაში", "en": "Petals and applause", "ru": "Лепестки и аплодисменты"}, "src": "https://images.unsplash.com/photo-1583939003579-730e3918a45a", "alt": "Guests throwing petals as the newlyweds kiss"},
+    {"id": "cou-field", "category": "couples", "title": {"ka": "ახლოს", "en": "Held close", "ru": "Близко-близко"}, "src": "https://images.unsplash.com/photo-1726766406089-0308c800b6b2", "alt": "A couple embracing in a field of dry grass"},
+    {"id": "chi-bubbles", "category": "children", "title": {"ka": "ბუშტების დევნა", "en": "Chasing bubbles", "ru": "В погоне за пузырями"}, "src": "https://images.unsplash.com/photo-1680562152683-2327331f4763", "alt": "A toddler reaching for soap bubbles in a sunlit garden"},
+    {"id": "gra-class", "category": "graduation", "title": {"ka": "გამოსაშვები დღე", "en": "Graduation day", "ru": "День выпуска"}, "src": "https://images.unsplash.com/photo-1623945194105-cd36c4433390", "alt": "A smiling graduate with curly hair in her cap and gown"},
+    {"id": "fam-sunset", "category": "family", "title": {"ka": "ყველა ერთად, დაისზე", "en": "Everyone, at sunset", "ru": "Все вместе на закате"}, "src": "https://images.unsplash.com/photo-1511895426328-dc8714191300", "alt": "A large family standing together on the beach at sunset"},
+    {"id": "por-freckles", "category": "portrait", "title": {"ka": "ჭორფლი", "en": "Freckles", "ru": "Веснушки"}, "src": "https://images.unsplash.com/photo-1674932668403-33398b81c92f", "alt": "Close portrait of a young woman with freckles"},
+    {"id": "wed-sand", "category": "weddings", "title": {"ka": "შავი ქვიშა, თეთრი მაქმანი", "en": "Black sand, white lace", "ru": "Чёрный песок, белое кружево"}, "src": "https://images.unsplash.com/photo-1544078751-58fee2d8a03b", "alt": "A couple on a black sand beach beneath sea stacks"},
+    {"id": "cou-piggyback", "category": "couples", "title": {"ka": "ზურგზე, სიცილით", "en": "Piggyback laughter", "ru": "На спине и со смехом"}, "src": "https://images.unsplash.com/photo-1501901609772-df0848060b33", "alt": "A laughing woman riding piggyback on her partner"},
+    {"id": "chi-fence", "category": "children", "title": {"ka": "ღობესთან", "en": "Over the fence", "ru": "У забора"}, "src": "https://images.unsplash.com/photo-1763681869795-4b60ae4dd374", "alt": "A happy girl leaning on a wooden fence at golden hour"},
+    {"id": "gra-park", "category": "graduation", "title": {"ka": "მანტია და სიმწვანე", "en": "Gown and green", "ru": "Мантия и зелень"}, "src": "https://images.unsplash.com/photo-1603764377193-75b991876878", "alt": "A graduate in his gown smiling in a green park"},
+    {"id": "fam-upside", "category": "family", "title": {"ka": "თავდაყირა შუადღე", "en": "Upside-down afternoon", "ru": "День вверх тормашками"}, "src": "https://images.unsplash.com/photo-1782225203933-1b591fd703d9", "alt": "A mother holding her laughing daughter upside down in golden light"},
+    {"id": "por-mono", "category": "portrait", "title": {"ka": "მონოქრომი", "en": "Monochrome", "ru": "Монохром"}, "src": "https://images.unsplash.com/photo-1450133064473-71024230f91b", "alt": "Black and white portrait of a man in a dark shirt"},
+    {"id": "wed-light", "category": "weddings", "title": {"ka": "სინათლეში", "en": "Held in the light", "ru": "В лучах света"}, "src": "https://images.unsplash.com/photo-1519741497674-611481863552", "alt": "A bride's bouquet catching warm window light"},
+    {"id": "cou-evening", "category": "couples", "title": {"ka": "საღამოს შუქი", "en": "Evening light", "ru": "Вечерний свет"}, "src": "https://images.unsplash.com/photo-1621621667797-e06afc217fb0", "alt": "A couple smiling at each other in warm evening light"},
+    {"id": "chi-reading", "category": "children", "title": {"ka": "ზღაპარი მინდორში", "en": "A story in the field", "ru": "Сказка в поле"}, "src": "https://images.unsplash.com/photo-1476234251651-f353703a034d", "alt": "Two sisters reading a book together in a sunlit field"},
+    {"id": "gra-columns", "category": "graduation", "title": {"ka": "სვეტებს შორის", "en": "Between the columns", "ru": "Между колонн"}, "src": "https://images.unsplash.com/photo-1623461487986-9400110de28e", "alt": "A graduate raising her cap between tall stone columns"},
+    {"id": "fam-three", "category": "family", "title": {"ka": "ჩვენ სამნი", "en": "The three of us", "ru": "Мы втроём"}, "src": "https://images.unsplash.com/photo-1685580388390-576100ae9ce3", "alt": "Laughing parents hugging their toddler"},
+    {"id": "por-black", "category": "portrait", "title": {"ka": "მშვიდად, შავში", "en": "Quiet, in black", "ru": "Тихо, в чёрном"}, "src": "https://images.unsplash.com/photo-1634510979979-4be6881d31bb", "alt": "A woman in a black top against a dark background"},
+    {"id": "wed-first", "category": "weddings", "title": {"ka": "პირველი მზერა", "en": "The first look", "ru": "Первый взгляд"}, "src": "https://images.unsplash.com/photo-1537633552985-df8429e8048b", "alt": "Bride and groom on a windswept beach, her veil lifting"},
+    {"id": "cou-summer", "category": "couples", "title": {"ka": "ზაფხულის კაბა", "en": "Summer dress", "ru": "Летнее платье"}, "src": "https://images.unsplash.com/photo-1601912710726-651d444f27f1", "alt": "A man kissing a woman in a floral dress in a sunlit field"},
+    {"id": "chi-siblings", "category": "children", "title": {"ka": "ორნი მაღალ ბალახში", "en": "Two in the tall grass", "ru": "Двое в высокой траве"}, "src": "https://images.unsplash.com/photo-1665634468733-d2c6dd5f8668", "alt": "A boy and a girl walking through tall grass"},
+    {"id": "gra-smile", "category": "graduation", "title": {"ka": "დამსახურებული", "en": "Well earned", "ru": "Заслуженно"}, "src": "https://images.unsplash.com/photo-1618355776464-8666794d2520", "alt": "A smiling graduate in a dark green gown"},
+    {"id": "fam-kiss", "category": "family", "title": {"ka": "კოცნა მისთვის", "en": "A kiss for her", "ru": "Поцелуй для неё"}, "src": "https://images.unsplash.com/photo-1609843346269-bfea6fd426c7", "alt": "A mother kissing the baby girl in her arms"},
+    {"id": "por-short", "category": "portrait", "title": {"ka": "მოკლე თმა, რბილი შუქი", "en": "Soft and short", "ru": "Короткая стрижка, мягкий свет"}, "src": "https://images.unsplash.com/photo-1506863530036-1efeddceb993", "alt": "Black and white portrait of a woman with short hair"},
+    {"id": "wed-veil", "category": "weddings", "title": {"ka": "ჩუმი ფიცი", "en": "Quiet vows", "ru": "Тихие клятвы"}, "src": "https://images.unsplash.com/photo-1546032996-6dfacbacbf3f", "alt": "A couple embracing under a veil in a golden field"},
+    {"id": "cou-shore", "category": "couples", "title": {"ka": "სიცილი ნაპირზე", "en": "Laughing by the shore", "ru": "Смех у берега"}, "src": "https://images.unsplash.com/photo-1627964464837-6328f5931576", "alt": "A couple laughing while embracing on a sandy beach"},
+    {"id": "chi-three", "category": "children", "title": {"ka": "სამნი მინდორში", "en": "Three in a field", "ru": "Трое в поле"}, "src": "https://images.unsplash.com/photo-1647627611823-d08fa901678e", "alt": "Three children sitting together in a field of tall grass"},
+    {"id": "gra-pair", "category": "graduation", "title": {"ka": "გვერდიგვერდ", "en": "Side by side", "ru": "Бок о бок"}, "src": "https://images.unsplash.com/photo-1594750852563-5ed8e0421d40", "alt": "Two graduates in gowns standing together"},
+    {"id": "fam-air", "category": "family", "title": {"ka": "ჰაერში", "en": "Up in the air", "ru": "Высоко в воздухе"}, "src": "https://images.unsplash.com/photo-1758962037061-65840f65774d", "alt": "A father throwing his child into the air as the mother watches"},
+    {"id": "por-coat", "category": "portrait", "title": {"ka": "შალის პალტო", "en": "The wool coat", "ru": "Шерстяное пальто"}, "src": "https://images.unsplash.com/photo-1517462964-21fdcec3f25b", "alt": "Portrait of a woman in a grey and brown coat"},
+    {"id": "wed-hill", "category": "weddings", "title": {"ka": "ბორცვზე", "en": "On the hillside", "ru": "На склоне холма"}, "src": "https://images.unsplash.com/photo-1604017011826-d3b4c23f8914", "alt": "Newlyweds on a hillside at sunset"},
+    {"id": "cou-rock", "category": "couples", "title": {"ka": "შაბათ-კვირა ქალაქგარეთ", "en": "Weekend away", "ru": "Выходные за городом"}, "src": "https://images.unsplash.com/photo-1672184702625-71ddc099768e", "alt": "A couple sitting close together on a rock in the forest"},
+    {"id": "chi-camera", "category": "children", "title": {"ka": "პატარა ფოტოგრაფი", "en": "Little photographer", "ru": "Маленький фотограф"}, "src": "https://images.unsplash.com/photo-1516627145497-ae6968895b74", "alt": "A toddler peering through a toy camera"},
+    {"id": "gra-throw", "category": "graduation", "title": {"ka": "ოთხი მეგობარი, ოთხი ქუდი", "en": "Four friends, four caps", "ru": "Четыре друга, четыре шапочки"}, "src": "https://images.unsplash.com/photo-1570897234456-a6d0a709574f", "alt": "Four graduates throwing their caps in the air"},
+    {"id": "fam-hug", "category": "family", "title": {"ka": "ოქროსფერი ჩახუტება", "en": "Golden hug", "ru": "Золотые объятия"}, "src": "https://images.unsplash.com/photo-1708592508668-3f8f67068479", "alt": "A mother holding her baby in a backlit field"},
+    {"id": "por-wind", "category": "portrait", "title": {"ka": "ქარში", "en": "In the wind", "ru": "На ветру"}, "src": "https://images.unsplash.com/photo-1710188091078-e1d92210b9fc", "alt": "A woman with her eyes closed and her hair blowing in the wind"},
+    {"id": "wed-bouquet", "category": "weddings", "title": {"ka": "თაიგული", "en": "The bouquet", "ru": "Букет"}, "src": "https://images.unsplash.com/photo-1529636798458-92182e662485", "alt": "A bride holding her bouquet out at arm's length"},
+    {"id": "cou-open", "category": "couples", "title": {"ka": "ღია ველი", "en": "Open country", "ru": "Бескрайние просторы"}, "src": "https://images.unsplash.com/photo-1748628727234-90a141445150", "alt": "A couple embracing in an open field beneath the hills"},
+    {"id": "chi-umbrella", "category": "children", "title": {"ka": "ქოლგა დაისზე", "en": "Umbrella at sunset", "ru": "Зонтик на закате"}, "src": "https://images.unsplash.com/photo-1762283134692-32326685d24a", "alt": "A child's silhouette holding a clear umbrella at sunset"},
+    {"id": "gra-tassel", "category": "graduation", "title": {"ka": "ფოჩი", "en": "The tassel", "ru": "Кисточка"}, "src": "https://images.unsplash.com/photo-1616701318247-e87eb43e79e3", "alt": "A smiling graduate in her cap with a red tassel"},
+    {"id": "fam-sea", "category": "family", "title": {"ka": "სილუეტები ზღვასთან", "en": "Silhouettes at sea", "ru": "Силуэты у моря"}, "src": "https://images.unsplash.com/photo-1576696058573-12b47c49559e", "alt": "A mother and her children silhouetted on the shore at sunset"},
+    {"id": "por-copper", "category": "portrait", "title": {"ka": "სპილენძისფერი", "en": "Copper", "ru": "Медь"}, "src": "https://images.unsplash.com/photo-1721956514577-f6c15d73e585", "alt": "A woman with short copper hair against a teal wall"}
   ]
 }
+</script>
+<script>
+/* ── languages: Georgian (what the page ships in), English, Russian ──
+   Elements carry their words by key: data-i18n (text), data-i18n-html (text with <em>/<b>), data-i18n-attr="aria-label:key;…".
+   Switching swaps them all in place, remembers the choice, and tells the rest of the page with a "langchange" event. */
+(() => {
+  'use strict';
+  const root = document.documentElement, dict = JSON.parse(document.getElementById('i18n').textContent);
+  const LANGS = { ka: { name: 'ქართული', code: 'GE', locale: 'ka-GE' }, en: { name: 'English', code: 'EN', locale: 'en-GB' }, ru: { name: 'Русский', code: 'RU', locale: 'ru-RU' } };
+  let lang = LANGS[root.lang] ? root.lang : 'ka';
+  // a translated value is either a plain string or {ka, en, ru}
+  const pick = v => v && typeof v === 'object' ? (v[lang] != null ? v[lang] : v.en != null ? v.en : Object.values(v)[0]) : v;
+  const t = (key, vars) => {
+    let s = dict[key] ? pick(dict[key]) : key;
+    return vars ? s.replace(/\{(\w+)\}/g, (m, v) => (v in vars ? vars[v] : m)) : s;
+  };
+  const $$ = s => document.querySelectorAll(s);
+  function apply() {
+    $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
+    $$('[data-i18n-html]').forEach(el => { el.innerHTML = t(el.dataset.i18nHtml); });
+    $$('[data-i18n-attr]').forEach(el => el.dataset.i18nAttr.split(';').forEach(pair => {
+      const [attr, key] = pair.split(':');
+      el.setAttribute(attr.trim(), t(key.trim()));
+    }));
+    document.title = t('meta.title');
+    document.querySelector('meta[name="description"]').content = t('meta.desc');
+    $$('[data-lang-code]').forEach(el => { el.textContent = LANGS[lang].code; });
+    $$('.lang-btn').forEach(b => b.setAttribute('aria-label', t('lang.label') + ': ' + LANGS[lang].name));
+    $$('button[data-lang]').forEach(b => {
+      const on = b.dataset.lang === lang;
+      if (b.closest('.lang-list')) on ? b.setAttribute('aria-current', 'true') : b.removeAttribute('aria-current');
+      else b.setAttribute('aria-pressed', on);
+    });
+  }
+  function set(l) {
+    if (!LANGS[l] || l === lang) return;
+    lang = l;
+    root.lang = l;
+    try { localStorage.setItem('lang', l); } catch (e) {}
+    apply();
+    dispatchEvent(new CustomEvent('langchange', { detail: l }));
+  }
+
+  // the picker in the bar opens a short list; the menu on phones has the three as buttons
+  $$('[data-lang-picker]').forEach(box => {
+    const btn = box.querySelector('.lang-btn'), list = box.querySelector('.lang-list');
+    const shut = focus => { if (list.hidden) return; list.hidden = true; btn.setAttribute('aria-expanded', 'false'); if (focus) btn.focus(); };
+    btn.addEventListener('click', () => {
+      const opening = list.hidden;
+      list.hidden = !opening;
+      btn.setAttribute('aria-expanded', opening);
+      if (opening) (list.querySelector('[aria-current]') || list.querySelector('button')).focus({ preventScroll: true });
+    });
+    document.addEventListener('click', e => { if (!box.contains(e.target)) shut(); });
+    box.addEventListener('keydown', e => {
+      if (e.key === 'Escape') shut(true);
+      if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !list.hidden) {
+        e.preventDefault();
+        const items = [...list.querySelectorAll('button')], i = items.indexOf(document.activeElement);
+        items[(i + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length].focus();
+      }
+    });
+    addEventListener('scroll', () => shut(), { passive: true });
+    list.addEventListener('click', e => { const b = e.target.closest('button[data-lang]'); if (b) { set(b.dataset.lang); shut(true); } });
+  });
+  $$('.menu-langs').forEach(g => g.addEventListener('click', e => { const b = e.target.closest('button[data-lang]'); if (b) set(b.dataset.lang); }));
+
+  window.I18N = { get lang() { return lang; }, get locale() { return LANGS[lang].locale; }, t, pick, set };
+  apply();
+  root.classList.remove('i18n-wait');
+})();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -637,6 +852,8 @@ const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+// the words in the current language (the inline script above sets I18N up); English stands in if it's somehow missing
+const T = window.I18N || { lang: 'en', locale: 'en-GB', t: k => k, pick: v => (v && typeof v === 'object' ? v.en : v) };
 const G = window.gsap && window.ScrollTrigger ? window.gsap : null;
 const motion = !!G && !reduce;
 root.classList.add('ready');
@@ -655,15 +872,17 @@ $$('img.fi').forEach(watchImg);
 
 // Replace with Ioseb's real number, international format, no plus sign
 const WA = '995000000000';
-const waHref = 'https://wa.me/' + WA + '?text=' + encodeURIComponent("Hello Ioseb, I'd like to ask about your availability.");
-$$('[data-wa]').forEach(a => { a.href = waHref; a.target = '_blank'; a.rel = 'noopener'; });
+// the opening message is written in the visitor's language
+const setWa = () => $$('[data-wa]').forEach(a => { a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(T.t('contact.wa')); a.target = '_blank'; a.rel = 'noopener'; });
+setWa();
+addEventListener('langchange', setWa);
 
 const ARROW = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4.5 11.5l7-7M5.5 4.5h6v6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>';
 const esc = v => String(v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 // Unsplash URLs (or your own, with a "{w}" placeholder) get responsive widths; anything else is used as given
 const resizable = src => src.includes('{w}') || src.startsWith('https://images.unsplash.com/');
 const imgURL = (src, w) => src.includes('{w}') ? src.replace('{w}', w) : resizable(src) ? src + (src.includes('?') ? '&' : '?') + 'auto=format&fit=crop&q=80&w=' + w : src;
-function imgTag(p, sizes, tall, alt = p.alt || '') {
+function imgTag(p, sizes, tall, alt = T.pick(p.alt) || '') {
   const set = resizable(p.src) ? ` srcset="${[400, 800, 1200].map(w => esc(imgURL(p.src, w)) + ' ' + w + 'w').join(', ')}" sizes="${sizes}"` : '';
   return `<img class="fi" src="${esc(imgURL(p.src, 800))}"${set} alt="${esc(alt)}" loading="lazy" decoding="async" draggable="false" width="800" height="${tall ? 1067 : 800}">`;
 }
@@ -827,17 +1046,43 @@ function setupHeroVideo() {
   return new Promise(ready => {
     const shown = () => ready(true);
     setTimeout(() => ready(false), 2000);
-    // the poster is the film's first frame, so a photograph is on screen straight away
-    if (v.poster) { const im = new Image(); im.onload = shown; im.src = v.poster; }
-    if (!v.getAttribute('src')) return; // reduced motion or data saver: the still frame stays
-    if (!v.paused && v.readyState > 2) shown();
-    v.addEventListener('playing', shown, { once: true });
-    let blocked = false, seen = true;
+    // the still is the film's first frame, so a photograph is on screen straight away
+    const still = $('.hero-still', box);
+    if (still) still.complete && still.naturalWidth ? shown() : still.addEventListener('load', shown, { once: true });
+    if (!v.dataset.film) return; // reduced motion or data saver: the still frame stays
+    // the video fades in over the still only once frames are really moving
+    const live = () => { box.classList.add('playing'); shown(); };
+    if (!v.paused && v.readyState > 2) live();
+    v.addEventListener('playing', live, { once: true });
+    let blocked = false, seen = true, played = !v.paused, swapped = false, imaged = false;
+    // iOS in Low Power Mode refuses to autoplay any <video>, but Safari also plays an MP4 inside an <img>,
+    // silently and on a loop like a GIF, and that isn't held back; so when the film is refused, the same file comes back as an image.
+    // (Other browsers can't show an MP4 as an image; the load fails and the tap fallback below still applies.)
+    const asImage = () => {
+      if (swapped || played) return;
+      swapped = true;
+      const im = new Image();
+      im.alt = '';
+      im.className = 'hero-loop';
+      im.onload = () => {
+        if (played) return;
+        imaged = true;
+        v.after(im);
+        // the image carries the film from here: the video element steps aside and stops downloading
+        v.pause(); v.style.visibility = 'hidden'; v.removeAttribute('src'); v.load();
+        shown();
+      };
+      im.src = v.currentSrc || v.getAttribute('src');
+    };
     const play = () => {
+      if (imaged) return;
       v.muted = true;
       const pr = v.play();
-      if (pr) pr.then(() => { blocked = false; }, () => { blocked = true; });
+      if (pr) pr.then(() => { blocked = false; }, err => { blocked = true; if (err && err.name === 'NotAllowedError') asImage(); });
     };
+    v.addEventListener('playing', () => { played = true; }, { once: true });
+    // a refusal isn't always reported: a film that has the data to play but still sits paused on screen counts as refused too
+    setTimeout(() => { if (!played && v.paused && seen && v.readyState >= 3) asImage(); }, 2000);
     // iOS in Low Power Mode refuses autoplay but allows play after a tap, so the first touch anywhere starts the film
     const wake = () => { if (seen && (blocked || v.paused)) play(); };
     ['touchend', 'click', 'keydown'].forEach(t => addEventListener(t, wake, { passive: true, capture: true }));
@@ -845,7 +1090,7 @@ function setupHeroVideo() {
     // a soft dip hides the cut when the clip loops
     v.addEventListener('timeupdate', () => box.classList.toggle('dip', v.duration - v.currentTime < 0.8));
     // only plays while it can be seen
-    new IntersectionObserver(([e]) => { seen = e.isIntersecting; seen ? play() : v.pause(); }).observe(box);
+    new IntersectionObserver(([e]) => { seen = e.isIntersecting; if (!imaged) seen ? play() : v.pause(); }).observe(box);
   });
 }
 
@@ -871,13 +1116,15 @@ function setupStack() {
   const depth = i => (i - a + N) % N;
   const label = say => {
     cards.forEach((c, i) => c.setAttribute('aria-hidden', depth(i) !== 0));
-    if (say) live.textContent = 'Photograph ' + (a + 1) + ' of ' + N + ': ' + $('figcaption b', cards[a]).textContent;
+    if (say) live.textContent = T.t('stack.live', { n: a + 1, total: N, title: $('figcaption b', cards[a]).textContent });
   };
   const onKeys = (next, prev) => stage.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); next(); }
     else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
   });
-  hint.textContent = fine ? 'Click or drag the photograph' : 'Tap or swipe the photograph';
+  const hintText = () => { hint.textContent = T.t(fine ? 'hint.fine' : 'hint.touch'); };
+  hintText();
+  addEventListener('langchange', hintText);
   if (!motion) hint.classList.add('on');
 
   if (!G) {
@@ -1066,20 +1313,22 @@ function setupPortfolio(data) {
 
   const list = () => !filter ? [] : filter === 'all' ? data.photos : data.photos.filter(p => p.category === filter);
   const total = id => id === 'all' ? data.photos.length : data.photos.filter(p => p.category === id).length;
-  const name = id => (byId.get(id) || {}).label || '';
+  const name = id => T.pick((byId.get(id) || {}).label) || '';
+  const title = p => T.pick(p.title) || '';
+  const tabName = id => (id === 'all' ? T.t('pf.all') : name(id));
 
   // the filter bar: nothing is selected until you choose
   tabs.innerHTML = [{ id: 'all', label: 'All' }, ...data.categories].map(c =>
-    `<button type="button" data-f="${esc(c.id)}" aria-pressed="false">${esc(c.label)}</button>`).join('');
+    `<button type="button" data-f="${esc(c.id)}" aria-pressed="false">${esc(tabName(c.id))}</button>`).join('');
   const btns = $$('button', tabs);
 
   // one card per collection, with its cover photograph
   const shapes = ['t', 's', 's', 't', 't', 's'];
   cats.innerHTML = data.categories.filter(c => total(c.id)).map((c, i) => {
     const ps = data.photos.filter(p => p.category === c.id), cover = ps.find(p => p.cover) || ps[0], sh = shapes[i % shapes.length];
-    return `<a class="cat ${sh}" href="#portfolio/${esc(c.id)}" data-cat="${esc(c.id)}" aria-label="${esc(c.label)} collection">` +
+    return `<a class="cat ${sh}" href="#portfolio/${esc(c.id)}" data-cat="${esc(c.id)}" aria-label="${esc(T.t('pf.collection', { name: name(c.id) }))}">` +
       `<span class="g-hit">${imgTag(cover, '(max-width: 959px) 46vw, 380px', sh === 't', '')}<span class="g-view" aria-hidden="true">${ARROW}</span>` +
-      `<span class="g-cap"><small>View collection</small><b>${esc(c.label)}</b></span></span></a>`;
+      `<span class="g-cap"><small>${esc(T.t('pf.view'))}</small><b>${esc(name(c.id))}</b></span></span></a>`;
   }).join('');
   $$('img.fi', cats).forEach(watchImg);
   if (motion) {
@@ -1094,8 +1343,9 @@ function setupPortfolio(data) {
     if (nodes.has(key)) return nodes.get(key);
     const el = document.createElement('div');
     el.className = 'g ' + (tall ? 't' : 's');
-    el.innerHTML = `<button type="button" class="g-hit" aria-label="Open photograph: ${esc(p.title)}">${imgTag(p, '(max-width: 960px) 46vw, 380px', tall)}` +
-      `<span class="g-view" aria-hidden="true">${ARROW}</span><span class="g-cap"><small>${esc(name(p.category))}</small><b>${esc(p.title)}</b></span></button>`;
+    el.innerHTML = `<button type="button" class="g-hit" aria-label="${esc(T.t('pf.open', { title: title(p) }))}">${imgTag(p, '(max-width: 960px) 46vw, 380px', tall)}` +
+      `<span class="g-view" aria-hidden="true">${ARROW}</span><span class="g-cap"><small>${esc(name(p.category))}</small><b>${esc(title(p))}</b></span></button>`;
+    el._p = p;
     watchImg($('img', el));
     $('button', el).addEventListener('click', () => open(p));
     nodes.set(key, el);
@@ -1134,7 +1384,7 @@ function setupPortfolio(data) {
     seeAll.hidden = !!filter;
     more.hidden = !filter || rest <= 0;
     back.hidden = !filter;
-    live.textContent = !filter ? 'Showing the collections' : 'Showing ' + (filter === 'all' ? 'all work' : name(filter)) + (rest > 0 ? '. See more for the rest.' : '');
+    live.textContent = !filter ? T.t('pf.liveCollections') : T.t('pf.live', { name: filter === 'all' ? T.t('pf.allWork') : name(filter) }) + (rest > 0 ? T.t('pf.liveMore') : '');
   }
   const centerTab = () => {
     const b = btns.find(x => x.dataset.f === filter);
@@ -1227,16 +1477,21 @@ function setupPortfolio(data) {
   // the lightbox steps through everything in the current selection
   const lb = $('#lb'), big = $('#lb-img');
   let seq = [], k = 0, opener = null;
+  const caption = () => {
+    const p = seq[k];
+    if (!p) return;
+    $('#lb-n').textContent = T.t('lb.count', { n: k + 1, total: seq.length });
+    $('#lb-c').textContent = name(p.category);
+    $('#lb-t').textContent = title(p);
+  };
   const render = dir => {
     const p = seq[k], url = imgURL(p.src, 1600);
     const reveal = () => motion ? gsap.fromTo(big, { autoAlpha: 0, x: (dir || 0) * 40, scale: dir ? 1 : 0.96 }, { autoAlpha: 1, x: 0, scale: 1, duration: 0.6 }) : (big.style.opacity = 1);
     big.style.opacity = 0;
     big.onload = reveal;
     if (big.src === url && big.complete) reveal(); else big.src = url;
-    big.alt = p.alt || '';
-    $('#lb-n').textContent = (k + 1) + ' of ' + seq.length;
-    $('#lb-c').textContent = name(p.category);
-    $('#lb-t').textContent = p.title;
+    big.alt = T.pick(p.alt) || '';
+    caption();
     const nx = seq[(k + 1) % seq.length];
     if (nx !== p) new Image().src = imgURL(nx.src, 1600);
   };
@@ -1269,16 +1524,38 @@ function setupPortfolio(data) {
     if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
   });
 
+  // a new language relabels everything in place: filters, collection cards, every photograph built so far, the viewer
+  addEventListener('langchange', () => {
+    btns.forEach(b => { b.textContent = tabName(b.dataset.f); });
+    $$('.cat', cats).forEach(a => {
+      a.setAttribute('aria-label', T.t('pf.collection', { name: name(a.dataset.cat) }));
+      $('.g-cap small', a).textContent = T.t('pf.view');
+      $('.g-cap b', a).textContent = name(a.dataset.cat);
+    });
+    nodes.forEach(el => {
+      const p = el._p;
+      $('button', el).setAttribute('aria-label', T.t('pf.open', { title: title(p) }));
+      $('.g-cap small', el).textContent = name(p.category);
+      $('.g-cap b', el).textContent = title(p);
+    });
+    sync();
+    caption();
+  });
+
   sync();
   return { show };
 }
 
+// numbers are written the local way: 8 300 and 4,9 in Georgian and Russian, 8,300 and 4.9 in English
+const numFmt = el => { const dec = +el.dataset.dec || 0; return new Intl.NumberFormat(T.locale, { minimumFractionDigits: dec, maximumFractionDigits: dec }); };
 function countUp(el, delay = 0) {
-  const end = parseFloat(el.dataset.count), dec = +el.dataset.dec || 0, o = { v: 0 };
-  const fmt = new Intl.NumberFormat('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
-  el.textContent = fmt.format(0);
-  gsap.to(o, { v: end, duration: 1.5, delay, ease: 'power3.out', onUpdate: () => { el.textContent = fmt.format(o.v); } });
+  const end = parseFloat(el.dataset.count), o = { v: 0 };
+  el.textContent = numFmt(el).format(0);
+  el._count = gsap.to(o, { v: end, duration: 1.5, delay, ease: 'power3.out', onUpdate: () => { el.textContent = numFmt(el).format(o.v); } });
 }
+const formatCounts = () => $$('[data-count]').forEach(el => { if (!el._count || !el._count.isActive()) el.textContent = numFmt(el).format(parseFloat(el.dataset.count)); });
+formatCounts();
+addEventListener('langchange', formatCounts);
 
 /* ── opening, on every screen size ──
    the film plays alone for a second; then the words, the CTA and the stack slide in while the film dims */
@@ -1365,8 +1642,6 @@ function reveals() {
 
   const band = $$('.band figure');
   gsap.fromTo(band, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.1, stagger: 0.07, ease: 'expo.inOut', scrollTrigger: once('.band', 'top 98%') });
-
-  gsap.from('.row', { autoAlpha: 0, y: 24, duration: 0.8, stagger: 0.07, scrollTrigger: once('.rows', 'top 88%') });
 
   $$('.stats [data-count]').forEach((el, i) => ScrollTrigger.create({ ...once(el, 'top 92%'), onEnter: () => countUp(el, i * 0.08) }));
 
