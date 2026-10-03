@@ -12,19 +12,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preload" href="fonts/DM-Medea.woff2" as="font" type="font/woff2" crossorigin>
 <!-- the front passport's photograph is the first thing anyone sees, so it's fetched before anything else -->
 <link rel="preload" as="image" fetchpriority="high"
   href="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
   imagesrcset="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w"
   imagesizes="(max-width: 959px) 70vw, 300px">
-<!-- Georgian: Noto Serif Georgian is the shop's voice (headings), Noto Sans Georgian carries the facts, and DM Medea
-     (self-hosted, Georgian letters only) is the hand for things a person in the shop would write. Latin and digits
-     (the logo, prices, @zoobum) still come from Fraunces, Figtree and Caveat, which sit first in each stack. -->
+<!-- Georgian: Noto Serif Georgian is the shop's voice (headings and the notes people write), Noto Sans Georgian carries
+     the facts. Latin and digits (the logo, prices, @zoobum) still come from Fraunces, Figtree and Caveat, first in each stack. -->
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,100,1;1,9..144,400..700,100,1&amp;family=Figtree:wght@400..700&amp;family=Caveat:wght@600..700&amp;family=Noto+Sans+Georgian:wght@400..700&amp;family=Noto+Serif+Georgian:wght@500..700&amp;display=swap" rel="stylesheet">
 <style>
-@font-face{font-family:'DMMedea';src:url('fonts/DM-Medea.woff2') format('woff2'),url('DM-Medea.ttf') format('truetype');
- font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+10A0-10FF,U+1C90-1CBF,U+2D00-2D2F}
+
 /* zoobum: a pitch demo for a pet boutique and grooming studio in Vake, Tbilisi. One file, no build step.
    Photos are Unsplash demo images; products live in the #shop-data block near the end of the page. */
 @property --tint{syntax:'<color>';inherits:true;initial-value:#F6D37A}
@@ -37,7 +34,7 @@
  --kraft:#D9BC92;
  --display:'Fraunces','Noto Serif Georgian',Georgia,serif;
  --sans:'Figtree','Noto Sans Georgian',system-ui,-apple-system,'Segoe UI',sans-serif;
- --hand:'Caveat','DMMedea','Noto Sans Georgian',cursive;
+ --hand:'Caveat','Noto Serif Georgian',cursive;
  --ease:cubic-bezier(.16,1,.3,1);
  --gut:clamp(1rem,4.5vw,3rem);--max:1240px;
  --sh-1:0 1px 2px rgba(72,44,24,.06),0 12px 30px -8px rgba(72,44,24,.16);
@@ -76,8 +73,8 @@ em{font-style:italic}
 .js img.fi.ld{opacity:1}
 .js:not(.ready) img.fi{animation:fs-o 0s 3s forwards}
 @keyframes fs-o{to{opacity:1}}
-.js .wait{background:linear-gradient(100deg,var(--oat) 30%,#FAF3E8 50%,var(--oat) 70%) 0 0/300% 100%;animation:shim 1.6s linear infinite}
-@keyframes shim{to{background-position:-150% 0}}
+/* until a photograph arrives its frame simply holds the paper colour; no animated shimmer to repaint every frame */
+.js .wait{background-color:var(--oat-2)}
 
 /* ── type: two voices and one hand ───────────────────── */
 .label{display:inline-flex;align-items:center;gap:.6rem;font:600 .8rem/1.2 var(--sans);letter-spacing:.03em;color:var(--ink-2)}
@@ -220,7 +217,7 @@ em{font-style:italic}
  clip-path:polygon(24% 0,76% 0,100% 12%,100% 100%,0 100%,0 12%);
  -webkit-mask:radial-gradient(circle at 50% .95rem,transparent .3rem,#000 calc(.3rem + .5px));mask:radial-gradient(circle at 50% .95rem,transparent .3rem,#000 calc(.3rem + .5px))}
 .tag::before{content:"";position:absolute;left:50%;top:.95rem;width:1.2rem;height:1.2rem;margin:-.6rem 0 0 -.6rem;border-radius:50%;border:2.5px solid #C69B57;box-shadow:inset 0 0 0 .5px rgba(42,30,23,.25)}
-.tag small{display:block;font:700 1.3rem/1.45 var(--hand);color:var(--accent-ink)}
+.tag small{display:block;font:600 .95rem/1.4 var(--hand);color:var(--accent-ink)}
 .tag b{display:block;margin-top:.2rem;font:600 1.02rem/1.3 var(--display)}
 .tag-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.8rem;padding-top:.7rem;border-top:1.5px dashed rgba(42,30,23,.28)}
 .tag-row strong{font:600 1.5rem/1 var(--display);letter-spacing:-.02em}
@@ -260,7 +257,7 @@ em{font-style:italic}
   clip-path:polygon(0 18%,9% 0,100% 0,100% 100%,9% 100%,0 82%);
   -webkit-mask:radial-gradient(circle at 1.05rem 50%,transparent .28rem,#000 calc(.28rem + .5px));mask:radial-gradient(circle at 1.05rem 50%,transparent .28rem,#000 calc(.28rem + .5px))}
  .tag::before{left:1.05rem;top:50%}
- .tag small{font-size:1.1rem}
+ .tag small{font-size:.9rem}
  .tag b{font-size:1rem;grid-column:1}
  .tag-row{grid-column:2;grid-row:1/3;flex-direction:column;align-items:flex-end;gap:.45rem;margin:0;padding:0;border:0}
  .tag-row strong{font-size:1.3rem}
@@ -316,7 +313,7 @@ em{font-style:italic}
 @media(hover:hover){.prod:hover .hang{animation:swing 1.6s cubic-bezier(.3,0,.3,1)}}
 @keyframes swing{0%{rotate:-3deg}18%{rotate:9deg}38%{rotate:-7deg}56%{rotate:4deg}74%{rotate:-4deg}90%{rotate:-2deg}100%{rotate:-3deg}}
 /* staff picks are written on a sticky note */
-.sticky{position:absolute;z-index:2;left:.8rem;bottom:.85rem;max-width:calc(100% - 1.6rem);padding:.25rem .75rem .3rem;background:#FFE9A3;rotate:-3deg;font:700 1.1rem/1.5 var(--hand);color:var(--ink);box-shadow:0 8px 16px -8px rgba(42,30,23,.45)}
+.sticky{position:absolute;z-index:2;left:.8rem;bottom:.85rem;max-width:calc(100% - 1.6rem);padding:.25rem .75rem .3rem;background:#FFE9A3;rotate:-3deg;font:600 .9rem/1.45 var(--hand);color:var(--ink);box-shadow:0 8px 16px -8px rgba(42,30,23,.45)}
 .prod-body{display:flex;flex-direction:column;gap:.3rem;flex:1;padding:1rem .15rem 0}
 .prod h3{font:600 1.12rem/1.3 var(--display)}
 .prod p{font-size:.9rem;line-height:1.45;color:var(--ink-2)}
@@ -335,7 +332,7 @@ em{font-style:italic}
  .rate i{display:none}
  .hang{left:.75rem}.ptag{min-width:3.4rem;font-size:.98rem}
  .prod-for{display:none}
- .sticky{font-size:.95rem;left:.6rem;bottom:.6rem}
+ .sticky{font-size:.8rem;left:.6rem;bottom:.6rem}
 }
 .shop-acts{display:flex;justify-content:center;margin-top:clamp(2.5rem,5vw,3.5rem)}
 
@@ -347,7 +344,7 @@ em{font-style:italic}
 .groom-pic{position:relative}
 .groom-photo{position:relative;aspect-ratio:4/5;border-radius:999px 999px 24px 24px;overflow:hidden;background:var(--blush)}
 .groom-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.note{position:absolute;z-index:2;right:-1rem;bottom:2.25rem;max-width:12.5rem;padding:.8rem 1rem .95rem;background:var(--paper) var(--grain);color:var(--ink);rotate:3deg;font:700 1.15rem/1.6 var(--hand);box-shadow:var(--sh-2)}
+.note{position:absolute;z-index:2;right:-1rem;bottom:2.25rem;max-width:12.5rem;padding:.8rem 1rem .95rem;background:var(--paper) var(--grain);color:var(--ink);rotate:3deg;font:600 1rem/1.5 var(--hand);box-shadow:var(--sh-2)}
 .note::before{content:"";position:absolute;left:50%;top:-.6rem;width:4.5rem;height:1.2rem;translate:-50% 0;rotate:-4deg;background:rgba(246,211,122,.85)}
 .groom .h2{margin-top:1.3rem}
 .groom-copy>p{max-width:30rem;margin-top:1.4rem;color:rgba(251,246,238,.72)}
@@ -397,7 +394,7 @@ em{font-style:italic}
 .pv-wrap{position:relative;justify-self:center;width:min(23rem,100%)}
 .pv-wrap::before{content:"";position:absolute;inset:-9% -9% -5%;z-index:-1;border-radius:999px 999px 28px 28px;background:color-mix(in srgb,var(--pv-c,#F6D37A) 70%,var(--cream));transition:background-color .6s var(--ease)}
 .pv{rotate:2.5deg}
-.pv .pass-name b{font-size:2.1rem;overflow:hidden;text-overflow:ellipsis}
+.pv .pass-name b{font-size:clamp(1.35rem,5.6vw,1.9rem);overflow:hidden;text-overflow:ellipsis}
 .pv-art{position:absolute;inset:0;display:grid;place-items:center}
 .pv-art svg{width:62%;height:auto}
 .pv-photo img{transform:none}
@@ -405,7 +402,7 @@ em{font-style:italic}
 .pv.issued .pv-stamp{opacity:.9}
 /* phones and tablets: heading first, then the passport, then the form, so the passport stays in view while you type */
 @media(max-width:900px){
- .club-grid{grid-template-columns:1fr;gap:0}
+ .club-grid{grid-template-columns:minmax(0,1fr);gap:0}
  .club-copy{display:contents}
  .pv-wrap{order:1;width:min(17.5rem,80%);margin:3.5rem auto 2.75rem}
  .club-copy>:is(.perks,.club-form){order:2}
@@ -423,7 +420,7 @@ em{font-style:italic}
 .print{--r:0deg;position:relative;flex:none;width:clamp(10rem,10.6vw,12.25rem);scroll-snap-align:center;rotate:var(--r);transition:rotate .5s var(--ease),translate .5s var(--ease)}
 .print figure{padding:.5rem .5rem .1rem;border-radius:3px;background:#fff;box-shadow:0 1px 2px rgba(42,30,23,.1),0 16px 30px -14px rgba(42,30,23,.4)}
 .print img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:1px;background:var(--oat-2)}
-.print figcaption{padding:.35rem .1rem .3rem;font:700 .98rem/1.55 var(--hand);text-align:center;color:var(--ink)}
+.print figcaption{padding:.4rem .15rem .35rem;font:600 .78rem/1.45 var(--hand);text-align:center;color:var(--ink)}
 .print::before{content:"";position:absolute;z-index:2;left:50%;top:-.6rem;width:4.4rem;height:1.25rem;translate:-50% 0;rotate:var(--tr,-4deg);background:var(--tape,rgba(246,211,122,.82))}
 @media(hover:hover){.print:hover{rotate:0deg;translate:0 -6px}}
 
@@ -434,7 +431,7 @@ em{font-style:italic}
 .sign{position:absolute;z-index:2;left:71%;top:0;width:min(15rem,52%);translate:-50% 0;transform-origin:50% 1.1rem;filter:drop-shadow(0 18px 22px rgba(42,30,23,.35))}
 .sign svg{display:block;width:100%;height:auto}
 .sign-board{margin-top:-.3rem;padding:1.05rem 1rem 1.1rem;border-radius:16px;background:var(--ink);color:var(--cream);text-align:center;box-shadow:inset 0 0 0 4px var(--ink),inset 0 0 0 5.5px rgba(251,246,238,.35)}
-.sign-board span{display:block;font:700 1.3rem/1.4 var(--hand);color:rgba(251,246,238,.82)}
+.sign-board span{display:block;font:600 1rem/1.4 var(--hand);color:rgba(251,246,238,.82)}
 .sign-board b{display:block;margin-top:.1rem;font:650 1.75rem/1.25 var(--display)}
 .sign-board b em{color:var(--accent);font-weight:600}
 .sign-board small{display:block;margin-top:.4rem;font-weight:600;font-size:.78rem;letter-spacing:.02em;color:rgba(251,246,238,.62)}
@@ -459,7 +456,7 @@ em{font-style:italic}
 @media(max-width:600px){
  .sign{left:77%;width:42%}
  .sign-board{padding:.75rem .5rem .8rem;border-radius:12px}
- .sign-board span{font-size:1rem}.sign-board b{font-size:1.15rem}.sign-board small{font-size:.66rem}
+ .sign-board span{font-size:.85rem}.sign-board b{font-size:1.15rem}.sign-board small{font-size:.66rem}
 }
 
 .visit{padding-bottom:clamp(3rem,6vw,4.5rem)}
@@ -588,7 +585,7 @@ em{font-style:italic}
       <div class="rig" id="rig">
         <figure class="pass" style="--p:0;--t:-2" data-t="-2" data-word="ძაღლებისთვის," data-tint="#F6D37A" data-name="პეპერი" data-by="პეპერის რჩეული" data-pick="oat-bones">
           <div class="pass-in" style="--c:#F6D37A">
-            <div class="pass-top"><b>zoobum</b><span>ცხოველის პასპორტი</span><i>№ 0417</i></div>
+            <div class="pass-top"><b>zoobum</b><span>პასპორტი</span><i>№ 0417</i></div>
             <div class="pass-pic">
               <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="პეპერი, ნაცრისფერი მინი შნაუცერი, ყვითელი კედლის ფონზე" fetchpriority="high" decoding="async" draggable="false" width="800" height="800"></div>
               <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc1" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc1" textLength="256" lengthAdjust="spacing">ZOOBUM · კლუბის ერთგული წევრი ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2021</text></g></svg>
@@ -601,7 +598,7 @@ em{font-style:italic}
         </figure>
         <figure class="pass" style="--p:1;--t:1.5" data-t="1.5" data-word="კატებისთვის," data-tint="#BBD5EE" data-name="სუში" data-by="სუშის რჩეული" data-pick="feather-wand" aria-hidden="true">
           <div class="pass-in" style="--c:#BBD5EE">
-            <div class="pass-top"><b>zoobum</b><span>ცხოველის პასპორტი</span><i>№ 0923</i></div>
+            <div class="pass-top"><b>zoobum</b><span>პასპორტი</span><i>№ 0923</i></div>
             <div class="pass-pic">
               <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="სუში, ზოლიანი კატა, ცისფერი კედლის ფონზე ზემოთ იყურება" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div>
               <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc2" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc2" textLength="256" lengthAdjust="spacing">ZOOBUM · კლუბის ერთგული წევრი ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2019</text></g></svg>
@@ -614,7 +611,7 @@ em{font-style:italic}
         </figure>
         <figure class="pass" style="--p:2;--t:-1" data-t="-1" data-word="კურდღლებისთვის," data-tint="#A9DCD3" data-name="მოჩი" data-by="მოჩის რჩეული" data-pick="meadow-hay" aria-hidden="true">
           <div class="pass-in" style="--c:#A9DCD3">
-            <div class="pass-top"><b>zoobum</b><span>ცხოველის პასპორტი</span><i>№ 1288</i></div>
+            <div class="pass-top"><b>zoobum</b><span>პასპორტი</span><i>№ 1288</i></div>
             <div class="pass-pic">
               <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1591382386627-349b692688ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1591382386627-349b692688ff?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1591382386627-349b692688ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="მოჩი, ჩამოყრილყურება კურდღელი, ფირუზისფერ პლედზე" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div>
               <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc3" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc3" textLength="256" lengthAdjust="spacing">ZOOBUM · კლუბის ერთგული წევრი ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2023</text></g></svg>
@@ -627,7 +624,7 @@ em{font-style:italic}
         </figure>
         <figure class="pass" style="--p:3;--t:2.5" data-t="2.5" data-word="გოჭებისთვის," data-tint="#F4C3BD" data-name="ხინკალი და ძმები" data-by="გოჭების რჩეული" data-pick="carrot-crunch" aria-hidden="true">
           <div class="pass-in" style="--c:#F4C3BD">
-            <div class="pass-top"><b>zoobum</b><span>ცხოველის პასპორტი</span><i>№ 1305</i></div>
+            <div class="pass-top"><b>zoobum</b><span>პასპორტი</span><i>№ 1305</i></div>
             <div class="pass-pic">
               <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1612267168669-679c961c5b31?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1612267168669-679c961c5b31?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1612267168669-679c961c5b31?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="ხინკალი, ლობიო და ფხალი, სამი ზღვის გოჭი ვარდისფერ პლედზე" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div>
               <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc4" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc4" textLength="256" lengthAdjust="spacing">ZOOBUM · კლუბის ერთგული წევრი ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2024</text></g></svg>
@@ -753,12 +750,12 @@ em{font-style:italic}
     </div>
     <div class="pv-wrap" id="pv-wrap" data-reveal>
       <div class="pass-in pv" id="pv" style="--c:#F6D37A">
-        <div class="pass-top"><b>zoobum</b><span>ცხოველის პასპორტი</span><i id="pv-no">№ 1342</i></div>
+        <div class="pass-top"><b>zoobum</b><span>პასპორტი</span><i id="pv-no">№ 1342</i></div>
         <div class="pass-pic">
           <div class="pass-photo pv-photo"><span class="pv-art" id="pv-art"></span><img id="pv-img" alt="" hidden></div>
           <svg class="stamp pv-stamp" id="pv-stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc5" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc5" textLength="256" lengthAdjust="spacing">ZOOBUM · კეთილი იყოს შენი მობრძანება ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5" id="pv-year">2026</text></g></svg>
         </div>
-        <div class="pass-name"><b id="pv-name">თქვენი ცხოველი</b><small id="pv-since">ჩვენთანაა 2026 წლიდან</small></div>
+        <div class="pass-name"><b id="pv-name">სახელი</b><small id="pv-since">ჩვენთანაა 2026 წლიდან</small></div>
         <dl class="pass-dl"><div><dt>სახეობა</dt><dd id="pv-kind">ძაღლი</dd></div><div><dt>წლიდან</dt><dd id="pv-y">2026</dd></div><div><dt>ბონუსი</dt><dd>10% ფასდაკლება</dd></div></dl>
         <p class="mrz" id="pv-mrz" aria-hidden="true">P&lt;ZBM&lt;YOUR&lt;PET&lt;&lt;DOG&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
       </div>
@@ -1471,7 +1468,7 @@ function setupClub() {
   $('#pv-y').textContent = $('#pv-year').textContent = year;
 
   function update() {
-    const sp = SPECIES[species()], name = nameIn.value.trim() || 'თქვენი ცხოველი';
+    const sp = SPECIES[species()], name = nameIn.value.trim() || 'სახელი';
     pv.style.setProperty('--c', sp.c);
     wrap.style.setProperty('--pv-c', sp.c);
     $('#pv-name').textContent = name;
@@ -1533,7 +1530,7 @@ function setupVisit() {
 
 // numbers count up the Georgian way: 1 200
 function countUp(el, delay = 0) {
-  const end = parseFloat(el.dataset.count), o = { v: 0 }, fmt = new Intl.NumberFormat('ka-GE');
+  const end = parseFloat(el.dataset.count), o = { v: 0 }, fmt = { format: n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') };
   el.textContent = fmt.format(0);
   gsap.to(o, { v: end, duration: 1.5, delay, ease: 'power3.out', onUpdate: () => { el.textContent = fmt.format(Math.round(o.v)); } });
 }
@@ -1574,18 +1571,19 @@ function intro(hero) {
 /* ── scroll reveals ── */
 function reveals(sign) {
   const once = (trigger, start = 'top 90%') => ({ trigger, start, once: true });
-  $$('[data-reveal]').forEach(el => gsap.from(el, { autoAlpha: 0, y: 28, duration: 0.9, scrollTrigger: once(el) }));
-  // the grooming photograph opens like a window, from the sill up
+  // reveals change only opacity and transform, which the compositor handles without restyling the page
+  $$('[data-reveal]').forEach(el => gsap.from(el, { opacity: 0, y: 28, duration: 0.8, scrollTrigger: once(el) }));
+  // the grooming photograph settles into its arch (a transform, so it's never repainted while it moves)
   const gp = $('[data-clip]');
-  gsap.fromTo(gp, { clipPath: 'inset(100% 0% 0% 0% round 999px 999px 24px 24px)' }, { clipPath: 'inset(0% 0% 0% 0% round 999px 999px 24px 24px)', duration: 1.3, ease: 'expo.inOut', scrollTrigger: once(gp, 'top 85%') });
-  gsap.from('.note', { autoAlpha: 0, y: 30, rotation: 14, duration: 1.1, ease: 'back.out(1.6)', scrollTrigger: once(gp, 'top 60%') });
+  gsap.from($('img', gp), { scale: 1.18, duration: 1.4, ease: 'expo.out', scrollTrigger: once(gp, 'top 85%') });
+  gsap.from('.note', { opacity: 0, y: 30, rotation: 14, duration: 1.1, ease: 'back.out(1.6)', scrollTrigger: once(gp, 'top 60%') });
   // the prints are taped up one after another
   const prints = $$('.print');
-  gsap.from(prints, { autoAlpha: 0, y: 60, rotation: i => (i % 2 ? 10 : -10), duration: 1, stagger: 0.07, ease: 'back.out(1.4)', scrollTrigger: once('#prints', 'top 88%') });
+  gsap.from(prints, { opacity: 0, y: 60, rotation: i => (i % 2 ? 10 : -10), duration: 1, stagger: 0.07, ease: 'back.out(1.4)', scrollTrigger: once('#prints', 'top 88%') });
   // the door sign drops in and swings on its nail
-  gsap.fromTo(sign, { rotation: -22, y: -30, autoAlpha: 0 }, { rotation: 0, y: 0, autoAlpha: 1, duration: 2, ease: 'elastic.out(1, .28)', scrollTrigger: once(sign, 'top 80%') });
+  gsap.fromTo(sign, { rotation: -22, y: -30, opacity: 0 }, { rotation: 0, y: 0, opacity: 1, duration: 2, ease: 'elastic.out(1, .28)', scrollTrigger: once(sign, 'top 80%') });
   // the passport you're filling in slides over the counter
-  gsap.from('#pv', { autoAlpha: 0, y: 70, rotation: -10, duration: 1.2, ease: 'back.out(1.3)', scrollTrigger: once('#pv-wrap', 'top 85%') });
+  gsap.from('#pv', { opacity: 0, y: 70, rotation: -10, duration: 1.2, ease: 'back.out(1.3)', scrollTrigger: once('#pv-wrap', 'top 85%') });
 }
 })();
 </script>
