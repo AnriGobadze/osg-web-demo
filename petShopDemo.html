@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ka">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>zoobum · Pet boutique &amp; grooming studio, Tbilisi</title>
-<meta name="description" content="Small-batch food, handmade toys, beds and a calm grooming studio in Vake, Tbilisi. Every product is tried by a regular first. Same-day delivery across the city.">
+<title>zoobum · ზოომაღაზია და გრუმინგ-სტუდია, თბილისი</title>
+<meta name="description" content="ხელნაკეთი სათამაშოები, ხარისხიანი საკვები, საწოლები და მშვიდი გრუმინგ-სტუდია ვაკეში. ყოველ ნივთს ჯერ ჩვენი მუდმივი სტუმრები ცდიან. მიტანა იმავე დღეს მთელ თბილისში.">
 <meta name="theme-color" content="#FBF6EE">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='7' fill='%23EE5A2A'/%3E%3Cg fill='%232A1E17'%3E%3Cellipse cx='12' cy='15.4' rx='4.1' ry='3.4'/%3E%3Cellipse cx='6.5' cy='10.6' rx='1.8' ry='2.2'/%3E%3Cellipse cx='9.9' cy='7' rx='1.8' ry='2.3'/%3E%3Cellipse cx='14.1' cy='7' rx='1.8' ry='2.3'/%3E%3Cellipse cx='17.5' cy='10.6' rx='1.8' ry='2.2'/%3E%3C/g%3E%3C/svg%3E">
 <script>document.documentElement.classList.add('js');</script>
@@ -12,15 +12,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preload" href="fonts/DM-Medea.woff2" as="font" type="font/woff2" crossorigin>
 <!-- the front passport's photograph is the first thing anyone sees, so it's fetched before anything else -->
 <link rel="preload" as="image" fetchpriority="high"
   href="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
   imagesrcset="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w"
   imagesizes="(max-width: 959px) 70vw, 300px">
-<!-- Fraunces is set soft and a little wonky (SOFT 100, WONK 1) for the shop's voice; Figtree carries the facts;
-     Caveat is only for things a person in the shop would write by hand -->
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,100,1;1,9..144,400..700,100,1&amp;family=Figtree:wght@400..700&amp;family=Caveat:wght@500..700&amp;display=swap" rel="stylesheet">
+<!-- Georgian: Noto Serif Georgian is the shop's voice (headings), Noto Sans Georgian carries the facts, and DM Medea
+     (self-hosted, Georgian letters only) is the hand for things a person in the shop would write. Latin and digits
+     (the logo, prices, @zoobum) still come from Fraunces, Figtree and Caveat, which sit first in each stack. -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..700,100,1;1,9..144,400..700,100,1&amp;family=Figtree:wght@400..700&amp;family=Caveat:wght@600..700&amp;family=Noto+Sans+Georgian:wght@400..700&amp;family=Noto+Serif+Georgian:wght@500..700&amp;display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:'DMMedea';src:url('fonts/DM-Medea.woff2') format('woff2'),url('DM-Medea.ttf') format('truetype');
+ font-weight:100 900;font-style:normal;font-display:swap;unicode-range:U+10A0-10FF,U+1C90-1CBF,U+2D00-2D2F}
 /* zoobum: a pitch demo for a pet boutique and grooming studio in Vake, Tbilisi. One file, no build step.
    Photos are Unsplash demo images; products live in the #shop-data block near the end of the page. */
 @property --tint{syntax:'<color>';inherits:true;initial-value:#F6D37A}
@@ -31,9 +35,9 @@
  --accent:#EE5A2A;--accent-ink:#C2481B;
  --butter:#F6D37A;--sky:#BBD5EE;--mint:#A9DCD3;--blush:#F4C3BD;
  --kraft:#D9BC92;
- --display:'Fraunces',Georgia,'Times New Roman',serif;
- --sans:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
- --hand:'Caveat','Segoe Print','Bradley Hand',cursive;
+ --display:'Fraunces','Noto Serif Georgian',Georgia,serif;
+ --sans:'Figtree','Noto Sans Georgian',system-ui,-apple-system,'Segoe UI',sans-serif;
+ --hand:'Caveat','DMMedea','Noto Sans Georgian',cursive;
  --ease:cubic-bezier(.16,1,.3,1);
  --gut:clamp(1rem,4.5vw,3rem);--max:1240px;
  --sh-1:0 1px 2px rgba(72,44,24,.06),0 12px 30px -8px rgba(72,44,24,.16);
@@ -46,11 +50,11 @@
  color-scheme:light;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{background:var(--cream);-webkit-text-size-adjust:100%;text-size-adjust:100%}
-@media(prefers-reduced-motion:no-preference){html:not(.lenis){scroll-behavior:smooth}}
-html.lenis,html.lenis body{height:auto}
-.lenis.lenis-smooth{scroll-behavior:auto!important}
-.lenis.lenis-stopped{overflow:hidden}
+/* Georgian has no italic in these fonts: emphasis is carried by colour, and the browser never fakes a slant or a bold */
+html{background:var(--cream);-webkit-text-size-adjust:100%;text-size-adjust:100%;font-synthesis:none}
+/* native scrolling only: no scroll-jacking library, so the page moves exactly with the finger and the wheel */
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+html.locked{overflow:hidden}
 body{background:var(--cream);color:var(--ink);font:400 1.0625rem/1.6 var(--sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}
 ::selection{background:var(--accent);color:var(--ink)}
 a{color:inherit;text-decoration:none;-webkit-tap-highlight-color:transparent}
@@ -76,9 +80,9 @@ em{font-style:italic}
 @keyframes shim{to{background-position:-150% 0}}
 
 /* ── type: two voices and one hand ───────────────────── */
-.label{display:inline-flex;align-items:center;gap:.6rem;font:600 .72rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+.label{display:inline-flex;align-items:center;gap:.6rem;font:600 .8rem/1.2 var(--sans);letter-spacing:.03em;color:var(--ink-2)}
 .label::before{content:"";flex:none;width:.45rem;height:.45rem;border-radius:50%;background:var(--accent)}
-.h2{font:600 clamp(2.25rem,4.3vw,3.7rem)/1 var(--display);letter-spacing:-.03em;text-wrap:balance}
+.h2{font:600 clamp(2rem,3.7vw,3.15rem)/1.18 var(--display);letter-spacing:-.01em;text-wrap:balance}
 :is(.h1,.h2) em{font-weight:500;color:var(--accent)}
 .hand{font-family:var(--hand);font-weight:700}
 
@@ -103,7 +107,7 @@ em{font-style:italic}
 /* ── nav: the floating pill ──────────────────────────── */
 .bar{position:fixed;z-index:60;top:calc(.85rem + var(--sat));left:50%;translate:-50% 0;width:min(1180px,calc(100% - 1.5rem));
  display:flex;align-items:center;gap:1.25rem;padding:.45rem .45rem .45rem 1.45rem;border-radius:999px;
- background:rgba(255,253,248,.7);border:1px solid rgba(42,30,23,.08);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);
+ background:rgba(255,253,248,.82);border:1px solid rgba(42,30,23,.08);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
  box-shadow:0 14px 40px -14px rgba(72,44,24,.28);transition:transform .6s var(--ease),background-color .4s}
 .bar.solid{background:rgba(255,253,248,.9)}
 .bar.hid{transform:translateY(calc(-100% - 1.5rem - var(--sat)))}
@@ -123,7 +127,7 @@ em{font-style:italic}
 .cart b{display:grid;place-items:center;min-width:1.9rem;height:1.9rem;padding:0 .5rem;border-radius:999px;background:var(--accent);color:var(--ink);font-weight:700;font-size:.82rem;font-variant-numeric:tabular-nums}
 .cart:active{transform:scale(.96)}
 .menu-btn{display:none;min-height:2.85rem;padding:0 1.15rem;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line-2);font-weight:600;font-size:.9rem}
-@media(max-width:959px){.links{display:none}.menu-btn{display:block}.bar{gap:.5rem;padding-left:1.2rem;-webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3)}}
+@media(max-width:959px){.links{display:none}.menu-btn{display:block}.bar,.bar.solid{gap:.5rem;padding-left:1.2rem;background:rgba(255,253,248,.95);-webkit-backdrop-filter:none;backdrop-filter:none}}
 @media(max-width:480px){.cart>span{display:none}.cart{padding-left:.8rem}.logo{font-size:1.55rem}}
 
 .menu{position:fixed;inset:0;width:100%;height:100%;max-width:none;max-height:none;margin:0;border:0;padding:var(--sat) 0 var(--sab);background:var(--cream);color:var(--ink)}
@@ -132,7 +136,7 @@ em{font-style:italic}
 .menu .menu-btn{display:block}
 .menu-top{display:flex;align-items:center;justify-content:space-between;padding-block:1.3rem}
 .menu-links{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.25rem}
-.menu-links a{font:600 clamp(2.6rem,12vw,3.9rem)/1.15 var(--display);letter-spacing:-.035em}
+.menu-links a{font:600 clamp(2.2rem,10vw,3.4rem)/1.4 var(--display);letter-spacing:-.01em}
 .menu-links a em{font-weight:500;color:var(--accent)}
 .menu-foot{padding-block:1.6rem;border-top:1px solid var(--line);font-size:.95rem;color:var(--ink-2)}
 .menu-foot a{color:var(--ink);font-weight:600;border-bottom:1.5px solid var(--accent)}
@@ -143,11 +147,12 @@ em{font-style:italic}
 .hero::before{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse 38% 46% at 4% 102%,color-mix(in srgb,var(--tint) 45%,transparent),transparent 70%)}
 .hero-copy{position:relative;z-index:2}
 .eyebrow{margin-bottom:1.7rem}
-.h1{font:600 clamp(2.9rem,5.3vw,5.3rem)/.95 var(--display);letter-spacing:-.04em}
-.h1 .ln{display:block;overflow:clip;padding:0 .16em .1em 0;margin-bottom:-.1em}
+.h1{font:600 clamp(2.5rem,4.3vw,4.35rem)/1.12 var(--display);letter-spacing:-.015em}
+/* Georgian letters reach well above and below the line, so each clipped line keeps room for them */
+.h1 .ln{display:block;overflow:clip;padding:.1em .16em .24em 0;margin:-.1em 0 -.24em}
 .h1 .ln>span{display:block}
 /* the species on the front passport; it rolls over when the stack shuffles */
-.sp{position:relative;display:inline-block;white-space:nowrap;vertical-align:top;clip-path:inset(-.06em -.4em -.2em -.1em)}
+.sp{position:relative;display:inline-block;white-space:nowrap;vertical-align:top;clip-path:inset(-.12em -.4em -.3em -.1em)}
 .sp em{display:inline-block}
 .sp em+em{position:absolute;left:0;top:0}
 .lede{max-width:27rem;margin-top:1.7rem;color:var(--ink-2);font-size:1.125rem;line-height:1.6}
@@ -175,19 +180,19 @@ em{font-style:italic}
 .pass-in::before{content:"";position:absolute;inset:0;pointer-events:none;background:var(--c);opacity:.5;-webkit-mask:var(--guilloche) 0 0/80px 14px;mask:var(--guilloche) 0 0/80px 14px}
 .pass-top{position:relative;display:flex;align-items:center;gap:.55rem;margin:0 -.95rem .85rem;padding:.7rem .95rem .65rem;background:var(--c)}
 .pass-top b{font:680 1.08rem/1 var(--display);letter-spacing:-.04em}
-.pass-top span{font:700 .56rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;opacity:.75}
+.pass-top span{font:700 .64rem/1 var(--sans);letter-spacing:.03em;opacity:.75}
 .pass-top i{margin-left:auto;font:600 .7rem/1 var(--sans);font-style:normal;font-variant-numeric:tabular-nums;opacity:.72}
 .pass-pic{position:relative}
 .pass-photo{position:relative;aspect-ratio:1/1.02;border-radius:999px 999px 12px 12px;overflow:hidden;background:var(--c)}
 .pass-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.1)}
 .pass-photo::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(42,30,23,.12),inset 0 -36px 40px -34px rgba(42,30,23,.3);pointer-events:none}
-.stamp{position:absolute;right:-.4rem;bottom:-2.2rem;width:5.5rem;height:5.5rem;color:var(--accent-ink);rotate:-14deg;mix-blend-mode:multiply;opacity:.9;pointer-events:none}
+.stamp{position:absolute;right:-.4rem;bottom:-2.2rem;width:5.5rem;height:5.5rem;color:var(--accent-ink);rotate:-14deg;opacity:.85;pointer-events:none}
 .stamp text{font-family:var(--sans)}
 .pass-name{margin-top:.8rem;padding-right:4.6rem}
-.pass-name b{display:block;font:600 1.85rem/1 var(--display);letter-spacing:-.03em;white-space:nowrap}
-.pass-name small{display:block;margin-top:.3rem;font:italic 500 .86rem/1.2 var(--display);color:var(--ink-2)}
+.pass-name b{display:block;font:600 1.7rem/1.15 var(--display);letter-spacing:-.01em;white-space:nowrap}
+.pass-name small{display:block;margin-top:.35rem;font:500 .8rem/1.3 var(--display);color:var(--ink-2)}
 .pass-dl{display:grid;grid-template-columns:1.3fr .55fr 1.35fr;gap:.6rem;margin-top:.85rem;padding-top:.75rem;border-top:1px solid var(--line)}
-.pass-dl dt{font:700 .56rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.pass-dl dt{font:700 .64rem/1.1 var(--sans);letter-spacing:.02em;color:var(--ink-3)}
 .pass-dl dd{margin-top:.32rem;font-weight:500;font-size:.8rem;line-height:1.25}
 .mrz{margin-top:.75rem;padding-top:.6rem;border-top:1px dashed var(--line-2);font:500 .6rem/1.3 ui-monospace,'Cascadia Mono',Consolas,'Courier New',monospace;letter-spacing:.14em;color:rgba(42,30,23,.45);white-space:nowrap;overflow:hidden}
 .sheen{position:absolute;top:-20%;bottom:-20%;left:-30%;width:60%;pointer-events:none;background:linear-gradient(100deg,transparent 20%,rgba(255,255,255,.28) 50%,transparent 80%);opacity:.75}
@@ -205,8 +210,9 @@ em{font-style:italic}
 
 /* the kraft swing tag: today's pick of whoever is on top, hung on a string from the top of the window */
 .pick{position:absolute;z-index:24;left:-2.25rem;top:-3.25rem;width:10.75rem}
-.pick-in{transform-origin:50% 0;filter:drop-shadow(0 12px 14px rgba(72,44,24,.22)) drop-shadow(0 2px 2px rgba(72,44,24,.12))}
-.pick-sway{transform-origin:50% 0;animation:sway 4.6s ease-in-out infinite alternate}
+.pick-in{transform-origin:50% 0}
+/* the shadow sits on the element that sways, so it's drawn once and the compositor only turns it */
+.pick-sway{transform-origin:50% 0;will-change:transform;filter:drop-shadow(0 12px 14px rgba(72,44,24,.22)) drop-shadow(0 2px 2px rgba(72,44,24,.12));animation:sway 4.6s ease-in-out infinite alternate}
 @keyframes sway{from{rotate:-1.8deg}to{rotate:1.8deg}}
 .pick:is(:hover,:focus-within) .pick-sway{animation-play-state:paused}
 .pick-str{display:block;width:1.5px;height:10.5rem;margin:0 auto;background:linear-gradient(rgba(122,86,52,0),#7A5634 40%)}
@@ -214,8 +220,8 @@ em{font-style:italic}
  clip-path:polygon(24% 0,76% 0,100% 12%,100% 100%,0 100%,0 12%);
  -webkit-mask:radial-gradient(circle at 50% .95rem,transparent .3rem,#000 calc(.3rem + .5px));mask:radial-gradient(circle at 50% .95rem,transparent .3rem,#000 calc(.3rem + .5px))}
 .tag::before{content:"";position:absolute;left:50%;top:.95rem;width:1.2rem;height:1.2rem;margin:-.6rem 0 0 -.6rem;border-radius:50%;border:2.5px solid #C69B57;box-shadow:inset 0 0 0 .5px rgba(42,30,23,.25)}
-.tag small{display:block;font:700 1.4rem/1 var(--hand);color:var(--accent-ink)}
-.tag b{display:block;margin-top:.3rem;font:600 1.12rem/1.1 var(--display);letter-spacing:-.015em}
+.tag small{display:block;font:700 1.3rem/1.45 var(--hand);color:var(--accent-ink)}
+.tag b{display:block;margin-top:.2rem;font:600 1.02rem/1.3 var(--display)}
 .tag-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.8rem;padding-top:.7rem;border-top:1.5px dashed rgba(42,30,23,.28)}
 .tag-row strong{font:600 1.5rem/1 var(--display);letter-spacing:-.02em}
 .tag-add{display:inline-flex;align-items:center;gap:.35rem;min-height:2.3rem;padding:0 .8rem 0 .65rem;border-radius:999px;background:var(--ink);color:var(--cream);font-weight:600;font-size:.82rem;transition:background-color .3s,color .3s,transform .3s var(--ease)}
@@ -225,7 +231,7 @@ em{font-style:italic}
 
 /* trust: a glass badge with three regulars' faces */
 .badge{position:absolute;z-index:22;right:-1.5rem;bottom:2.5%;display:flex;align-items:center;gap:.8rem;padding:.55rem 1.15rem .55rem .55rem;border-radius:999px;
- background:rgba(255,253,248,.7);border:1px solid rgba(255,255,255,.75);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);box-shadow:0 18px 40px -14px rgba(72,44,24,.34)}
+ background:rgba(255,253,248,.96);border:1px solid rgba(255,255,255,.75);box-shadow:0 18px 40px -14px rgba(72,44,24,.34)}
 .faces{display:flex}
 .faces img{width:2.4rem;height:2.4rem;border-radius:50%;object-fit:cover;border:2px solid var(--paper);background:var(--oat)}
 .faces img+img{margin-left:-.75rem}
@@ -238,7 +244,7 @@ em{font-style:italic}
 
 @media(max-width:959px){
  .hero{grid-template-columns:1fr;min-height:0;gap:2.5rem;padding:calc(7rem + var(--sat)) var(--gut) 3.25rem}
- .h1{font-size:clamp(2.9rem,12.5vw,4.4rem)}
+ .h1{font-size:clamp(2.2rem,9.4vw,3.4rem)}
  .lede{font-size:1.0625rem}
  .stage{height:clamp(25rem,108vw,33rem)}
  .pass{width:min(17rem,70vw)}
@@ -254,7 +260,7 @@ em{font-style:italic}
   clip-path:polygon(0 18%,9% 0,100% 0,100% 100%,9% 100%,0 82%);
   -webkit-mask:radial-gradient(circle at 1.05rem 50%,transparent .28rem,#000 calc(.28rem + .5px));mask:radial-gradient(circle at 1.05rem 50%,transparent .28rem,#000 calc(.28rem + .5px))}
  .tag::before{left:1.05rem;top:50%}
- .tag small{font-size:1.2rem}
+ .tag small{font-size:1.1rem}
  .tag b{font-size:1rem;grid-column:1}
  .tag-row{grid-column:2;grid-row:1/3;flex-direction:column;align-items:flex-end;gap:.45rem;margin:0;padding:0;border:0}
  .tag-row strong{font-size:1.3rem}
@@ -269,8 +275,8 @@ em{font-style:italic}
 .strip-track{display:flex;width:max-content;animation:marquee 46s linear infinite}
 .strip:hover .strip-track{animation-play-state:paused}
 .strip-seq{display:flex;align-items:center;flex:none}
-.strip-seq li{padding:1.25rem 0 1.25rem clamp(1.6rem,3.6vw,3rem);white-space:nowrap;font:italic 500 clamp(1.2rem,2.1vw,1.6rem)/1 var(--display)}
-.strip-seq li.k{padding-left:.9rem;font:600 .72rem/1 var(--sans);font-style:normal;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.strip-seq li{padding:1.25rem 0 1.25rem clamp(1.6rem,3.6vw,3rem);white-space:nowrap;font:500 clamp(1.1rem,1.9vw,1.45rem)/1.3 var(--display)}
+.strip-seq li.k{padding-left:.9rem;font:600 .82rem/1 var(--sans);letter-spacing:.03em;color:var(--accent)}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 /* ── SECTIONS ─────────────────────────────────────────── */
@@ -300,7 +306,7 @@ em{font-style:italic}
 .prod-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease),opacity .6s var(--ease)}
 .prod-media::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(42,30,23,.06);pointer-events:none}
 @media(hover:hover){.prod:hover .prod-media img{transform:scale(1.05)}}
-.prod-for{position:absolute;z-index:2;right:.75rem;top:.75rem;padding:.42rem .72rem;border-radius:999px;background:rgba(255,253,248,.86);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);font-weight:600;font-size:.72rem;line-height:1}
+.prod-for{position:absolute;z-index:2;right:.75rem;top:.75rem;padding:.42rem .72rem;border-radius:999px;background:rgba(255,253,248,.92);font-weight:600;font-size:.75rem;line-height:1.1}
 /* each price hangs off the top edge of its photograph on a short string */
 .hang{position:absolute;z-index:2;left:1.1rem;top:0;transform-origin:50% 0;rotate:-3deg;filter:drop-shadow(0 6px 8px rgba(42,30,23,.28))}
 .hang i{display:block;width:1.5px;height:1.35rem;margin:0 auto;background:#7A5634}
@@ -310,9 +316,9 @@ em{font-style:italic}
 @media(hover:hover){.prod:hover .hang{animation:swing 1.6s cubic-bezier(.3,0,.3,1)}}
 @keyframes swing{0%{rotate:-3deg}18%{rotate:9deg}38%{rotate:-7deg}56%{rotate:4deg}74%{rotate:-4deg}90%{rotate:-2deg}100%{rotate:-3deg}}
 /* staff picks are written on a sticky note */
-.sticky{position:absolute;z-index:2;left:.8rem;bottom:.85rem;max-width:calc(100% - 1.6rem);padding:.4rem .75rem .5rem;background:#FFE9A3;rotate:-3deg;font:700 1.2rem/1 var(--hand);color:var(--ink);box-shadow:0 8px 16px -8px rgba(42,30,23,.45)}
+.sticky{position:absolute;z-index:2;left:.8rem;bottom:.85rem;max-width:calc(100% - 1.6rem);padding:.25rem .75rem .3rem;background:#FFE9A3;rotate:-3deg;font:700 1.1rem/1.5 var(--hand);color:var(--ink);box-shadow:0 8px 16px -8px rgba(42,30,23,.45)}
 .prod-body{display:flex;flex-direction:column;gap:.3rem;flex:1;padding:1rem .15rem 0}
-.prod h3{font:600 1.25rem/1.12 var(--display);letter-spacing:-.02em}
+.prod h3{font:600 1.12rem/1.3 var(--display)}
 .prod p{font-size:.9rem;line-height:1.45;color:var(--ink-2)}
 .prod-foot{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:auto;padding-top:.55rem}
 .rate{font-size:.82rem;color:var(--ink-2)}
@@ -324,12 +330,12 @@ em{font-style:italic}
 .add.done{background:var(--accent);color:var(--ink)}
 @media(max-width:760px){
  .prod-media{border-radius:18px}
- .prod h3{font-size:1.08rem}
+ .prod h3{font-size:1rem}
  .prod p{font-size:.84rem}
  .rate i{display:none}
  .hang{left:.75rem}.ptag{min-width:3.4rem;font-size:.98rem}
  .prod-for{display:none}
- .sticky{font-size:1.05rem;left:.6rem;bottom:.6rem}
+ .sticky{font-size:.95rem;left:.6rem;bottom:.6rem}
 }
 .shop-acts{display:flex;justify-content:center;margin-top:clamp(2.5rem,5vw,3.5rem)}
 
@@ -341,16 +347,16 @@ em{font-style:italic}
 .groom-pic{position:relative}
 .groom-photo{position:relative;aspect-ratio:4/5;border-radius:999px 999px 24px 24px;overflow:hidden;background:var(--blush)}
 .groom-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.note{position:absolute;z-index:2;right:-1rem;bottom:2.25rem;max-width:12.5rem;padding:.8rem 1rem .95rem;background:var(--paper) var(--grain);color:var(--ink);rotate:3deg;font:700 1.45rem/1.05 var(--hand);box-shadow:var(--sh-2)}
+.note{position:absolute;z-index:2;right:-1rem;bottom:2.25rem;max-width:12.5rem;padding:.8rem 1rem .95rem;background:var(--paper) var(--grain);color:var(--ink);rotate:3deg;font:700 1.15rem/1.6 var(--hand);box-shadow:var(--sh-2)}
 .note::before{content:"";position:absolute;left:50%;top:-.6rem;width:4.5rem;height:1.2rem;translate:-50% 0;rotate:-4deg;background:rgba(246,211,122,.85)}
 .groom .h2{margin-top:1.3rem}
 .groom-copy>p{max-width:30rem;margin-top:1.4rem;color:rgba(251,246,238,.72)}
 .price-list{margin-top:2.25rem;border-top:1px solid rgba(251,246,238,.14)}
 .price-list li{display:grid;grid-template-columns:auto minmax(1.5rem,1fr) auto;column-gap:.85rem;align-items:baseline;padding:1rem 0 1.05rem;border-bottom:1px solid rgba(251,246,238,.14)}
-.price-list b{font:500 1.35rem/1.2 var(--display);letter-spacing:-.015em}
+.price-list b{font:500 1.2rem/1.35 var(--display)}
 .price-list i{align-self:end;height:.5rem;margin-bottom:.4rem;background:radial-gradient(circle,rgba(251,246,238,.38) 1.1px,transparent 1.6px) 0 50%/8px 4px repeat-x}
 .price-list strong{font:500 1.35rem/1.2 var(--display);letter-spacing:-.015em;white-space:nowrap}
-.price-list strong small{font:500 .78rem var(--sans);letter-spacing:0;color:rgba(251,246,238,.6);margin-right:.35rem}
+.price-list strong small{font:500 .78rem var(--sans);letter-spacing:0;color:rgba(251,246,238,.6);margin-left:.1rem}
 .price-list span{grid-column:1/-1;margin-top:.2rem;font-size:.88rem;color:rgba(251,246,238,.6)}
 .groom-fine{margin-top:1rem;font-size:.85rem;color:rgba(251,246,238,.6)}
 /* the next free table, on a ticket stub */
@@ -358,8 +364,8 @@ em{font-style:italic}
  -webkit-mask:radial-gradient(circle at 0 50%,transparent .7rem,#000 calc(.7rem + .5px)) 0 0/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent .7rem,#000 calc(.7rem + .5px)) 100% 0/51% 100% no-repeat;
  mask:radial-gradient(circle at 0 50%,transparent .7rem,#000 calc(.7rem + .5px)) 0 0/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent .7rem,#000 calc(.7rem + .5px)) 100% 0/51% 100% no-repeat}
 .ticket>div{flex:1;min-width:0;padding-right:1.25rem;border-right:1.5px dashed var(--line-2)}
-.ticket small{display:block;font:700 .66rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
-.ticket b{display:block;margin-top:.4rem;font:600 1.4rem/1.1 var(--display);letter-spacing:-.02em}
+.ticket small{display:block;font:700 .78rem/1.2 var(--sans);letter-spacing:.02em;color:var(--ink-3)}
+.ticket b{display:block;margin-top:.4rem;font:600 1.3rem/1.25 var(--display)}
 @media(max-width:900px){.groom-grid{grid-template-columns:1fr}.groom-pic{max-width:26rem;width:100%;margin-inline:auto}.note{right:-.5rem}}
 @media(max-width:480px){.ticket{flex-wrap:wrap;padding:1rem 1.25rem 1.15rem 1.5rem}.ticket>div{flex-basis:100%;padding:0 0 .9rem;border-right:0;border-bottom:1.5px dashed var(--line-2)}.ticket .btn{width:100%}}
 
@@ -410,14 +416,14 @@ em{font-style:italic}
 /* the wall of regulars: prints taped up by the till */
 .wall{background:var(--oat);overflow:hidden;padding-block:clamp(5rem,9vw,7.5rem) clamp(1.75rem,4.5vw,3.5rem)}
 .wall-head{text-align:center}
-.wall-head p{max-width:34rem;margin:1.2rem auto 0;font:500 clamp(1.6rem,3vw,2.4rem)/1.15 var(--display);letter-spacing:-.025em;text-wrap:balance}
+.wall-head p{max-width:38rem;margin:1.2rem auto 0;font:500 clamp(1.45rem,2.6vw,2.1rem)/1.35 var(--display);text-wrap:balance}
 .wall-head p em{color:var(--accent-ink);font-weight:500}
 .prints{display:flex;justify-content:safe center;gap:clamp(1rem,2vw,1.75rem);margin-top:clamp(2.5rem,5vw,3.5rem);padding:1.5rem var(--gut) 3rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
 .prints::-webkit-scrollbar{display:none}
 .print{--r:0deg;position:relative;flex:none;width:clamp(10rem,10.6vw,12.25rem);scroll-snap-align:center;rotate:var(--r);transition:rotate .5s var(--ease),translate .5s var(--ease)}
 .print figure{padding:.5rem .5rem .1rem;border-radius:3px;background:#fff;box-shadow:0 1px 2px rgba(42,30,23,.1),0 16px 30px -14px rgba(42,30,23,.4)}
 .print img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:1px;background:var(--oat-2)}
-.print figcaption{padding:.5rem .1rem .45rem;font:700 1.18rem/1.05 var(--hand);text-align:center;color:var(--ink)}
+.print figcaption{padding:.35rem .1rem .3rem;font:700 .98rem/1.55 var(--hand);text-align:center;color:var(--ink)}
 .print::before{content:"";position:absolute;z-index:2;left:50%;top:-.6rem;width:4.4rem;height:1.25rem;translate:-50% 0;rotate:var(--tr,-4deg);background:var(--tape,rgba(246,211,122,.82))}
 @media(hover:hover){.print:hover{rotate:0deg;translate:0 -6px}}
 
@@ -428,10 +434,10 @@ em{font-style:italic}
 .sign{position:absolute;z-index:2;left:71%;top:0;width:min(15rem,52%);translate:-50% 0;transform-origin:50% 1.1rem;filter:drop-shadow(0 18px 22px rgba(42,30,23,.35))}
 .sign svg{display:block;width:100%;height:auto}
 .sign-board{margin-top:-.3rem;padding:1.05rem 1rem 1.1rem;border-radius:16px;background:var(--ink);color:var(--cream);text-align:center;box-shadow:inset 0 0 0 4px var(--ink),inset 0 0 0 5.5px rgba(251,246,238,.35)}
-.sign-board span{display:block;font:700 1.55rem/1 var(--hand);color:rgba(251,246,238,.82)}
-.sign-board b{display:block;margin-top:.2rem;font:650 2.3rem/1 var(--display);letter-spacing:-.03em;text-transform:lowercase}
+.sign-board span{display:block;font:700 1.3rem/1.4 var(--hand);color:rgba(251,246,238,.82)}
+.sign-board b{display:block;margin-top:.1rem;font:650 1.75rem/1.25 var(--display)}
 .sign-board b em{color:var(--accent);font-weight:600}
-.sign-board small{display:block;margin-top:.45rem;font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(251,246,238,.62)}
+.sign-board small{display:block;margin-top:.4rem;font-weight:600;font-size:.78rem;letter-spacing:.02em;color:rgba(251,246,238,.62)}
 .visit-info{padding:clamp(2.25rem,5vw,4rem)}
 .visit-info .h2{margin-top:1.3rem}
 .status{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.3rem;font-weight:600;font-size:.95rem}
@@ -447,13 +453,13 @@ em{font-style:italic}
 .hours dt{color:var(--ink-2)}
 .hours dd{font-weight:600;font-variant-numeric:tabular-nums}
 .hours .today dt{color:var(--ink);font-weight:600}
-.hours .today dt::after{content:"Today";margin-left:.6rem;padding:.2rem .5rem;border-radius:999px;background:var(--accent);color:var(--ink);font-size:.7rem;font-weight:700;letter-spacing:.04em;vertical-align:.1em}
+.hours .today dt::after{content:"დღეს";margin-left:.6rem;padding:.2rem .5rem;border-radius:999px;background:var(--accent);color:var(--ink);font-size:.7rem;font-weight:700;letter-spacing:.04em;vertical-align:.1em}
 .visit-info .acts{margin-top:2rem}
 @media(max-width:900px){.visit-panel{grid-template-columns:1fr}.visit-photo{min-height:24rem}}
 @media(max-width:600px){
  .sign{left:77%;width:42%}
  .sign-board{padding:.75rem .5rem .8rem;border-radius:12px}
- .sign-board span{font-size:1.15rem}.sign-board b{font-size:1.55rem}.sign-board small{font-size:.58rem;letter-spacing:.1em}
+ .sign-board span{font-size:1rem}.sign-board b{font-size:1.15rem}.sign-board small{font-size:.66rem}
 }
 
 .visit{padding-bottom:clamp(3rem,6vw,4.5rem)}
@@ -468,7 +474,7 @@ em{font-style:italic}
 .basket{position:fixed;inset:0 0 0 auto;width:min(27rem,100%);height:100%;max-width:none;max-height:none;margin:0 0 0 auto;border:0;padding:0;background:var(--cream);color:var(--ink);box-shadow:-40px 0 80px -20px rgba(42,30,23,.35)}
 .basket[open]{display:flex;flex-direction:column;animation:bk-in .55s var(--ease)}
 .basket.out{animation:bk-out .28s cubic-bezier(.5,0,.75,0) forwards}
-.basket::backdrop{background:rgba(42,30,23,.42);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.basket::backdrop{background:rgba(42,30,23,.45)}
 .basket[open]::backdrop{animation:fade .4s ease}
 .basket.out::backdrop{animation:fade-out .28s ease forwards}
 @keyframes bk-in{from{transform:translateX(100%)}}
@@ -476,7 +482,7 @@ em{font-style:italic}
 @keyframes fade{from{opacity:0}}
 @keyframes fade-out{to{opacity:0}}
 .bk-head{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:calc(1.4rem + var(--sat)) 1.5rem 1.1rem}
-.bk-head h2{font:600 1.8rem/1 var(--display);letter-spacing:-.03em}
+.bk-head h2{font:600 1.6rem/1.2 var(--display)}
 .meter{margin:0 1.5rem .5rem;padding:1rem 1.1rem 1.15rem;border-radius:16px;background:var(--oat)}
 .meter p{font-size:.9rem}
 .meter p b{font-weight:700}
@@ -486,7 +492,7 @@ em{font-style:italic}
 .bk-list{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:0 1.5rem}
 .bk-item{display:grid;grid-template-columns:4.25rem minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1rem 0;border-bottom:1px solid var(--line)}
 .bk-item img{width:4.25rem;height:4.25rem;border-radius:14px;object-fit:cover;background:var(--oat)}
-.bk-item b{display:block;font:600 1.02rem/1.2 var(--display);letter-spacing:-.01em}
+.bk-item b{display:block;font:600 .95rem/1.3 var(--display)}
 .bk-item .each{display:block;margin-top:.15rem;font-size:.82rem;color:var(--ink-2)}
 .qty{display:inline-flex;align-items:center;margin-top:.5rem;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line-2)}
 .qty button{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:50%;font-size:1.15rem;line-height:1}
@@ -497,11 +503,11 @@ em{font-style:italic}
 .bk-right button{font-size:.8rem;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;padding:.25rem 0}
 .bk-empty{flex:1;display:grid;place-content:center;justify-items:center;gap:1rem;padding:2rem 1.5rem 4rem;text-align:center}
 .bk-empty>svg{width:3.25rem;height:3.25rem;color:var(--accent)}
-.bk-empty p{max-width:17rem;font:500 1.45rem/1.2 var(--display);letter-spacing:-.02em}
+.bk-empty p{max-width:18rem;font:500 1.3rem/1.4 var(--display)}
 .bk-foot{padding:1.2rem 1.5rem calc(1.4rem + var(--sab));border-top:1px solid var(--line);background:var(--paper)}
 .bk-sum{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem}
 .bk-sum span{font-weight:600}
-.bk-sum strong{font:600 1.65rem/1 var(--display);letter-spacing:-.02em}
+.bk-sum strong{font:600 1.6rem/1.1 var(--display)}
 .bk-foot .btn{width:100%}
 .bk-foot small{display:block;margin-top:.8rem;text-align:center;font-size:.8rem;color:var(--ink-2)}
 /* a product photograph hops into the basket */
@@ -542,19 +548,19 @@ em{font-style:italic}
   </defs>
 </svg>
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main">გადასვლა შინაარსზე</a>
 
 <header class="bar" id="bar">
-  <a href="#top" class="logo" aria-label="zoobum, back to top">z<span class="o">o<i></i></span><span class="o">o<i></i></span>bum</a>
-  <nav class="links" aria-label="Primary"><a href="#shop">Shop</a><a href="#grooming">Grooming</a><a href="#club">The Club</a><a href="#visit">Visit</a></nav>
-  <button type="button" class="cart" id="cart-btn" aria-haspopup="dialog" aria-controls="basket" aria-label="Basket, 0 items"><svg aria-hidden="true"><use href="#i-bag"/></svg><span>Basket</span><b data-bk-count>0</b></button>
-  <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+  <a href="#top" class="logo" aria-label="zoobum, თავში დაბრუნება">z<span class="o">o<i></i></span><span class="o">o<i></i></span>bum</a>
+  <nav class="links" aria-label="მთავარი მენიუ"><a href="#shop">მაღაზია</a><a href="#grooming">გრუმინგი</a><a href="#club">კლუბი</a><a href="#visit">მოგვინახულეთ</a></nav>
+  <button type="button" class="cart" id="cart-btn" aria-haspopup="dialog" aria-controls="basket" aria-label="კალათა, 0 ნივთი"><svg aria-hidden="true"><use href="#i-bag"/></svg><span>კალათა</span><b data-bk-count>0</b></button>
+  <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu">მენიუ</button>
 </header>
 
-<dialog class="menu" id="menu" aria-label="Menu">
-  <div class="menu-top wrap"><span class="logo">z<span class="o">o<i></i></span><span class="o">o<i></i></span>bum</span><button type="button" class="menu-btn" id="menu-x">Close</button></div>
-  <nav class="menu-links wrap" aria-label="Menu"><a href="#shop">Shop</a><a href="#grooming">Grooming</a><a href="#club">The Club</a><a href="#visit"><em>Visit us</em></a></nav>
-  <div class="menu-foot wrap"><p>Vake, Tbilisi · <a href="#" data-wa>WhatsApp</a></p></div>
+<dialog class="menu" id="menu" aria-label="მენიუ">
+  <div class="menu-top wrap"><span class="logo">z<span class="o">o<i></i></span><span class="o">o<i></i></span>bum</span><button type="button" class="menu-btn" id="menu-x">დახურვა</button></div>
+  <nav class="menu-links wrap" aria-label="მენიუ"><a href="#shop">მაღაზია</a><a href="#grooming">გრუმინგი</a><a href="#club">კლუბი</a><a href="#visit"><em>მოგვინახულეთ</em></a></nav>
+  <div class="menu-foot wrap"><p>ვაკე, თბილისი · <a href="#" data-wa>WhatsApp</a></p></div>
 </dialog>
 
 <main id="main" tabindex="-1">
@@ -563,71 +569,71 @@ em{font-style:italic}
 <!-- HERO: four regulars' passports; whoever is on top names the species in the headline and colours the window -->
 <section class="hero" id="hero" aria-labelledby="h1">
   <div class="hero-copy">
-    <span class="label eyebrow" data-hero>Pet boutique &amp; grooming · Vake, Tbilisi</span>
+    <span class="label eyebrow" data-hero>ზოობუტიკი და გრუმინგი · ვაკე, თბილისი</span>
     <h1 class="h1" id="h1">
-      <span class="ln"><span>For the <span class="sp" id="sp"><em>dogs</em></span></span></span>
-      <span class="ln"><span>who run</span></span>
-      <span class="ln"><span>the house.</span></span>
+      <span class="ln"><span><span class="sp" id="sp"><em>ძაღლებისთვის,</em></span></span></span>
+      <span class="ln"><span>ვინც სახლს</span></span>
+      <span class="ln"><span>მართავს.</span></span>
     </h1>
-    <p class="lede" data-hero>Small-batch food, handmade toys and a calm grooming studio. Nothing reaches our shelves until a regular has tried it and approved.</p>
+    <p class="lede" data-hero>ხარისხიანი საკვები, ხელნაკეთი სათამაშოები და მშვიდი გრუმინგ-სტუდია. თაროზე არაფერი ხვდება, სანამ ჩვენი მუდმივი სტუმრები არ გამოცდიან და არ მოიწონებენ.</p>
     <div class="acts" data-hero>
-      <a href="#shop" class="btn">Shop the good stuff <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      <a href="#grooming" class="tl">Book a groom</a>
+      <a href="#shop" class="btn">საუკეთესოს ნახვა <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a href="#grooming" class="tl">გრუმინგზე ჩაწერა</a>
     </div>
   </div>
 
-  <div class="show" data-stack role="region" aria-roledescription="carousel" aria-label="Our regulars">
+  <div class="show" data-stack role="region" aria-roledescription="კარუსელი" aria-label="ჩვენი მუდმივი სტუმრები">
     <i class="hero-arch" aria-hidden="true"></i>
-    <div class="stage" id="stage" tabindex="0" aria-label="Regulars' passports. Press Enter or the arrow keys to meet the next one.">
+    <div class="stage" id="stage" tabindex="0" aria-label="მუდმივი სტუმრების პასპორტები. შემდეგის სანახავად დააჭირეთ Enter-ს ან ისრებს.">
       <div class="rig" id="rig">
-        <figure class="pass" style="--p:0;--t:-2" data-t="-2" data-word="dogs" data-tint="#F6D37A" data-name="Pepper" data-by="Pepper's pick" data-pick="oat-bones">
+        <figure class="pass" style="--p:0;--t:-2" data-t="-2" data-word="ძაღლებისთვის," data-tint="#F6D37A" data-name="პეპერი" data-by="პეპერის რჩეული" data-pick="oat-bones">
           <div class="pass-in" style="--c:#F6D37A">
-            <div class="pass-top"><b>zoobum</b><span>Pet passport</span><i>№ 0417</i></div>
+            <div class="pass-top"><b>zoobum</b><span>ცხოველის პასპორტი</span><i>№ 0417</i></div>
             <div class="pass-pic">
-              <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="Pepper, a grey miniature schnauzer, against a yellow wall" fetchpriority="high" decoding="async" draggable="false" width="800" height="800"></div>
-              <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc1" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc1" textLength="256" lengthAdjust="spacing">ZOOBUM CLUB · CERTIFIED REGULAR ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2021</text></g></svg>
+              <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="პეპერი, ნაცრისფერი მინი შნაუცერი, ყვითელი კედლის ფონზე" fetchpriority="high" decoding="async" draggable="false" width="800" height="800"></div>
+              <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc1" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc1" textLength="256" lengthAdjust="spacing">ZOOBUM · კლუბის ერთგული წევრი ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2021</text></g></svg>
             </div>
-            <div class="pass-name"><b>Pepper</b><small>Regular since 2021</small></div>
-            <dl class="pass-dl"><div><dt>Breed</dt><dd>Mini schnauzer</dd></div><div><dt>Age</dt><dd>4</dd></div><div><dt>Loves</dt><dd>The postman</dd></div></dl>
+            <div class="pass-name"><b>პეპერი</b><small>ჩვენთანაა 2021 წლიდან</small></div>
+            <dl class="pass-dl"><div><dt>ჯიში</dt><dd>მინი შნაუცერი</dd></div><div><dt>ასაკი</dt><dd>4</dd></div><div><dt>უყვარს</dt><dd>ფოსტალიონი</dd></div></dl>
             <p class="mrz" aria-hidden="true">P&lt;ZBM&lt;PEPPER&lt;&lt;MINI&lt;SCHNAUZER&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
             <i class="sheen"></i><i class="shade"></i>
           </div>
         </figure>
-        <figure class="pass" style="--p:1;--t:1.5" data-t="1.5" data-word="cats" data-tint="#BBD5EE" data-name="Sushi" data-by="Sushi's pick" data-pick="feather-wand" aria-hidden="true">
+        <figure class="pass" style="--p:1;--t:1.5" data-t="1.5" data-word="კატებისთვის," data-tint="#BBD5EE" data-name="სუში" data-by="სუშის რჩეული" data-pick="feather-wand" aria-hidden="true">
           <div class="pass-in" style="--c:#BBD5EE">
-            <div class="pass-top"><b>zoobum</b><span>Pet passport</span><i>№ 0923</i></div>
+            <div class="pass-top"><b>zoobum</b><span>ცხოველის პასპორტი</span><i>№ 0923</i></div>
             <div class="pass-pic">
-              <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="Sushi, a tabby cat, looking up against a blue wall" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div>
-              <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc2" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc2" textLength="256" lengthAdjust="spacing">ZOOBUM CLUB · CERTIFIED REGULAR ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2019</text></g></svg>
+              <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="სუში, ზოლიანი კატა, ცისფერი კედლის ფონზე ზემოთ იყურება" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div>
+              <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc2" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc2" textLength="256" lengthAdjust="spacing">ZOOBUM · კლუბის ერთგული წევრი ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2019</text></g></svg>
             </div>
-            <div class="pass-name"><b>Sushi</b><small>Regular since 2019</small></div>
-            <dl class="pass-dl"><div><dt>Breed</dt><dd>Tabby</dd></div><div><dt>Age</dt><dd>6</dd></div><div><dt>Loves</dt><dd>The 4 pm sunbeam</dd></div></dl>
+            <div class="pass-name"><b>სუში</b><small>ჩვენთანაა 2019 წლიდან</small></div>
+            <dl class="pass-dl"><div><dt>ჯიში</dt><dd>ზოლიანი</dd></div><div><dt>ასაკი</dt><dd>6</dd></div><div><dt>უყვარს</dt><dd>4 საათის მზე</dd></div></dl>
             <p class="mrz" aria-hidden="true">P&lt;ZBM&lt;SUSHI&lt;&lt;TABBY&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
             <i class="sheen"></i><i class="shade"></i>
           </div>
         </figure>
-        <figure class="pass" style="--p:2;--t:-1" data-t="-1" data-word="bunnies" data-tint="#A9DCD3" data-name="Mochi" data-by="Mochi's pick" data-pick="meadow-hay" aria-hidden="true">
+        <figure class="pass" style="--p:2;--t:-1" data-t="-1" data-word="კურდღლებისთვის," data-tint="#A9DCD3" data-name="მოჩი" data-by="მოჩის რჩეული" data-pick="meadow-hay" aria-hidden="true">
           <div class="pass-in" style="--c:#A9DCD3">
-            <div class="pass-top"><b>zoobum</b><span>Pet passport</span><i>№ 1288</i></div>
+            <div class="pass-top"><b>zoobum</b><span>ცხოველის პასპორტი</span><i>№ 1288</i></div>
             <div class="pass-pic">
-              <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1591382386627-349b692688ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1591382386627-349b692688ff?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1591382386627-349b692688ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="Mochi, a lop-eared rabbit, on a soft teal blanket" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div>
-              <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc3" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc3" textLength="256" lengthAdjust="spacing">ZOOBUM CLUB · CERTIFIED REGULAR ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2023</text></g></svg>
+              <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1591382386627-349b692688ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1591382386627-349b692688ff?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1591382386627-349b692688ff?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="მოჩი, ჩამოყრილყურება კურდღელი, ფირუზისფერ პლედზე" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div>
+              <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc3" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc3" textLength="256" lengthAdjust="spacing">ZOOBUM · კლუბის ერთგული წევრი ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2023</text></g></svg>
             </div>
-            <div class="pass-name"><b>Mochi</b><small>Regular since 2023</small></div>
-            <dl class="pass-dl"><div><dt>Breed</dt><dd>Holland lop</dd></div><div><dt>Age</dt><dd>2</dd></div><div><dt>Loves</dt><dd>Cardboard castles</dd></div></dl>
+            <div class="pass-name"><b>მოჩი</b><small>ჩვენთანაა 2023 წლიდან</small></div>
+            <dl class="pass-dl"><div><dt>ჯიში</dt><dd>ჰოლანდიური ლოპი</dd></div><div><dt>ასაკი</dt><dd>2</dd></div><div><dt>უყვარს</dt><dd>მუყაოს ციხე-სიმაგრე</dd></div></dl>
             <p class="mrz" aria-hidden="true">P&lt;ZBM&lt;MOCHI&lt;&lt;HOLLAND&lt;LOP&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
             <i class="sheen"></i><i class="shade"></i>
           </div>
         </figure>
-        <figure class="pass" style="--p:3;--t:2.5" data-t="2.5" data-word="piggies" data-tint="#F4C3BD" data-name="Khinkali &amp; co." data-by="The piggies' pick" data-pick="carrot-crunch" aria-hidden="true">
+        <figure class="pass" style="--p:3;--t:2.5" data-t="2.5" data-word="გოჭებისთვის," data-tint="#F4C3BD" data-name="ხინკალი და ძმები" data-by="გოჭების რჩეული" data-pick="carrot-crunch" aria-hidden="true">
           <div class="pass-in" style="--c:#F4C3BD">
-            <div class="pass-top"><b>zoobum</b><span>Pet passport</span><i>№ 1305</i></div>
+            <div class="pass-top"><b>zoobum</b><span>ცხოველის პასპორტი</span><i>№ 1305</i></div>
             <div class="pass-pic">
-              <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1612267168669-679c961c5b31?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1612267168669-679c961c5b31?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1612267168669-679c961c5b31?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="Khinkali, Lobio and Pkhali, three guinea pigs, side by side on a pink blanket" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div>
-              <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc4" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc4" textLength="256" lengthAdjust="spacing">ZOOBUM CLUB · CERTIFIED REGULAR ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2024</text></g></svg>
+              <div class="pass-photo"><img class="fi" src="https://images.unsplash.com/photo-1612267168669-679c961c5b31?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1612267168669-679c961c5b31?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1612267168669-679c961c5b31?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w" sizes="(max-width: 959px) 70vw, 300px" alt="ხინკალი, ლობიო და ფხალი, სამი ზღვის გოჭი ვარდისფერ პლედზე" loading="lazy" decoding="async" draggable="false" width="800" height="800"></div>
+              <svg class="stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc4" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc4" textLength="256" lengthAdjust="spacing">ZOOBUM · კლუბის ერთგული წევრი ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5">2024</text></g></svg>
             </div>
-            <div class="pass-name"><b>Khinkali &amp; co.</b><small>Regulars since 2024</small></div>
-            <dl class="pass-dl"><div><dt>Breed</dt><dd>Guinea pigs, ×3</dd></div><div><dt>Age</dt><dd>1</dd></div><div><dt>Loves</dt><dd>Wheeking at 7 am</dd></div></dl>
+            <div class="pass-name"><b>ხინკალი და ძმები</b><small>ჩვენთან არიან 2024 წლიდან</small></div>
+            <dl class="pass-dl"><div><dt>ჯიში</dt><dd>ზღვის გოჭები, ×3</dd></div><div><dt>ასაკი</dt><dd>1</dd></div><div><dt>უყვარს</dt><dd>დილის 7-ზე ჭყივილი</dd></div></dl>
             <p class="mrz" aria-hidden="true">P&lt;ZBM&lt;KHINKALI&lt;LOBIO&lt;PKHALI&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
             <i class="sheen"></i><i class="shade"></i>
           </div>
@@ -639,9 +645,9 @@ em{font-style:italic}
       <div class="pick-in"><div class="pick-sway">
         <i class="pick-str" aria-hidden="true"></i>
         <div class="tag">
-          <small>Pepper's pick</small>
-          <b>Oat &amp; peanut bones</b>
-          <div class="tag-row"><strong>₾14</strong><button type="button" class="tag-add" data-id="oat-bones" aria-label="Add Oat &amp; peanut bones, ₾14, to the basket"><svg aria-hidden="true"><use href="#i-plus"/></svg>Add</button></div>
+          <small>პეპერის რჩეული</small>
+          <b>შვრიის და არაქისის ძვლები</b>
+          <div class="tag-row"><strong>14 ₾</strong><button type="button" class="tag-add" data-id="oat-bones" aria-label="კალათაში დამატება: შვრიის და არაქისის ძვლები, 14 ₾"><svg aria-hidden="true"><use href="#i-plus"/></svg>დამატება</button></div>
         </div>
       </div></div>
     </div>
@@ -652,19 +658,19 @@ em{font-style:italic}
         <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="" decoding="async" width="40" height="40">
         <img src="https://images.unsplash.com/photo-1554692918-08fa0fdc9db3?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="" decoding="async" width="40" height="40">
       </span>
-      <span><strong><span data-count="1200">1,200</span>+</strong><small>regulars with a passport</small></span>
+      <span><strong><span data-count="1200">1 200</span>+</strong><small>მუდმივი სტუმარი პასპორტით</small></span>
     </div>
-    <p class="hint" id="hint" aria-hidden="true"><svg><use href="#i-paw"/></svg><span>Tap a passport to meet the next regular</span></p>
+    <p class="hint" id="hint" aria-hidden="true"><svg><use href="#i-paw"/></svg><span>შეეხეთ პასპორტს შემდეგი სტუმრის გასაცნობად</span></p>
     <p class="sr" id="stack-live" aria-live="polite"></p>
   </div>
 </section>
 
 <!-- STRIP: the awning valance -->
 <div class="awning">
-  <div class="strip" aria-label="Same-day delivery across Tbilisi. A calm grooming studio in Vake. Vet-checked treats with no palm oil. Free nail trims for Club members. Returns welcome, even if chewed.">
+  <div class="strip" aria-label="მიტანა იმავე დღეს მთელ თბილისში. მშვიდი გრუმინგ-სტუდია ვაკეში. ვეტერინარის მიერ შემოწმებული ლაკომკები პალმის ზეთის გარეშე. ფრჩხილების უფასო მოჭრა კლუბის წევრებისთვის. დაბრუნება შესაძლებელია, თუნდაც დაღეჭილის.">
     <div class="strip-track" aria-hidden="true">
-      <ul class="strip-seq"><li>Same-day delivery</li><li class="k">Across Tbilisi</li><li>Grooming studio</li><li class="k">In Vake</li><li>Vet-checked treats</li><li class="k">No palm oil</li><li>Free nail trims</li><li class="k">For Club members</li><li>Returns welcome</li><li class="k">Even if chewed</li></ul>
-      <ul class="strip-seq"><li>Same-day delivery</li><li class="k">Across Tbilisi</li><li>Grooming studio</li><li class="k">In Vake</li><li>Vet-checked treats</li><li class="k">No palm oil</li><li>Free nail trims</li><li class="k">For Club members</li><li>Returns welcome</li><li class="k">Even if chewed</li></ul>
+      <ul class="strip-seq"><li>მიტანა იმავე დღეს</li><li class="k">მთელ თბილისში</li><li>გრუმინგ-სტუდია</li><li class="k">ვაკეში</li><li>შემოწმებული ლაკომკები</li><li class="k">პალმის ზეთის გარეშე</li><li>ფრჩხილების უფასო მოჭრა</li><li class="k">კლუბის წევრებს</li><li>დაბრუნება შესაძლებელია</li><li class="k">თუნდაც დაღეჭილის</li></ul>
+      <ul class="strip-seq"><li>მიტანა იმავე დღეს</li><li class="k">მთელ თბილისში</li><li>გრუმინგ-სტუდია</li><li class="k">ვაკეში</li><li>შემოწმებული ლაკომკები</li><li class="k">პალმის ზეთის გარეშე</li><li>ფრჩხილების უფასო მოჭრა</li><li class="k">კლუბის წევრებს</li><li>დაბრუნება შესაძლებელია</li><li class="k">თუნდაც დაღეჭილის</li></ul>
     </div>
   </div>
 </div>
@@ -673,14 +679,14 @@ em{font-style:italic}
 <section class="sec" id="shop" aria-labelledby="shop-h">
   <div class="wrap">
     <div class="sec-top" data-reveal>
-      <div><span class="label">The good stuff</span><h2 class="h2" id="shop-h">Tail-tested. <em>Regular-approved.</em></h2></div>
-      <p>The things our regulars keep coming back for, all tried in the shop first. Choose who you're shopping for.</p>
+      <div><span class="label">საუკეთესო თაროდან</span><h2 class="h2" id="shop-h">კუდით გამოცდილი. <em>სტუმრების მოწონებული.</em></h2></div>
+      <p>ის, რისთვისაც ჩვენი სტუმრები ისევ და ისევ ბრუნდებიან. ყველაფერი ჯერ მაღაზიაშივე გამოიცადა. აირჩიეთ, ვისთვის ყიდულობთ.</p>
     </div>
-    <div class="chips" id="chips" role="group" aria-label="Shop for" data-reveal>
-      <button type="button" class="chip" data-f="all" aria-pressed="true">Everyone</button>
-      <button type="button" class="chip" data-f="dog" aria-pressed="false">Dogs</button>
-      <button type="button" class="chip" data-f="cat" aria-pressed="false">Cats</button>
-      <button type="button" class="chip" data-f="small" aria-pressed="false">Small pets</button>
+    <div class="chips" id="chips" role="group" aria-label="ვისთვის ყიდულობთ" data-reveal>
+      <button type="button" class="chip" data-f="all" aria-pressed="true">ყველასთვის</button>
+      <button type="button" class="chip" data-f="dog" aria-pressed="false">ძაღლები</button>
+      <button type="button" class="chip" data-f="cat" aria-pressed="false">კატები</button>
+      <button type="button" class="chip" data-f="small" aria-pressed="false">პატარა ცხოველები</button>
     </div>
     <div class="grid" id="grid"></div>
     <p class="sr" id="shop-live" aria-live="polite"></p>
@@ -691,23 +697,23 @@ em{font-style:italic}
 <section class="groom" id="grooming" aria-labelledby="groom-h">
   <div class="wrap groom-grid">
     <div class="groom-pic" data-reveal>
-      <div class="groom-photo" data-clip><img class="fi" src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w" sizes="(max-width: 900px) 90vw, 500px" alt="A freshly fluffed Samoyed smiling against a pink wall" loading="lazy" decoding="async" draggable="false" width="800" height="1000"></div>
-      <p class="note">Nervous first-timers go slow, with lots of treats ♡ <span class="sr">— a note from the groomer</span></p>
+      <div class="groom-photo" data-clip><img class="fi" src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&amp;fit=crop&amp;q=80&amp;w=400 400w, https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w" sizes="(max-width: 900px) 90vw, 500px" alt="ახლახან გავარცხნილი სამოედი ვარდისფერი კედლის ფონზე იღიმება" loading="lazy" decoding="async" draggable="false" width="800" height="1000"></div>
+      <p class="note">მშიშრებს ნელა და ბევრი ლაკომკით ვუვლით ♡ <span class="sr">— გრუმერის ჩანაწერი</span></p>
     </div>
     <div class="groom-copy">
-      <span class="label" data-reveal>The grooming studio</span>
-      <h2 class="h2" id="groom-h" data-reveal>Fluff, <em>professionally</em> handled.</h2>
-      <p data-reveal>One pet at a time, no cages and no rush. First visits start with a sniff of the table and a biscuit, then we take it from there.</p>
+      <span class="label" data-reveal>გრუმინგ-სტუდია</span>
+      <h2 class="h2" id="groom-h" data-reveal>ფაფუკი ბეწვი, <em>პროფესიონალის ხელით.</em></h2>
+      <p data-reveal>ერთ ჯერზე ერთი ცხოველი, გალიების და აჩქარების გარეშე. პირველი ვიზიტი იწყება მაგიდის დაყნოსვით და ნამცხვრით, დანარჩენს შემდეგ ვნახავთ.</p>
       <ul class="price-list" data-reveal>
-        <li><b>Bath &amp; blow-dry</b><i></i><strong><small>from</small>₾45</strong><span>Shampoo, conditioner, fluff-dry, ears and a spritz</span></li>
-        <li><b>Full groom</b><i></i><strong><small>from</small>₾80</strong><span>Everything above, plus a breed-style cut, nails and paw balm</span></li>
-        <li><b>Puppy's first groom</b><i></i><strong>₾35</strong><span>A short, gentle introduction for pups under six months</span></li>
-        <li><b>Nail trim &amp; paw balm</b><i></i><strong>₾15</strong><span>Walk-ins welcome, and free for Club members</span></li>
+        <li><b>ბანაობა და გაშრობა</b><i></i><strong>45 ₾<small>-დან</small></strong><span>შამპუნი, კონდიციონერი, ფენით გაშრობა, ყურები და სურნელი</span></li>
+        <li><b>სრული გრუმინგი</b><i></i><strong>80 ₾<small>-დან</small></strong><span>ყველაფერი ზემოთ ჩამოთვლილი, ჯიშის შესაბამისი შეჭრა, ფრჩხილები და თათების მალამო</span></li>
+        <li><b>ლეკვის პირველი გრუმინგი</b><i></i><strong>35 ₾</strong><span>ხანმოკლე, ნაზი გაცნობა ექვს თვემდე ლეკვებისთვის</span></li>
+        <li><b>ფრჩხილები და მალამო</b><i></i><strong>15 ₾</strong><span>შემოიარეთ ჩაწერის გარეშე. კლუბის წევრებს უფასოდ</span></li>
       </ul>
-      <p class="groom-fine" data-reveal>Prices depend on size and coat. We'll confirm yours before we start.</p>
+      <p class="groom-fine" data-reveal>ფასი დამოკიდებულია ზომაზე და ბეწვზე. დაწყებამდე ზუსტ ფასს გეტყვით.</p>
       <div class="ticket" data-reveal>
-        <div><small>Next free table</small><b id="slot">Tomorrow · 11:30</b></div>
-        <a href="#" class="btn dark" id="slot-book" data-wa data-wa-text="">Book it <svg aria-hidden="true"><use href="#i-out"/></svg></a>
+        <div><small>უახლოესი თავისუფალი დრო</small><b id="slot">ხვალ · 11:30</b></div>
+        <a href="#" class="btn dark" id="slot-book" data-wa data-wa-text="">ჩაწერა <svg aria-hidden="true"><use href="#i-out"/></svg></a>
       </div>
     </div>
   </div>
@@ -717,43 +723,43 @@ em{font-style:italic}
 <section class="sec club" id="club" aria-labelledby="club-h">
   <div class="wrap club-grid">
     <div class="club-copy">
-      <span class="label" data-reveal>The zoobum Club</span>
-      <h2 class="h2" id="club-h" data-reveal>Every regular gets <em>a passport.</em></h2>
-      <p data-reveal>It's free, and it pays for itself by the second bag of treats. Fill one in and watch it print.</p>
+      <span class="label" data-reveal>zoobum-ის კლუბი</span>
+      <h2 class="h2" id="club-h" data-reveal>ყველა ერთგულ სტუმარს <em>პასპორტი ეკუთვნის.</em></h2>
+      <p data-reveal>გაწევრიანება უფასოა და ლაკომკების მეორე პაკეტზევე ამართლებს. შეავსეთ და ნახეთ, როგორ იბეჭდება.</p>
       <ul class="perks" data-reveal>
-        <li><svg aria-hidden="true"><use href="#i-tag"/></svg>10% off, always</li>
-        <li><svg aria-hidden="true"><use href="#i-gift"/></svg>A box on their birthday</li>
-        <li><svg aria-hidden="true"><use href="#i-scissors"/></svg>Free nail trims</li>
-        <li><svg aria-hidden="true"><use href="#i-spark"/></svg>First sniff at new arrivals</li>
+        <li><svg aria-hidden="true"><use href="#i-tag"/></svg>10% ფასდაკლება, ყოველთვის</li>
+        <li><svg aria-hidden="true"><use href="#i-gift"/></svg>საჩუქარი დაბადების დღეზე</li>
+        <li><svg aria-hidden="true"><use href="#i-scissors"/></svg>ფრჩხილების უფასო მოჭრა</li>
+        <li><svg aria-hidden="true"><use href="#i-spark"/></svg>სიახლეებს პირველები ნახავთ</li>
       </ul>
       <form class="club-form" id="club-form" novalidate data-reveal>
-        <div class="field"><label for="pet-name">Your pet's name</label><input class="input" id="pet-name" name="name" maxlength="16" autocomplete="off" required placeholder="Biscuit"></div>
-        <fieldset class="field"><legend>They're a…</legend>
+        <div class="field"><label for="pet-name">ცხოველის სახელი</label><input class="input" id="pet-name" name="name" maxlength="16" autocomplete="off" required placeholder="ბისკვიტი"></div>
+        <fieldset class="field"><legend>ის არის…</legend>
           <div class="seg">
-            <label><input type="radio" name="species" value="dog" checked><span>Dog</span></label>
-            <label><input type="radio" name="species" value="cat"><span>Cat</span></label>
-            <label><input type="radio" name="species" value="bunny"><span>Bunny</span></label>
-            <label><input type="radio" name="species" value="other"><span>Something else</span></label>
+            <label><input type="radio" name="species" value="dog" checked><span>ძაღლი</span></label>
+            <label><input type="radio" name="species" value="cat"><span>კატა</span></label>
+            <label><input type="radio" name="species" value="bunny"><span>კურდღელი</span></label>
+            <label><input type="radio" name="species" value="other"><span>სხვა</span></label>
           </div>
         </fieldset>
-        <div class="field"><label for="pet-email">Your email</label><input class="input" id="pet-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+        <div class="field"><label for="pet-email">თქვენი ელფოსტა</label><input class="input" id="pet-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
         <div class="form-acts">
           <input type="file" id="pet-photo" accept="image/*" class="sr">
-          <label class="btn line upload" for="pet-photo"><svg aria-hidden="true"><use href="#i-camera"/></svg><span id="photo-label">Add their photo</span></label>
-          <button type="submit" class="btn">Issue the passport <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <label class="btn line upload" for="pet-photo"><svg aria-hidden="true"><use href="#i-camera"/></svg><span id="photo-label">ფოტოს დამატება</span></label>
+          <button type="submit" class="btn">პასპორტის გაცემა <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
         </div>
-        <p class="fine" id="club-msg" aria-live="polite">Free forever. One friendly email a month, at most.</p>
+        <p class="fine" id="club-msg" aria-live="polite">სამუდამოდ უფასოა. თვეში მაქსიმუმ ერთი მეგობრული წერილი.</p>
       </form>
     </div>
     <div class="pv-wrap" id="pv-wrap" data-reveal>
       <div class="pass-in pv" id="pv" style="--c:#F6D37A">
-        <div class="pass-top"><b>zoobum</b><span>Pet passport</span><i id="pv-no">№ 1342</i></div>
+        <div class="pass-top"><b>zoobum</b><span>ცხოველის პასპორტი</span><i id="pv-no">№ 1342</i></div>
         <div class="pass-pic">
           <div class="pass-photo pv-photo"><span class="pv-art" id="pv-art"></span><img id="pv-img" alt="" hidden></div>
-          <svg class="stamp pv-stamp" id="pv-stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc5" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc5" textLength="256" lengthAdjust="spacing">ZOOBUM CLUB · WELCOME ABOARD ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5" id="pv-year">2026</text></g></svg>
+          <svg class="stamp pv-stamp" id="pv-stamp" viewBox="0 0 120 120" aria-hidden="true"><path id="sc5" d="M18 60a42 42 0 1 1 84 0a42 42 0 1 1-84 0" fill="none"/><g filter="url(#inked)" fill="currentColor"><circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="60" cy="60" r="32.5" fill="none" stroke="currentColor" stroke-width="1.4"/><text font-size="10" font-weight="700"><textPath href="#sc5" textLength="256" lengthAdjust="spacing">ZOOBUM · კეთილი იყოს შენი მობრძანება ·</textPath></text><use href="#i-paw" x="47" y="38" width="26" height="26"/><text x="60" y="80" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1.5" id="pv-year">2026</text></g></svg>
         </div>
-        <div class="pass-name"><b id="pv-name">Your pet</b><small id="pv-since">Regular since 2026</small></div>
-        <dl class="pass-dl"><div><dt>Species</dt><dd id="pv-kind">Dog</dd></div><div><dt>Since</dt><dd id="pv-y">2026</dd></div><div><dt>Perks</dt><dd>10% off, always</dd></div></dl>
+        <div class="pass-name"><b id="pv-name">თქვენი ცხოველი</b><small id="pv-since">ჩვენთანაა 2026 წლიდან</small></div>
+        <dl class="pass-dl"><div><dt>სახეობა</dt><dd id="pv-kind">ძაღლი</dd></div><div><dt>წლიდან</dt><dd id="pv-y">2026</dd></div><div><dt>ბონუსი</dt><dd>10% ფასდაკლება</dd></div></dl>
         <p class="mrz" id="pv-mrz" aria-hidden="true">P&lt;ZBM&lt;YOUR&lt;PET&lt;&lt;DOG&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
       </div>
     </div>
@@ -763,17 +769,17 @@ em{font-style:italic}
 <!-- THE WALL: regulars' prints taped up by the till -->
 <section class="wall" aria-labelledby="wall-h">
   <div class="wrap wall-head" data-reveal>
-    <span class="label">The wall of regulars</span>
-    <p id="wall-h">Tag <em>@zoobum</em> and your pet could end up on the wall by the till.</p>
+    <span class="label">მუდმივი სტუმრების კედელი</span>
+    <p id="wall-h">მონიშნეთ <em>@zoobum</em> და თქვენი ცხოველი შეიძლება სალაროსთან, კედელზე აღმოჩნდეს.</p>
   </div>
   <div class="prints" id="prints">
-    <div class="print" style="--r:-4deg;--tr:-6deg"><figure><img class="fi" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Bruno, a beagle, grinning at the camera" loading="lazy" decoding="async" width="400" height="400"><figcaption>Bruno, 6 · once ate a sock</figcaption></figure></div>
-    <div class="print" style="--r:3deg;--tr:5deg;--tape:rgba(187,213,238,.85)"><figure><img class="fi" src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Tsitsi, a cat in a yellow bandana" loading="lazy" decoding="async" width="400" height="400"><figcaption>Tsitsi, 2 · bandana model</figcaption></figure></div>
-    <div class="print" style="--r:-2deg;--tr:-3deg;--tape:rgba(244,195,189,.9)"><figure><img class="fi" src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Lady, a French bulldog, lying on a yellow floor" loading="lazy" decoding="async" width="400" height="400"><figcaption>Lady, 4 · professional napper</figcaption></figure></div>
-    <div class="print" style="--r:4deg;--tr:4deg;--tape:rgba(169,220,211,.9)"><figure><img class="fi" src="https://images.unsplash.com/photo-1522858547137-f1dcec554f55?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Kiwi, a blue budgie, perched on a finger" loading="lazy" decoding="async" width="400" height="400"><figcaption>Kiwi, 1 · sings for seeds</figcaption></figure></div>
-    <div class="print" style="--r:-3deg;--tr:-5deg"><figure><img class="fi" src="https://images.unsplash.com/photo-1554692918-08fa0fdc9db3?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Gogi, a corgi, smiling outdoors" loading="lazy" decoding="async" width="400" height="400"><figcaption>Gogi, 3 · pure joy</figcaption></figure></div>
-    <div class="print" style="--r:2deg;--tr:3deg;--tape:rgba(244,195,189,.9)"><figure><img class="fi" src="https://images.unsplash.com/photo-1536589961747-e239b2abbec2?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Mandarin, a ginger and white cat" loading="lazy" decoding="async" width="400" height="400"><figcaption>Mandarin, 5 · checks every box</figcaption></figure></div>
-    <div class="print" style="--r:-5deg;--tr:-4deg;--tape:rgba(187,213,238,.85)"><figure><img class="fi" src="https://images.unsplash.com/photo-1585584114963-503344a119b0?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="Bear, a Bernese puppy, chewing a red ball" loading="lazy" decoding="async" width="400" height="400"><figcaption>Bear, 10 weeks · first ball</figcaption></figure></div>
+    <div class="print" style="--r:-4deg;--tr:-6deg"><figure><img class="fi" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="ბრუნო, ბიგლი, კამერას უღიმის" loading="lazy" decoding="async" width="400" height="400"><figcaption>ბრუნო, 6 · ერთხელ წინდა შეჭამა</figcaption></figure></div>
+    <div class="print" style="--r:3deg;--tr:5deg;--tape:rgba(187,213,238,.85)"><figure><img class="fi" src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="ციცი, კატა ყვითელ ბანდანაში" loading="lazy" decoding="async" width="400" height="400"><figcaption>ციცი, 2 · ბანდანის მოდელი</figcaption></figure></div>
+    <div class="print" style="--r:-2deg;--tr:-3deg;--tape:rgba(244,195,189,.9)"><figure><img class="fi" src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="ლედი, ფრანგული ბულდოგი, ყვითელ იატაკზე წევს" loading="lazy" decoding="async" width="400" height="400"><figcaption>ლედი, 4 · ძილის ჩემპიონი</figcaption></figure></div>
+    <div class="print" style="--r:4deg;--tr:4deg;--tape:rgba(169,220,211,.9)"><figure><img class="fi" src="https://images.unsplash.com/photo-1522858547137-f1dcec554f55?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="კივი, ცისფერი თუთიყუში, თითზე ზის" loading="lazy" decoding="async" width="400" height="400"><figcaption>კივი, 1 · თესლისთვის მღერის</figcaption></figure></div>
+    <div class="print" style="--r:-3deg;--tr:-5deg"><figure><img class="fi" src="https://images.unsplash.com/photo-1554692918-08fa0fdc9db3?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="გოგი, კორგი, ეზოში იღიმება" loading="lazy" decoding="async" width="400" height="400"><figcaption>გოგი, 3 · სუფთა სიხარული</figcaption></figure></div>
+    <div class="print" style="--r:2deg;--tr:3deg;--tape:rgba(244,195,189,.9)"><figure><img class="fi" src="https://images.unsplash.com/photo-1536589961747-e239b2abbec2?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="მანდარინი, ჟღალი და თეთრი კატა" loading="lazy" decoding="async" width="400" height="400"><figcaption>მანდარინი, 5 · ყველა ყუთს ამოწმებს</figcaption></figure></div>
+    <div class="print" style="--r:-5deg;--tr:-4deg;--tape:rgba(187,213,238,.85)"><figure><img class="fi" src="https://images.unsplash.com/photo-1585584114963-503344a119b0?auto=format&amp;fit=crop&amp;q=80&amp;w=400" alt="ბერა, ბერნის მთის ძაღლის ლეკვი, წითელ ბურთს ღეჭავს" loading="lazy" decoding="async" width="400" height="400"><figcaption>ბერა, 10 კვირის · პირველი ბურთი</figcaption></figure></div>
   </div>
 </section>
 
@@ -782,28 +788,28 @@ em{font-style:italic}
   <div class="wrap">
     <div class="visit-panel">
       <div class="visit-photo">
-        <img class="fi" src="https://images.unsplash.com/photo-1593134257782-e89567b7718a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1593134257782-e89567b7718a?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1593134257782-e89567b7718a?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w" sizes="(max-width: 900px) 100vw, 600px" alt="A Jack Russell puppy waiting among the plants by a doorstep" loading="lazy" decoding="async" draggable="false" width="800" height="1000">
+        <img class="fi" src="https://images.unsplash.com/photo-1593134257782-e89567b7718a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" srcset="https://images.unsplash.com/photo-1593134257782-e89567b7718a?auto=format&amp;fit=crop&amp;q=80&amp;w=800 800w, https://images.unsplash.com/photo-1593134257782-e89567b7718a?auto=format&amp;fit=crop&amp;q=80&amp;w=1200 1200w" sizes="(max-width: 900px) 100vw, 600px" alt="ჯეკ რასელის ლეკვი კართან, მცენარეებს შორის ელოდება" loading="lazy" decoding="async" draggable="false" width="800" height="1000">
         <!-- the sign on the door turns over with the real opening hours, in Tbilisi time -->
         <div class="sign" id="sign" aria-hidden="true">
           <svg viewBox="0 0 240 64"><path d="M38 62 120 9l82 53" fill="none" stroke="#7A5634" stroke-width="2" stroke-linecap="round"/><circle cx="120" cy="8" r="6" fill="#C69B57" stroke="#7A5634" stroke-width="1.5"/></svg>
-          <div class="sign-board"><span id="sign-a">Come in,</span><b id="sign-b">we're <em>open</em></b><small id="sign-c">until 20:00</small></div>
+          <div class="sign-board"><span id="sign-a">შემობრძანდით,</span><b id="sign-b"><em>ღია</em> ვართ</b><small id="sign-c">20:00-მდე</small></div>
         </div>
       </div>
       <div class="visit-info">
-        <span class="label" data-reveal>Visit the shop</span>
-        <h2 class="h2" id="visit-h" data-reveal>Come say hi. <em>Bring the dog.</em></h2>
-        <p class="status" id="status" data-reveal>Open now · until 20:00</p>
+        <span class="label" data-reveal>მოგვინახულეთ</span>
+        <h2 class="h2" id="visit-h" data-reveal>შემოიარეთ. <em>ძაღლიც წამოიყვანეთ.</em></h2>
+        <p class="status" id="status" data-reveal>ახლა ღიაა · 20:00-მდე</p>
         <ul class="facts" data-reveal>
-          <li><svg aria-hidden="true"><use href="#i-pin"/></svg><div><b>12 Abashidze St, Vake</b><span>Tbilisi · two minutes from Vake Park</span></div></li>
-          <li><svg aria-hidden="true"><use href="#i-truck"/></svg><div><b>Same-day delivery across Tbilisi</b><span>Order by 16:00 · free over ₾100</span></div></li>
+          <li><svg aria-hidden="true"><use href="#i-pin"/></svg><div><b>აბაშიძის ქ. 12, ვაკე</b><span>თბილისი · ვაკის პარკიდან ორ წუთში</span></div></li>
+          <li><svg aria-hidden="true"><use href="#i-truck"/></svg><div><b>მიტანა იმავე დღეს მთელ თბილისში</b><span>შეუკვეთეთ 16:00-მდე · 100 ₾-ის ზემოთ უფასოა</span></div></li>
         </ul>
         <dl class="hours" id="hours" data-reveal>
-          <div data-days="1,2,3,4,5,6"><dt>Monday – Saturday</dt><dd>10:00 – 20:00</dd></div>
-          <div data-days="0"><dt>Sunday</dt><dd>11:00 – 18:00</dd></div>
+          <div data-days="1,2,3,4,5,6"><dt>ორშაბათი – შაბათი</dt><dd>10:00 – 20:00</dd></div>
+          <div data-days="0"><dt>კვირა</dt><dd>11:00 – 18:00</dd></div>
         </dl>
         <div class="acts" data-reveal>
-          <a href="#" class="btn" data-wa>Message us on WhatsApp <svg aria-hidden="true"><use href="#i-out"/></svg></a>
-          <a href="https://www.google.com/maps/search/?api=1&amp;query=Vake%2C%20Tbilisi" class="tl" target="_blank" rel="noopener">Get directions</a>
+          <a href="#" class="btn" data-wa>მოგვწერეთ WhatsApp-ზე <svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Vake%2C%20Tbilisi" class="tl" target="_blank" rel="noopener">მარშრუტი</a>
         </div>
       </div>
     </div>
@@ -813,21 +819,21 @@ em{font-style:italic}
 
 <footer class="foot">
   <div class="wrap foot-in">
-    <a href="#top" class="logo" aria-label="zoobum, back to top">z<span class="o">o<i></i></span><span class="o">o<i></i></span>bum</a>
-    <nav aria-label="Footer"><a href="#shop">Shop</a><a href="#grooming">Grooming</a><a href="#club">The Club</a><a href="#visit">Visit</a><a href="#" data-wa>WhatsApp</a></nav>
-    <span>© 2026 zoobum · pet boutique &amp; grooming, Tbilisi</span>
+    <a href="#top" class="logo" aria-label="zoobum, თავში დაბრუნება">z<span class="o">o<i></i></span><span class="o">o<i></i></span>bum</a>
+    <nav aria-label="ქვედა მენიუ"><a href="#shop">მაღაზია</a><a href="#grooming">გრუმინგი</a><a href="#club">კლუბი</a><a href="#visit">მოგვინახულეთ</a><a href="#" data-wa>WhatsApp</a></nav>
+    <span>© 2026 zoobum · ზოობუტიკი და გრუმინგი, თბილისი</span>
   </div>
 </footer>
 
 <dialog class="basket" id="basket" aria-labelledby="bk-h">
-  <div class="bk-head"><h2 id="bk-h">Your basket</h2><button type="button" class="circle" id="bk-x" aria-label="Close the basket"><svg aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="bk-head"><h2 id="bk-h">თქვენი კალათა</h2><button type="button" class="circle" id="bk-x" aria-label="კალათის დახურვა"><svg aria-hidden="true"><use href="#i-x"/></svg></button></div>
   <div class="meter" id="bk-meter"><p id="bk-meter-t"></p><div class="track" id="bk-track"><i></i><svg aria-hidden="true"><use href="#i-paw"/></svg></div></div>
   <ul class="bk-list" id="bk-list"></ul>
-  <div class="bk-empty" id="bk-empty"><svg aria-hidden="true"><use href="#i-paw"/></svg><p>Your basket is empty. Pepper is a little disappointed.</p><a href="#shop" class="btn" id="bk-shop">Shop the good stuff <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+  <div class="bk-empty" id="bk-empty"><svg aria-hidden="true"><use href="#i-paw"/></svg><p>კალათა ცარიელია. პეპერი ცოტა გულნატკენია.</p><a href="#shop" class="btn" id="bk-shop">საუკეთესოს ნახვა <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
   <div class="bk-foot" id="bk-foot">
-    <div class="bk-sum"><span>Subtotal</span><strong id="bk-sub">₾0</strong></div>
-    <a href="#" class="btn" id="bk-order" target="_blank" rel="noopener">Order on WhatsApp <svg aria-hidden="true"><use href="#i-out"/></svg></a>
-    <small>We confirm stock and a delivery time in minutes.</small>
+    <div class="bk-sum"><span>ჯამი</span><strong id="bk-sub">0 ₾</strong></div>
+    <a href="#" class="btn" id="bk-order" target="_blank" rel="noopener">შეკვეთა WhatsApp-ით <svg aria-hidden="true"><use href="#i-out"/></svg></a>
+    <small>მარაგს და მიტანის დროს რამდენიმე წუთში დაგიდასტურებთ.</small>
   </div>
   <p class="sr" id="bk-live" aria-live="polite"></p>
 </dialog>
@@ -838,24 +844,23 @@ em{font-style:italic}
 <script type="application/json" id="shop-data">
 {
   "products": [
-    {"id": "oat-bones", "name": "Oat & peanut bones", "desc": "Baked in Tbilisi with oats and real peanut butter. 200 g.", "price": 14, "for": ["dog"], "img": "photo-1568640347023-a616a30bc3bd", "alt": "Bone-shaped biscuits scattered across a pink background", "rating": 4.9, "reviews": 212, "pick": "Pepper's favourite!"},
-    {"id": "feather-wand", "name": "Feather wand teaser", "desc": "Natural feathers and a bell. Hours of ambush practice.", "price": 24, "for": ["cat"], "img": "photo-1592194996308-7b43878e84a6", "alt": "A kitten reaching up with one paw against a teal wall", "rating": 4.9, "reviews": 341, "pick": "Sushi's favourite!"},
-    {"id": "seagrass-bed", "name": "Seagrass nest bed", "desc": "Hand-woven, with a washable linen cushion.", "price": 165, "for": ["dog", "cat"], "img": "photo-1600369671236-e74521d4b6ad", "alt": "A puppy sitting in a woven seagrass basket bed", "rating": 4.9, "reviews": 88},
-    {"id": "meadow-hay", "name": "Second-cut meadow hay", "desc": "Soft, sweet timothy from Kakheti. 1 kg.", "price": 16, "for": ["small"], "img": "photo-1452857297128-d9c29adba80b", "alt": "A sandy lop-eared rabbit sitting in the grass", "rating": 5.0, "reviews": 74},
-    {"id": "sheep-plush", "name": "Woolly sheep squeaker", "desc": "Double-stitched for serious chewers.", "price": 32, "for": ["dog"], "img": "photo-1591946614720-90a587da4a36", "alt": "A golden retriever proudly carrying a plush toy", "rating": 4.8, "reviews": 167},
-    {"id": "sisal-tower", "name": "Sisal scratch tower", "desc": "Oak base, with sisal rope you can replace.", "price": 95, "for": ["cat"], "img": "photo-1545249390-6bdfa286032f", "alt": "A grey kitten stretching up a sisal scratching post", "rating": 4.8, "reviews": 126},
-    {"id": "cable-jumper", "name": "Cable-knit jumper", "desc": "Soft merino blend in five sizes, for cold Vake walks.", "price": 64, "for": ["dog"], "img": "photo-1608096299210-db7e38487075", "alt": "A small fluffy dog in a red knitted jumper against a red wall", "rating": 4.7, "reviews": 59},
-    {"id": "carrot-crunch", "name": "Carrot & parsley crunch", "desc": "Freeze-dried, with nothing added. 80 g.", "price": 12, "for": ["small"], "img": "photo-1548767797-d8c844163c4c", "alt": "Two guinea pigs nibbling a pile of grated carrot", "rating": 4.9, "reviews": 95},
-    {"id": "salmon-kibble", "name": "Wild salmon kibble", "desc": "Grain-free, slow-baked and vet-checked. 2 kg.", "price": 72, "for": ["dog", "cat"], "img": "photo-1589924691995-400dc9ecc119", "alt": "A bowl full of kibble on a wooden floor", "rating": 4.8, "reviews": 203, "pos": "72% 50%"},
-    {"id": "pom-beanie", "name": "Pom-pom beanie", "desc": "Knitted by hand. Optional, but very persuasive.", "price": 38, "for": ["dog"], "img": "photo-1517423568366-8b83523034fd", "alt": "A pug wearing a yellow knitted beanie with a pom-pom", "rating": 4.6, "reviews": 41},
-    {"id": "applewood-sticks", "name": "Applewood chew sticks", "desc": "Untreated apple branches for busy teeth.", "price": 9, "for": ["small"], "img": "photo-1425082661705-1834bfd09dca", "alt": "A golden hamster sitting up on its hind legs", "rating": 4.8, "reviews": 62},
-    {"id": "brass-tag", "name": "Engraved brass ID tag", "desc": "Engraved in the shop while you wait.", "price": 28, "for": ["dog", "cat"], "img": "photo-1591160690555-5debfba289f0", "alt": "A golden retriever puppy wearing a collar with a tag", "rating": 5.0, "reviews": 187}
+    {"id": "oat-bones", "name": "შვრიის და არაქისის ძვლები", "desc": "თბილისში გამომცხვარი, შვრიით და ნამდვილი არაქისის კარაქით. 200 გ.", "price": 14, "for": ["dog"], "img": "photo-1568640347023-a616a30bc3bd", "alt": "ძვლის ფორმის ნამცხვრები ვარდისფერ ფონზე", "rating": 4.9, "reviews": 212, "pick": "პეპერის ფავორიტი!"},
+    {"id": "feather-wand", "name": "ჯოხი ბუმბულებით", "desc": "ნატურალური ბუმბული და ზარაკი. საათობით ნადირობის ვარჯიში.", "price": 24, "for": ["cat"], "img": "photo-1592194996308-7b43878e84a6", "alt": "კნუტი ფირუზისფერი კედლის ფონზე თათს მაღლა იწევს", "rating": 4.9, "reviews": 341, "pick": "სუშის ფავორიტი!"},
+    {"id": "seagrass-bed", "name": "წნული საწოლი-ბუდე", "desc": "ხელით მოწნული, სელის ბალიშით, რომელიც ირეცხება.", "price": 165, "for": ["dog", "cat"], "img": "photo-1600369671236-e74521d4b6ad", "alt": "ლეკვი წნულ კალათა-საწოლში ზის", "rating": 4.9, "reviews": 88},
+    {"id": "meadow-hay", "name": "მდელოს თივა", "desc": "რბილი და ტკბილი თივა კახეთიდან. 1 კგ.", "price": 16, "for": ["small"], "img": "photo-1452857297128-d9c29adba80b", "alt": "ქვიშისფერი ჩამოყრილყურება კურდღელი ბალახზე ზის", "rating": 5.0, "reviews": 74},
+    {"id": "sheep-plush", "name": "ფაფუკი ცხვარი-წრიპინა", "desc": "ორმაგად ნაკერი სერიოზული მღეჭავებისთვის.", "price": 32, "for": ["dog"], "img": "photo-1591946614720-90a587da4a36", "alt": "ოქროსფერ რეტრივერს პირით რბილი სათამაშო უჭირავს", "rating": 4.8, "reviews": 167},
+    {"id": "sisal-tower", "name": "სიზალის საფხაჭნი კოშკი", "desc": "მუხის ძირი და სიზალის თოკი, რომელსაც გამოცვლით.", "price": 95, "for": ["cat"], "img": "photo-1545249390-6bdfa286032f", "alt": "ნაცრისფერი კნუტი სიზალის საფხაჭნზე ადის", "rating": 4.8, "reviews": 126},
+    {"id": "cable-jumper", "name": "ნაქსოვი სვიტერი", "desc": "რბილი მერინოს მატყლი, ხუთი ზომა, ვაკის ცივი სეირნობისთვის.", "price": 64, "for": ["dog"], "img": "photo-1608096299210-db7e38487075", "alt": "პატარა ფაფუკი ძაღლი წითელ ნაქსოვ სვიტერში", "rating": 4.7, "reviews": 59},
+    {"id": "carrot-crunch", "name": "სტაფილოს და ოხრახუშის ჩირი", "desc": "გაყინვით გამომშრალი, არაფერი დამატებული. 80 გ.", "price": 12, "for": ["small"], "img": "photo-1548767797-d8c844163c4c", "alt": "ორი ზღვის გოჭი გახეხილ სტაფილოს ღეჭავს", "rating": 4.9, "reviews": 95},
+    {"id": "salmon-kibble", "name": "ორაგულის მშრალი საკვები", "desc": "მარცვლეულის გარეშე, ნელა გამომცხვარი, ვეტერინარის მოწონებული. 2 კგ.", "price": 72, "for": ["dog", "cat"], "img": "photo-1589924691995-400dc9ecc119", "alt": "სავსე ჯამი მშრალი საკვებით ხის იატაკზე", "rating": 4.8, "reviews": 203, "pos": "72% 50%"},
+    {"id": "pom-beanie", "name": "ქუდი ფუნჩულათი", "desc": "ხელით ნაქსოვი. აუცილებელი არაა, მაგრამ ძალიან დამაჯერებელია.", "price": 38, "for": ["dog"], "img": "photo-1517423568366-8b83523034fd", "alt": "მოპსი ყვითელ ნაქსოვ ქუდში", "rating": 4.6, "reviews": 41},
+    {"id": "applewood-sticks", "name": "ვაშლის ტოტები საღეჭად", "desc": "დაუმუშავებელი ვაშლის ტოტები მოუსვენარი კბილებისთვის.", "price": 9, "for": ["small"], "img": "photo-1425082661705-1834bfd09dca", "alt": "ოქროსფერი ზაზუნა უკანა ფეხებზე დგას", "rating": 4.8, "reviews": 62},
+    {"id": "brass-tag", "name": "გრავირებული სპილენძის მედალიონი", "desc": "გრავირებას მაღაზიაშივე, თქვენს თვალწინ ვაკეთებთ.", "price": 28, "for": ["dog", "cat"], "img": "photo-1591160690555-5debfba289f0", "alt": "ოქროსფერი რეტრივერის ლეკვი საყელურით და მედალიონით", "rating": 5.0, "reviews": 187}
   ]
 }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
 <script>
 (() => {
 'use strict';
@@ -872,7 +877,11 @@ root.classList.add('ready');
 const WA = '995000000000';
 const FREE_DELIVERY = 100;
 const wa = text => 'https://wa.me/' + WA + '?text=' + encodeURIComponent(text);
-const money = n => '₾' + (Math.round(n * 100) / 100).toLocaleString('en-GB', { maximumFractionDigits: 2 });
+// prices are written the Georgian way: 14 ₾
+const money = n => (Math.round(n * 100) / 100).toLocaleString('ka-GE', { maximumFractionDigits: 2 }) + '\u00a0₾';
+// Georgian letters in Latin, for the passport's machine-readable line
+const LAT = { 'ა': 'a', 'ბ': 'b', 'გ': 'g', 'დ': 'd', 'ე': 'e', 'ვ': 'v', 'ზ': 'z', 'თ': 't', 'ი': 'i', 'კ': 'k', 'ლ': 'l', 'მ': 'm', 'ნ': 'n', 'ო': 'o', 'პ': 'p', 'ჟ': 'zh', 'რ': 'r', 'ს': 's', 'ტ': 't', 'უ': 'u', 'ფ': 'p', 'ქ': 'k', 'ღ': 'gh', 'ყ': 'q', 'შ': 'sh', 'ჩ': 'ch', 'ც': 'ts', 'ძ': 'dz', 'წ': 'ts', 'ჭ': 'ch', 'ხ': 'kh', 'ჯ': 'j', 'ჰ': 'h' };
+const latin = s => s.replace(/[\u10D0-\u10FF]/g, c => LAT[c] || '');
 const esc = v => String(v).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 // Unsplash photo ids (or full Unsplash URLs) get responsive widths; any other URL is used as given
 const unsplash = id => /^photo-/.test(id) ? 'https://images.unsplash.com/' + id : id;
@@ -899,10 +908,10 @@ function tbilisiNow() {
   return { day: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(parts.weekday), min: +parts.hour * 60 + +parts.minute };
 }
 const HOURS = [[11, 18], [10, 20], [10, 20], [10, 20], [10, 20], [10, 20], [10, 20]]; // Sunday first
-const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const DAYS = ['კვირას', 'ორშაბათს', 'სამშაბათს', 'ოთხშაბათს', 'ხუთშაბათს', 'პარასკევს', 'შაბათს'];
 const hh = h => String(h).padStart(2, '0') + ':00';
 
-let lenis = null, data = { products: [] }, byId = new Map();
+let data = { products: [] }, byId = new Map();
 try { init(); } catch (err) { console.error(err); root.classList.remove('js'); root.classList.add('go'); }
 
 function init() {
@@ -911,12 +920,6 @@ function init() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.defaults({ ease: 'expo.out' });
     ScrollTrigger.config({ ignoreMobileResize: true });
-  }
-  if (motion && window.Lenis) {
-    lenis = new Lenis({ lerp: 0.12 });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(t => lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
   }
   data = loadShop();
   byId = new Map(data.products.map(p => [p.id, p]));
@@ -954,21 +957,18 @@ function loadShop() {
 
 function setWa() {
   $$('[data-wa]').forEach(a => {
-    a.href = wa(a.dataset.waText || "Hi zoobum! I've got a question.");
+    a.href = wa(a.dataset.waText || 'გამარჯობა, zoobum! კითხვა მაქვს.');
     a.target = '_blank';
     a.rel = 'noopener';
   });
 }
 
-/* ── anchors glide with Lenis; the focus follows for keyboards and screen readers ── */
+/* ── anchors scroll natively; the focus follows for keyboards and screen readers ── */
 function route(hash) {
   const id = hash.slice(1), el = id === 'top' ? $('#main') : document.getElementById(id);
   if (!el) return false;
   const top = id === 'top';
-  if (lenis) {
-    const far = Math.abs(top ? scrollY : el.getBoundingClientRect().top);
-    lenis.scrollTo(top ? 0 : el, { duration: Math.min(1.8, 0.8 + far / 4000), easing: t => 1 - Math.pow(1 - t, 4), force: true });
-  } else scrollTo({ top: top ? 0 : el.getBoundingClientRect().top + scrollY, behavior: reduce ? 'auto' : 'smooth' });
+  scrollTo({ top: top ? 0 : el.getBoundingClientRect().top + scrollY, behavior: reduce ? 'auto' : 'smooth' });
   if (!top) el.setAttribute('tabindex', '-1');
   el.focus({ preventScroll: true });
   return true;
@@ -988,13 +988,15 @@ function setupAnchors() {
 /* ── the floating bar: glass at the top, firmer once scrolled, tucks away going down ── */
 function setupNav() {
   const bar = $('#bar');
-  let last = scrollY;
+  let last = scrollY, ticking = false;
+  // scroll events only ask for a frame; the work happens once per frame, never more
   const update = () => {
+    ticking = false;
     const y = scrollY;
     bar.classList.toggle('solid', y > 60);
     if (Math.abs(y - last) > 6) { bar.classList.toggle('hid', y > last && y > innerHeight * 0.5); last = y; }
   };
-  addEventListener('scroll', update, { passive: true });
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
   bar.addEventListener('focusin', () => bar.classList.remove('hid'));
   update();
   if (G) $$('.links a').forEach(a => {
@@ -1009,14 +1011,14 @@ function setupMenu() {
   const open = () => {
     dlg.showModal();
     btn.setAttribute('aria-expanded', 'true');
-    lenis && lenis.stop();
+    root.classList.add('locked');
     if (!motion) return;
     gsap.fromTo(dlg, { opacity: 0 }, { opacity: 1, duration: 0.3, ease: 'power2.out' });
     gsap.fromTo(links, { autoAlpha: 0, y: 24 }, { autoAlpha: 1, y: 0, duration: 0.6, stagger: 0.05, delay: 0.05 });
   };
   const shut = then => {
     if (!dlg.open) return;
-    const done = () => { dlg.close(); btn.setAttribute('aria-expanded', 'false'); lenis && lenis.start(); then && then(); };
+    const done = () => { dlg.close(); btn.setAttribute('aria-expanded', 'false'); root.classList.remove('locked'); then && then(); };
     motion ? gsap.to(dlg, { opacity: 0, duration: 0.25, ease: 'power2.in', onComplete: done }) : done();
   };
   btn.addEventListener('click', open);
@@ -1064,22 +1066,22 @@ function setupBasket() {
   const save = () => { try { localStorage.setItem('zoobum-basket', JSON.stringify([...items])); } catch (e) {} };
   const count = () => [...items.values()].reduce((a, b) => a + b, 0);
   const total = () => [...items].reduce((s, [id, q]) => s + byId.get(id).price * q, 0);
-  const message = () => "Hi zoobum! I'd like to order:\n" + [...items].map(([id, q]) => `• ${q} × ${byId.get(id).name} (${money(byId.get(id).price * q)})`).join('\n') + `\nTotal: ${money(total())}`;
+  const message = () => 'გამარჯობა, zoobum! მინდა შევუკვეთო:\n' + [...items].map(([id, q]) => `• ${q} × ${byId.get(id).name} (${money(byId.get(id).price * q)})`).join('\n') + `\nჯამი: ${money(total())}`;
   const row = (p, q) => `<li class="bk-item" data-id="${esc(p.id)}"><img src="${esc(imgURL(p.img, 400))}" alt="" width="68" height="68" loading="lazy">` +
-    `<div><b>${esc(p.name)}</b><span class="each">${money(p.price)} each</span><div class="qty"><button type="button" data-q="-1" aria-label="One fewer ${esc(p.name)}">−</button>` +
-    `<output aria-label="Quantity">${q}</output><button type="button" data-q="1" aria-label="One more ${esc(p.name)}">+</button></div></div>` +
-    `<div class="bk-right"><strong>${money(p.price * q)}</strong><button type="button" data-q="x">Remove</button></div></li>`;
+    `<div><b>${esc(p.name)}</b><span class="each">${money(p.price)} / ცალი</span><div class="qty"><button type="button" data-q="-1" aria-label="ერთით ნაკლები: ${esc(p.name)}">−</button>` +
+    `<output aria-label="რაოდენობა">${q}</output><button type="button" data-q="1" aria-label="ერთით მეტი: ${esc(p.name)}">+</button></div></div>` +
+    `<div class="bk-right"><strong>${money(p.price * q)}</strong><button type="button" data-q="x">წაშლა</button></div></li>`;
 
   function render() {
     const n = count(), t = total(), left = Math.max(0, FREE_DELIVERY - t);
     // keep the keyboard where it was when the list is redrawn
     const f = document.activeElement, keep = f && list.contains(f) ? [f.closest('.bk-item').dataset.id, f.dataset.q] : null;
     $$('[data-bk-count]').forEach(el => { el.textContent = n; });
-    cartBtn.setAttribute('aria-label', `Basket, ${n} item${n === 1 ? '' : 's'}`);
+    cartBtn.setAttribute('aria-label', `კალათა, ${n} ნივთი`);
     list.innerHTML = [...items].map(([id, q]) => row(byId.get(id), q)).join('');
     empty.hidden = n > 0; list.hidden = foot.hidden = meter.hidden = n === 0;
     sub.textContent = money(t);
-    meterT.innerHTML = left > 0 ? `You're <b>${money(left)}</b> away from free delivery.` : `<b>Free delivery</b>, unlocked. Good human.`;
+    meterT.innerHTML = left > 0 ? `უფასო მიტანამდე დაგრჩათ <b>${money(left)}</b>.` : `<b>მიტანა უფასოა.</b> კარგი პატრონი ხართ!`;
     track.style.setProperty('--f', Math.min(1, t / FREE_DELIVERY).toFixed(3));
     order.href = wa(message());
     if (keep) { const b = $(`.bk-item[data-id="${keep[0]}"] [data-q="${keep[1]}"]`, list); (b || $('[data-q]', list) || $('#bk-x')).focus(); }
@@ -1112,7 +1114,7 @@ function setupBasket() {
     const p = byId.get(id);
     if (!p) return;
     set(id, (items.get(id) || 0) + 1);
-    live.textContent = `${p.name} added. ${count()} item${count() === 1 ? '' : 's'} in your basket.`;
+    live.textContent = `დაემატა: ${p.name}. კალათაში ${count()} ნივთია.`;
     fly(from, p);
     if (from && from.classList.contains('add')) {
       from.classList.add('done');
@@ -1127,7 +1129,7 @@ function setupBasket() {
     opener = document.activeElement;
     render();
     dlg.showModal();
-    lenis && lenis.stop();
+    root.classList.add('locked');
   };
   const shut = then => {
     if (!dlg.open || dlg.classList.contains('out')) return;
@@ -1141,7 +1143,7 @@ function setupBasket() {
   $('#bk-x').addEventListener('click', () => shut());
   dlg.addEventListener('cancel', e => { e.preventDefault(); shut(); });
   dlg.addEventListener('click', e => { if (e.target === dlg) shut(); });
-  dlg.addEventListener('close', () => { lenis && lenis.start(); if (opener && opener.isConnected) opener.focus({ preventScroll: true }); });
+  dlg.addEventListener('close', () => { root.classList.remove('locked'); if (opener && opener.isConnected) opener.focus({ preventScroll: true }); });
   $('#bk-shop').addEventListener('click', e => { e.preventDefault(); opener = null; shut(() => route('#shop')); });
   list.addEventListener('click', e => {
     const b = e.target.closest('[data-q]');
@@ -1163,7 +1165,7 @@ function setupHero(basket) {
   let a = 0, s = 1, touched = false;
   const depth = i => (i - a + N) % N;
 
-  $('span', hint).textContent = (fine ? 'Click' : 'Tap') + ' a passport to meet the next regular';
+  $('span', hint).textContent = (fine ? 'დააჭირეთ' : 'შეეხეთ') + ' პასპორტს შემდეგი სტუმრის გასაცნობად';
   $('.tag-add', pick).addEventListener('click', e => basket.add(e.currentTarget.dataset.id, e.currentTarget));
 
   // the species rolls over in the headline: the old word rises out, the new one rises in, and the line makes room
@@ -1192,7 +1194,7 @@ function setupHero(basket) {
       $('strong', pick).textContent = money(p.price);
       const btn = $('.tag-add', pick);
       btn.dataset.id = p.id;
-      btn.setAttribute('aria-label', `Add ${p.name}, ${money(p.price)}, to the basket`);
+      btn.setAttribute('aria-label', `კალათაში დამატება: ${p.name}, ${money(p.price)}`);
     };
     if (!motion) return fill();
     gsap.timeline()
@@ -1208,7 +1210,7 @@ function setupHero(basket) {
     if (!say) return;
     setPick(c);
     const dd = $$('dd', c).map(d => d.textContent);
-    live.textContent = `Passport ${a + 1} of ${N}: ${c.dataset.name}, ${dd[0]}, ${dd[1]}. Loves ${dd[2].toLowerCase()}.`;
+    live.textContent = `პასპორტი ${a + 1} / ${N}: ${c.dataset.name}, ${dd[0]}, ${dd[1]} წლის. უყვარს: ${dd[2]}.`;
   }
   const onKeys = (next, prev) => stage.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); next(); }
@@ -1381,9 +1383,9 @@ function setupHero(basket) {
 /* ── the shop: product cards from the data, filtered in place by who you're shopping for ── */
 function setupShop(basket) {
   const grid = $('#grid'), chips = $$('#chips .chip'), live = $('#shop-live');
-  const FOR = { dog: 'Dogs', cat: 'Cats', small: 'Small pets' };
-  const WHO = { all: 'everyone', dog: 'dogs', cat: 'cats', small: 'small pets' };
-  const forLabel = f => f.map(x => FOR[x]).join(' & ');
+  const FOR = { dog: 'ძაღლებს', cat: 'კატებს', small: 'პატარა ცხოველებს' };
+  const WHO = { all: 'ყველასთვის', dog: 'ძაღლებისთვის', cat: 'კატებისთვის', small: 'პატარა ცხოველებისთვის' };
+  const forLabel = f => f.map(x => FOR[x]).join(' და ');
   grid.innerHTML = data.products.map(p => {
     const set = srcset(p.img);
     return `<article class="prod" data-for="${esc(p.for.join(' '))}">` +
@@ -1392,8 +1394,8 @@ function setupShop(basket) {
       `<span class="prod-for">${esc(forLabel(p.for))}</span>` +
       (p.pick ? `<span class="sticky">${esc(p.pick)}</span>` : '') + `</div>` +
       `<div class="prod-body"><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p>` +
-      `<div class="prod-foot"><span class="rate"><b>★ ${p.rating.toFixed(1)}</b> <i>· ${p.reviews} happy paws</i></span>` +
-      `<button type="button" class="add" data-id="${esc(p.id)}" aria-label="Add ${esc(p.name)}, ${money(p.price)}, to the basket">${icon('i-plus')}</button></div></div></article>`;
+      `<div class="prod-foot"><span class="rate"><b>★ ${p.rating.toFixed(1)}</b> <i>· ${p.reviews} ბედნიერი თათი</i></span>` +
+      `<button type="button" class="add" data-id="${esc(p.id)}" aria-label="კალათაში დამატება: ${esc(p.name)}, ${money(p.price)}">${icon('i-plus')}</button></div></div></article>`;
   }).join('');
   $$('img.fi', grid).forEach(watchImg);
   const cards = $$('.prod', grid);
@@ -1409,7 +1411,7 @@ function setupShop(basket) {
     if (nf === f) return;
     f = nf;
     chips.forEach(c => c.setAttribute('aria-pressed', c.dataset.f === f));
-    live.textContent = `Showing ${cards.filter(want).length} things for ${WHO[f]}.`;
+    live.textContent = `${WHO[f]}: ${cards.filter(want).length} ნივთი.`;
     if (!motion) { cards.forEach(c => { c.hidden = !want(c); }); return; }
     if (tl) { tl.kill(); grid.classList.remove('busy'); gsap.set(grid, { clearProps: 'height' }); }
     const leaving = cards.filter(c => !c.hidden);
@@ -1434,20 +1436,20 @@ function setupShop(basket) {
 function setupGrooming() {
   const now = tbilisiNow(), times = ['10:30', '11:30', '13:00', '15:30', '17:00'];
   // later today if there's time before 18:00, otherwise the next day the studio opens (closed Sundays)
-  let day = now.day, rel = 'Today', t = times.find(x => +x.slice(0, 2) * 60 + +x.slice(3) > now.min + 90);
+  let day = now.day, rel = 'დღეს', t = times.find(x => +x.slice(0, 2) * 60 + +x.slice(3) > now.min + 90);
   if (!t || day === 0) {
     let k = 1;
     while ((day + k) % 7 === 0) k++;
     day = (day + k) % 7;
-    rel = k === 1 ? 'Tomorrow' : DAYS[day];
+    rel = k === 1 ? 'ხვალ' : DAYS[day];
     t = times[(day * 3 + 1) % times.length];
   }
   const when = `${rel} · ${t}`;
   $('#slot').textContent = when;
   const book = $('#slot-book');
-  book.dataset.waText = `Hi zoobum! Could I book a groom ${rel === 'Today' || rel === 'Tomorrow' ? rel.toLowerCase() : 'on ' + rel} at ${t}?`;
+  book.dataset.waText = `გამარჯობა, zoobum! შეიძლება გრუმინგზე ჩავეწერო ${rel} ${t}-ზე?`;
   book.href = wa(book.dataset.waText);
-  book.setAttribute('aria-label', `Book the next free table, ${when}, on WhatsApp`);
+  book.setAttribute('aria-label', `ჩაწერა WhatsApp-ით: ${when}`);
 }
 
 /* ── the Club: your pet's passport fills itself in as you type ── */
@@ -1456,20 +1458,20 @@ function setupClub() {
   const pv = $('#pv'), wrap = $('#pv-wrap'), art = $('#pv-art'), img = $('#pv-img'), stamp = $('#pv-stamp');
   const year = new Date().getFullYear();
   const SPECIES = {
-    dog: { label: 'Dog', c: '#F6D37A', art: '<path d="M100 58c-31 0-50 23-50 54 0 33 22 54 50 54s50-21 50-54c0-31-19-54-50-54Z" fill="#FFFDF8"/><path d="M61 70C44 74 33 100 37 126c2 11 13 12 19 4l10-15M139 70c17 4 28 30 24 56-2 11-13 12-19 4l-10-15" fill="#FFFDF8"/><circle cx="82" cy="106" r="5.5" fill="#2A1E17" stroke="none"/><circle cx="118" cy="106" r="5.5" fill="#2A1E17" stroke="none"/><path d="M91 126h18c0 7-4 11-9 11s-9-4-9-11Z" fill="#2A1E17"/><path d="M100 137v8m0 0c-4 6-12 6-16 1m16-1c4 6 12 6 16 1"/>' },
-    cat: { label: 'Cat', c: '#BBD5EE', art: '<path d="M56 96 58 46l34 22M144 96l-2-50-34 22" fill="#FFFDF8"/><path d="M100 62c-33 0-53 22-53 52 0 31 24 52 53 52s53-21 53-52c0-30-20-52-53-52Z" fill="#FFFDF8"/><path d="M74 110c5-7 13-7 18 0-5 7-13 7-18 0ZM108 110c5-7 13-7 18 0-5 7-13 7-18 0Z" fill="#2A1E17" stroke="none"/><path d="M93 127h14l-7 7Z" fill="#2A1E17"/><path d="M100 134c-2 6-9 8-13 5m13-5c2 6 9 8 13 5M72 130l-28-4m28 12-26 7m82-15 28-4m-28 12 26 7"/>' },
-    bunny: { label: 'Bunny', c: '#A9DCD3', art: '<path d="M83 86C70 52 70 22 83 18s21 24 16 66M117 86c13-34 13-64 0-68s-21 24-16 66" fill="#FFFDF8"/><path d="M100 78c-29 0-47 21-47 47 0 27 21 45 47 45s47-18 47-45c0-26-18-47-47-47Z" fill="#FFFDF8"/><circle cx="84" cy="120" r="5.5" fill="#2A1E17" stroke="none"/><circle cx="116" cy="120" r="5.5" fill="#2A1E17" stroke="none"/><path d="M94 134h12l-6 5Z" fill="#2A1E17"/><path d="M100 139v6m0 0c-3 4-8 4-11 1m11-1c3 4 8 4 11 1"/>' },
-    other: { label: 'Something else', c: '#F4C3BD', art: '<g transform="translate(40 40) scale(5)" fill="#2A1E17" stroke="none"><ellipse cx="12" cy="16" rx="4.6" ry="3.9"/><ellipse cx="5.7" cy="10.7" rx="2" ry="2.5" transform="rotate(-20 5.7 10.7)"/><ellipse cx="9.6" cy="6.3" rx="2.1" ry="2.7" transform="rotate(-8 9.6 6.3)"/><ellipse cx="14.4" cy="6.3" rx="2.1" ry="2.7" transform="rotate(8 14.4 6.3)"/><ellipse cx="18.3" cy="10.7" rx="2" ry="2.5" transform="rotate(20 18.3 10.7)"/></g>' }
+    dog: { label: 'ძაღლი', c: '#F6D37A', art: '<path d="M100 58c-31 0-50 23-50 54 0 33 22 54 50 54s50-21 50-54c0-31-19-54-50-54Z" fill="#FFFDF8"/><path d="M61 70C44 74 33 100 37 126c2 11 13 12 19 4l10-15M139 70c17 4 28 30 24 56-2 11-13 12-19 4l-10-15" fill="#FFFDF8"/><circle cx="82" cy="106" r="5.5" fill="#2A1E17" stroke="none"/><circle cx="118" cy="106" r="5.5" fill="#2A1E17" stroke="none"/><path d="M91 126h18c0 7-4 11-9 11s-9-4-9-11Z" fill="#2A1E17"/><path d="M100 137v8m0 0c-4 6-12 6-16 1m16-1c4 6 12 6 16 1"/>' },
+    cat: { label: 'კატა', c: '#BBD5EE', art: '<path d="M56 96 58 46l34 22M144 96l-2-50-34 22" fill="#FFFDF8"/><path d="M100 62c-33 0-53 22-53 52 0 31 24 52 53 52s53-21 53-52c0-30-20-52-53-52Z" fill="#FFFDF8"/><path d="M74 110c5-7 13-7 18 0-5 7-13 7-18 0ZM108 110c5-7 13-7 18 0-5 7-13 7-18 0Z" fill="#2A1E17" stroke="none"/><path d="M93 127h14l-7 7Z" fill="#2A1E17"/><path d="M100 134c-2 6-9 8-13 5m13-5c2 6 9 8 13 5M72 130l-28-4m28 12-26 7m82-15 28-4m-28 12 26 7"/>' },
+    bunny: { label: 'კურდღელი', c: '#A9DCD3', art: '<path d="M83 86C70 52 70 22 83 18s21 24 16 66M117 86c13-34 13-64 0-68s-21 24-16 66" fill="#FFFDF8"/><path d="M100 78c-29 0-47 21-47 47 0 27 21 45 47 45s47-18 47-45c0-26-18-47-47-47Z" fill="#FFFDF8"/><circle cx="84" cy="120" r="5.5" fill="#2A1E17" stroke="none"/><circle cx="116" cy="120" r="5.5" fill="#2A1E17" stroke="none"/><path d="M94 134h12l-6 5Z" fill="#2A1E17"/><path d="M100 139v6m0 0c-3 4-8 4-11 1m11-1c3 4 8 4 11 1"/>' },
+    other: { label: 'სხვა', c: '#F4C3BD', art: '<g transform="translate(40 40) scale(5)" fill="#2A1E17" stroke="none"><ellipse cx="12" cy="16" rx="4.6" ry="3.9"/><ellipse cx="5.7" cy="10.7" rx="2" ry="2.5" transform="rotate(-20 5.7 10.7)"/><ellipse cx="9.6" cy="6.3" rx="2.1" ry="2.7" transform="rotate(-8 9.6 6.3)"/><ellipse cx="14.4" cy="6.3" rx="2.1" ry="2.7" transform="rotate(8 14.4 6.3)"/><ellipse cx="18.3" cy="10.7" rx="2" ry="2.5" transform="rotate(20 18.3 10.7)"/></g>' }
   };
   const species = () => (form.elements.species.value || 'dog');
-  const mrz = (...bits) => ('P<ZBM<' + bits.map(b => b.toUpperCase().normalize('NFD').replace(/[^A-Z0-9]+/g, '<').replace(/^<|<$/g, '')).join('<<')).padEnd(44, '<').slice(0, 44);
+  const mrz = (...bits) => ('P<ZBM<' + bits.map(b => latin(b).toUpperCase().normalize('NFD').replace(/[^A-Z0-9]+/g, '<').replace(/^<|<$/g, '')).join('<<')).padEnd(44, '<').slice(0, 44);
   let photoURL = null, issued = false;
   $('#pv-no').textContent = '№ ' + (1340 + Math.floor(Math.random() * 600));
-  $('#pv-since').textContent = 'Regular since ' + year;
+  $('#pv-since').textContent = 'ჩვენთანაა ' + year + ' წლიდან';
   $('#pv-y').textContent = $('#pv-year').textContent = year;
 
   function update() {
-    const sp = SPECIES[species()], name = nameIn.value.trim() || 'Your pet';
+    const sp = SPECIES[species()], name = nameIn.value.trim() || 'თქვენი ცხოველი';
     pv.style.setProperty('--c', sp.c);
     wrap.style.setProperty('--pv-c', sp.c);
     $('#pv-name').textContent = name;
@@ -1487,10 +1489,10 @@ function setupClub() {
     if (photoURL) URL.revokeObjectURL(photoURL);
     photoURL = URL.createObjectURL(f);
     img.src = photoURL;
-    img.alt = 'Your pet';
+    img.alt = 'თქვენი ცხოველი';
     img.hidden = false;
     art.hidden = true;
-    $('#photo-label').textContent = 'Change the photo';
+    $('#photo-label').textContent = 'ფოტოს შეცვლა';
     if (motion) gsap.fromTo(img, { scale: 1.15, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, duration: 0.8 });
   });
   form.addEventListener('submit', e => {
@@ -1501,7 +1503,7 @@ function setupClub() {
     pv.classList.add('issued');
     msg.classList.add('ok');
     // demo only: nothing is sent; a live site would hand this to the newsletter and members' list
-    msg.textContent = `Welcome to the Club, ${name}! The passport is yours. (This is a demo, so nothing was sent to ${emailIn.value.trim()}.)`;
+    msg.textContent = `კეთილი იყოს შენი მობრძანება კლუბში, ${name}! პასპორტი შენია. (ეს დემოა, ამიტომ ${emailIn.value.trim()}-ზე არაფერი გაგზავნილა.)`;
     if (!motion) return;
     gsap.timeline()
       .fromTo(stamp, { autoAlpha: 0, scale: 2.4, rotation: -38 }, { autoAlpha: 0.9, scale: 1, rotation: 0, duration: 0.36, ease: 'power4.in' }, 0)
@@ -1516,22 +1518,22 @@ function setupVisit() {
   const now = tbilisiNow(), [o, c] = HOURS[now.day], open = now.min >= o * 60 && now.min < c * 60;
   let back = '';
   if (!open) {
-    if (now.min < o * 60) back = `back at ${hh(o)}`;
-    else back = `back tomorrow at ${hh(HOURS[(now.day + 1) % 7][0])}`;
+    if (now.min < o * 60) back = `გავიღებთ ${hh(o)}-ზე`;
+    else back = `ხვალ გავიღებთ ${hh(HOURS[(now.day + 1) % 7][0])}-ზე`;
   }
-  $('#sign-a').textContent = open ? 'Come in,' : 'Sorry,';
-  $('#sign-b').innerHTML = open ? "we're <em>open</em>" : "we're <em>closed</em>";
-  $('#sign-c').textContent = open ? `until ${hh(c)}` : back;
+  $('#sign-a').textContent = open ? 'შემობრძანდით,' : 'ბოდიში,';
+  $('#sign-b').innerHTML = open ? '<em>ღია</em> ვართ' : '<em>დაკეტილია</em>';
+  $('#sign-c').textContent = open ? `${hh(c)}-მდე` : back;
   const status = $('#status');
-  status.textContent = open ? `Open now · until ${hh(c)}` : `Closed now · ${back}`;
+  status.textContent = open ? `ახლა ღიაა · ${hh(c)}-მდე` : `ახლა დაკეტილია · ${back}`;
   status.classList.toggle('open', open);
   $$('#hours [data-days]').forEach(r => r.classList.toggle('today', r.dataset.days.split(',').includes(String(now.day))));
   return $('#sign');
 }
 
-// numbers count up the British way: 1,200
+// numbers count up the Georgian way: 1 200
 function countUp(el, delay = 0) {
-  const end = parseFloat(el.dataset.count), o = { v: 0 }, fmt = new Intl.NumberFormat('en-GB');
+  const end = parseFloat(el.dataset.count), o = { v: 0 }, fmt = new Intl.NumberFormat('ka-GE');
   el.textContent = fmt.format(0);
   gsap.to(o, { v: end, duration: 1.5, delay, ease: 'power3.out', onUpdate: () => { el.textContent = fmt.format(Math.round(o.v)); } });
 }
